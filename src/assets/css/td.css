@@ -1,0 +1,82 @@
+/* **************************************************
+    CATEGORIA
+************************************************** */
+.categoria-list{
+    display: flex; 
+    flex-wrap: wrap;
+    align-content: stretch;
+}
+.categoria-list-item {
+    width: 20%;
+    min-height:100px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border:1px solid #F9F9F9;
+    cursor:pointer;
+}
+.categoria-list-item:hover{
+    background-color: #F6F6F6 !important;
+}
+.itemsel {
+    background-color: #5a6fa5 !important;
+    color:#FFF;
+}
+.itemsel:hover{
+    background-color: #5a6fa5 !important;
+}
+.categoria-check-icon{
+    position: absolute;
+    right:5px;
+    top:5px;
+    color:#FFF;
+}
+/* **************************************************
+    ATRIBUTO
+************************************************** */
+.atributo-list div {
+    display: inline-flex;
+    align-items: center;
+    margin:auto 5px 5px auto;
+    justify-content: space-between;
+}
+/* **************************************************
+    ITEM
+************************************************** */
+.item-list {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align:center;    
+}
+
+.botoes-grupo input[type=button]{
+    margin:10px;
+}
+
+.negociacoes-component table {
+    margin-top:50px;
+}
+
+.negociacao-open{
+    color:green;
+}
+.negociacao-close{
+    color:red;
+}
+/* **************************************************
+    DASHBOARD
+************************************************** */
+.titulo-dashboard{
+    text-transform: capitalize;
+}
+
+
+.td-validation-error {
+    background-color:#ffe6e6 !important;
+    border-bottom:2px solid #FF0000 !important;
+}
+.td-validation-success{
+    background-color:#f1ffee !important;
+    border-bottom:2px solid green !important;
+}

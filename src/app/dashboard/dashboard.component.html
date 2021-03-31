@@ -1,0 +1,44 @@
+      <!-- Hero Area Start-->
+      <div class="slider-area ">
+        <div class="slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Área do <span class="titulo-dashboard">{{ titulo }}</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Area End-->
+
+    <section class="login_part section_padding ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="login_part_text">
+                        <div class="login_part_text_iner">
+                            <div class="text-center">
+                               <img src="assets/img/usuario.png" alt="" class="img_redonda">
+                               <h4>Nome da Pessoa</h4>
+                               <p>fulano@hotmail.com</p>  
+                            </div> <br/>
+                            <div class="esquerda cor_l">
+                               <p><a routerLink="negociacoes"><img src="assets/img/icone_propostas.png" alt="" class="imagem"> Propostas de compra</a></p>
+                               <p><a href="#"><img src="assets/img/icone_creditos.png" alt="" class="imagem"> Meus créditos</a></p>
+                               <p><a href="#"><img src="assets/img/icone_propagandas.png" alt="" class="imagem"> Propagandas</a></p>
+                               <p><a href="#"><img src="assets/img/icone_relatorios.png" alt="" class="imagem"> Relatórios</a></p>
+                               <p><a href="#"><img src="assets/img/icone_estabelecimento.png" alt="" class="imagem"> Sobre o estabelecimento</a></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <router-outlet> </router-outlet>
+                </div>
+            </div>
+        </div>
+    </section>

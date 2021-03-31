@@ -1,0 +1,72 @@
+        <!-- Hero Area Start-->
+        <div class="slider-area ">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap text-center">
+                                <h2>Cadastro de Cliente</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero Area End-->
+        <!--================login_part Area =================-->
+        <section class="login_part section_padding ">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-lg-4 col-md-4 topo">
+                        <app-autenticacao></app-autenticacao>
+                    </div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="login_part_form">
+                            <div class="login_part_form_iner">
+                                <h3>Seja bem-vindo! <br>Preencha suas informações para se cadastrar.</h3>
+                                <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo" [(ngModel)]="cliente.nome">
+                                    </div> 
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" data-mask="000.000.000-00" [(ngModel)]="cliente.cpf">
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="text" class="form-control" id="dt" name="dat" placeholder="Data de Nascimento" [(ngModel)]="cliente.datanascimento">
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="text" class="form-control" id="tel" name="telefone" placeholder="Telefone" [(ngModel)]="cliente.fixo">
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="text" class="form-control" id="cel" name="celular" placeholder="Celular" [(ngModel)]="cliente.celular">
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                        <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" [(ngModel)]="cliente.cep">
+                                    </div>                                   
+                                    <div class="col-md-12 form-group p_star">
+                                         <input type="text" class="form-control" id="rua" name="rua" placeholder="Endereço" [(ngModel)]="cliente.endereco">
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                         <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" [(ngModel)]="cliente.bairro">
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                         <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" [(ngModel)]="cliente.cidade">
+                                    </div>
+                                    <div class="col-md-12 form-group p_star">
+                                         <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado" [(ngModel)]="cliente.estado">
+                                    </div>
+
+                                    <div class="col-md-12 form-group">
+                                        <button type="submit" value="submit" class="btn_3" (click)="salvar()">
+                                            Cadastrar
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================login_part end =================-->
