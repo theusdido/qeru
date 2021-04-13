@@ -10,6 +10,10 @@ export const environment = {
   }
 };
 
+/* ************************************************************
+  ENVIADO PELO GIT - EDILSON 
+************************************************************* */
+
 // Lojista teste 
 export const lojista = {
   nome:"Bianca Peruchi",
@@ -21,12 +25,33 @@ export const lojista = {
   nomefantasia:"Peruchis Store",
   fixo:"(48) 3443-4141",
   celular:"(48) 9.9659-9350",
+  endereco:"Rua Walter da Silva Medeiros",
+  numero:"85",
+  complemento:"",
+  cep:"88804-770",
+  bairro:"Jardim Angélica",
+  cidade:"Criciúma",
+  senha:"12345678",
+  csenha:"12345678",
+  isentrega:"S",
+  categorias:"[7,13]",
+  estado:""
+}
+
+export const perfil = "";
+
+// Cliente Teste
+export const cliente = {
+  nome:"Edilson Bitencourt",
+  cpf:"044.725.179-14",
+  datanascimento:"27/11/1983",
+  fixo:"(48) 3443-4141",
+  celular:"(48) 9.9659-9350",
   endereco:"Rua Walter da Silva Medeiros, 85",
   cep:"88804-770",
   bairro:"Jardim Angélica",
   cidade:"Criciúma",
-  senha:"",
-  csenha:""
+  estado:"SC"
 }
 
 /*
