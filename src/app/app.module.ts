@@ -12,17 +12,35 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PropostaComponent } from './dashboard/proposta/proposta.component';
 import { CategoriaComponent } from './dashboard/categoria/categoria.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AtributoComponent } from './dashboard/atributo/atributo.component';
 import { ItemComponent } from './dashboard/item/item.component';
 import { NegociacoesComponent } from './dashboard/negociacoes/negociacoes.component';
 import { ToogleComponent } from './widgets/fontawesome/toogle/toogle.component';
 import { Environmenter } from '../environments/environmenter.service';
 import { NgxMaskModule } from 'ngx-mask';
-import { DashboardAtributoComponent } from './dashboard/dashboard-atributo/dashboard-atributo.component';
 import { SubcategoriaComponent } from './dashboard/subcategoria/subcategoria.component';
 import { Validar } from './validar';
 import { Funcoes } from './funcoes';
+import { UF } from './classe/uf';
+import { MenuComponent } from './dashboard/menu/menu.component';
+import { Lojista } from './classe/lojista';
+import { RequisicaoService } from './service/requisicao.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Sessao } from './service/sessao.service';
+import { ComprarComponent } from './dashboard/comprar/comprar.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { ProdutoComponent } from './dashboard/produto/produto.component';
+import { AtributoOpcaoComponent } from './dashboard/atributo-opcao/atributo-opcao.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { DashboardLojistaComponent } from './dashboard/lojista/dashboard-lojista.component';
+import { DashboardClienteComponent } from './dashboard/cliente/dashboard-cliente.component';
+import { RetornoPedidoComponent } from './dashboard/retorno-pedido/retorno-pedido.component';
+import { ChatComponent } from './dashboard/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +55,15 @@ import { Funcoes } from './funcoes';
     ItemComponent,
     NegociacoesComponent,
     ToogleComponent,
-    DashboardAtributoComponent,
-    SubcategoriaComponent
+    SubcategoriaComponent,
+    MenuComponent,    
+    ComprarComponent,
+    ProdutoComponent,
+    AtributoOpcaoComponent,
+    DashboardLojistaComponent,
+    DashboardClienteComponent,
+    RetornoPedidoComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -46,14 +71,28 @@ import { Funcoes } from './funcoes';
     FormsModule,
     HttpClientModule,
     FontAwesomeModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot(),
+    BrowserAnimationsModule ,
+    MatMenuModule,
+    MatListModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule
   ],
   providers: [
     ConfigService,
     Environmenter,
     Validar,
-    Funcoes
+    Funcoes,    
+    UF,
+    Lojista,
+    RequisicaoService,
+    Sessao
   ],
   bootstrap: [MainComponent]
 })
+
 export class AppModule { }
+

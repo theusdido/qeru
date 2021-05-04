@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RequisicaoMiles } from 'src/app/miles/src/requisicao';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public rm:RequisicaoMiles
+  ) { 
+    this.setSessionToken();
+  }
 
   ngOnInit(): void {
+    
+  }
+
+  async setSessionToken(){
+    await this.rm.setSessionToken();
   }
 
 }

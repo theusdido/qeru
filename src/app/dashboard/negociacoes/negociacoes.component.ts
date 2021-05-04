@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { faRocketchat} from '@fortawesome/free-brands-svg-icons';
 
+@Injectable({ providedIn:"root"})
 @Component({
   selector: 'app-negociacoes',
   templateUrl: './negociacoes.component.html',
@@ -8,26 +9,15 @@ import { faRocketchat} from '@fortawesome/free-brands-svg-icons';
 })
 export class NegociacoesComponent implements OnInit {
   faRocketchat = faRocketchat;
-  public negociacoes:Array<any> = [
-    {
-      id:1,
-      data:"26/03/2021",
-      estabelecimento:"Peruchis Store",
-      localizacao:"Araranguá - SC",
-      produto:"Camiseta, masculina",
-      mensagem:"",
-      status:"negociacao-open"
-    },
-    {
-      id:2,
-      data:"26/03/2021",
-      estabelecimento:"Teia - Tecnologia WEB",
-      localizacao:"Criciúma - SC",
-      produto:"Camiseta, masculina",
-      mensagem:"",
-      status:"negociacao-close"
-    }    
-  ];
+  public negociacoes:Array<any> = [  {
+    id:1,
+    data:"07/04/2021",
+    estabelecimento:"Peruchis Store",
+    localizacao:"Araranguá - SC",
+    produto:"Camiseta, Vermelha, Tamanho P ...",
+    mensagem:"",
+    status:"negociacao-open"
+  }];
   constructor() { }
 
   ngOnInit(): void {

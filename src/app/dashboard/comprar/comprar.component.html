@@ -1,0 +1,31 @@
+<div id="comprar-fieldset">
+    <div id="categoriacomponent" name="categoriacomponent">
+        <app-categoria [multiple]=false (getCategoria)="setCategoria( $event )"></app-categoria>
+    </div>
+    <hr />
+    <app-subcategoria #subcategoriacomponent></app-subcategoria>
+    <hr />
+    <app-atributo #atributocomponent></app-atributo>
+    <div class="row">
+        <div class="col">
+            <h5>Descreva o que você deseja comprar</h5>
+            <textarea class="form-control" [(ngModel)]="observacao"></textarea>
+        </div>
+    </div>    
+    <hr />
+    <app-item></app-item>
+    <hr />
+    <div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="isretirarestabelecimento" checked #isretirarestabelecimento>
+            <label class="form-check-label" for="isretirarestabelecimento">Retirar no estabelecimento</label>
+        </div>
+    </div>        
+    <hr />
+    <div class="botoes-grupo">
+        <button type="submit" value="submit" class="btn_3" (click)="comprar()">
+            Qeru Comprar
+        </button>
+    </div>
+    <br/>
+</div>

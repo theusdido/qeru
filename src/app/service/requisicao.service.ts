@@ -1,31 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ProjetoMiles } from '../miles/src/projeto';
+import { Sessao } from '../service/sessao.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+
+@Injectable()
 export class RequisicaoService {
-  public host = "http://localhost/miles/sistema/";
-  public projeto = "31";
+  private projectid = ProjetoMiles.id;  
+  public host       = "http://teia.tec.br/miles/sistema/";
+  public upload     = this.host + "index.php?controller=controller&file=upload&currentproject=" + this.projectid;
+  public file       = this.host + "projects/" + this.projectid + '/arquivos/';
+
   constructor(
     public http:HttpClient
   ) { }
-
-  cliente(dados:any){
+  get(controller:string,dados:object){    
     return this.http.get(this.host,{
       params:{
-        currentproject:this.projeto,
-        controller:"cliente",
-        dados:JSON.stringify(dados)
-      },
-      responseType:"json"
-    });
-  }
-  lojista(dados:any){
-    return this.http.get(this.host,{
-      params:{
-        currentproject:this.projeto,
-        controller:"lojista",
+        token:Sessao.token,
+        currentproject:this.projectid,
+        controller:"controller",
+        file:controller,
         dados:JSON.stringify(dados)
       },
       responseType:"json"

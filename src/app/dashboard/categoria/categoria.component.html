@@ -1,8 +1,10 @@
-<h3>Selecione uma categoria</h3>
-<div class="categoria-list">
-    <div *ngFor="let c of categorias"  class="card categoria-list-item {{c.sel? 'itemsel' : ''}}" (click)="selecionar(c)">
-        <fa-icon [icon]="faCheck" class="categoria-check-icon" [style.display]="c.sel?'':'none'"></fa-icon>
-        <fa-icon *ngIf="c.icon != null" [icon]="c.icon"></fa-icon>
-        <small>{{c.texto}}</small>
+<span>
+    <h3>Selecione uma categoria</h3>
+    <div class="categoria-list">
+        <div *ngFor="let c of categorias"  class="card categoria-list-item {{c.sel? 'itemsel' : ''}}" (click)="selecionar(c)">
+            <fa-icon [icon]="faCheck" class="categoria-check-icon" [style.display]="c.sel?'':'none'"></fa-icon>
+            <fa-icon *ngIf="c.icon != null" [icon]="c.icon"></fa-icon>
+            <small>{{c.texto}}</small>
+        </div>
     </div>
-</div>
+</span>

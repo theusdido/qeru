@@ -25,9 +25,34 @@ export const lojista = {
   cep:"",
   bairro:"",
   cidade:"",
+  numero:"",
+  complemento:"",  
   senha:"",
-  csenha:""
+  csenha:"",
+  isentrega:"S",
+  categorias:"[]",
+  estado:""
 }
+
+// Cliente Teste
+export const cliente = {
+  nome:"",
+  cpf:"",
+  datanascimento:"",
+  fixo:"",
+  celular:"",
+  endereco:"",
+  numero:"",
+  complemento:"",  
+  cep:"",
+  bairro:"",
+  cidade:"",
+  estado:"",
+  email:"",
+  senha:""
+}
+
+export const perfil:string = "";
 
 /*
  * For easier debugging in development mode, you can import the following file

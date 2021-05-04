@@ -43,18 +43,25 @@
 /* **************************************************
     ITEM
 ************************************************** */
-.item-list {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    text-align:center;    
+.item-img {
+    cursor:pointer;
+    min-width: 100% !important;
 }
-
 .botoes-grupo input[type=button]{
     margin:10px;
 }
+.item-list .card .card-body {
+    background-color: #EEE;
+}
 
-.negociacoes-component table {
+.iupload {
+    display: none;
+}
+
+/* **************************************************
+    NEGOCIAÇÃO
+************************************************** */
+.negociacoes-component {
     margin-top:50px;
 }
 
@@ -64,6 +71,7 @@
 .negociacao-close{
     color:red;
 }
+
 /* **************************************************
     DASHBOARD
 ************************************************** */
@@ -79,4 +87,139 @@
 .td-validation-success{
     background-color:#f1ffee !important;
     border-bottom:2px solid green !important;
+}
+.div-error{
+    display:none;
+}
+
+.menu-dashboard a{
+    color:#000;
+}
+.menu-dashboard a.active{
+    background-color: transparent !important;
+    color:#000 !important;
+}
+
+.menu-dashboard .nav-link {
+    border-radius: 0px !important;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border:1px solid #EEE;
+    height:70px;
+    padding:0px;
+    margin-right:15px;
+    text-align: left;
+}
+
+.menu-dashboard .nav-link fa-icon{
+    background-color:#ec4737;
+    color:#FFF;
+    padding:10px 15px;
+    font-size:32px;
+}
+.menu-dashboard .nav-link{
+    width:100%;
+    float:left;
+    clear:both;
+}
+.menu-dashboard .nav-link:hover{
+    background-color: #ffe8e6 !important;
+    color:#FFF !important;
+}
+.textos {
+    width:100%;
+    float:left;
+    clear:left;
+    margin:0px;
+    padding-left:15px;
+}
+p.textos {
+    font-weight: bold;
+}
+small.textos{
+    color:#999;
+}
+
+/* **************************************************
+    PRODUTO - SUBCATEGORIA 
+************************************************** */
+.form-subcategoria {
+    margin-top:50px;
+    width:100% !important;
+}
+
+.form-subcategoria label {
+    font-size: 12px;
+    width: 100%;
+}
+.form-subcategoria .nice-select {
+    width:100%;
+    line-height: 28px;
+}
+.form-subcategoria .nice-select ul {
+    width:100%;
+}
+.btn-subcategoria-produto{
+    margin-top:50px;
+    float:right;
+}
+.separador-lista-subcategoria {
+    border-bottom:1px solid #ff2020;
+}
+
+.lista-produtos .card-header {
+    cursor:pointer;
+}
+.botoes-acoes {
+    margin-left:25px;
+    cursor:pointer;
+}
+.botoes-acoes.btn-card-header{
+    float:right;    
+}
+
+.btn-add-atributo{
+    height: 38px;
+    width:40px;
+    padding:0px;
+}
+
+.coluna-btn-subcategoria {
+    margin-top:50px;
+}
+
+.lista-produtos .card {
+    margin-bottom:15px;
+}
+.btn-add-atributo-opcao{
+    cursor:pointer;
+}
+
+.btn-add-opcao {
+    cursor:pointer;
+}
+.aviso-opcoes{
+    margin: auto 10px;
+}
+/* **************************************************
+    MULTISELECT MASTER CHECKBOX
+************************************************** */
+.multiselect-item-checkbox input[type=checkbox]:checked + div:before{
+    background-color: #ec4737 !important;
+}
+.multiselect-item-checkbox input[type=checkbox] + div:before {
+    color:#ec4737 !important;
+    border:2px solid #ec4737 !important;
+}
+.multiselect-dropdown .dropdown-btn .selected-item{
+    border: 1px solid #ec4737 !important;
+    background: #ec4737 !important;
+}
+
+/* **************************************************
+    RETORNO PEDIDO
+************************************************** */
+.img-check-retorno{
+    width:300px;
 }

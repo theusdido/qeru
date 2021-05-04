@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { lojista } from 'src/environments/environment';
 import { RequisicaoService } from '../../service/requisicao.service';
 import { Validar } from '../../validar';
+import { UF } from '../../classe/uf';
+import { ls } from 'src/environments/environment';
 
+declare var $:any;
 @Component({
   selector: 'app-lojista',
   templateUrl: './lojista.component.html',
   styleUrls: ['./lojista.component.scss']
 })
 export class LojistaComponent implements OnInit {
+  
+  @ViewChildren('required')  obrigatorios: any;
+  @ViewChildren('#estado') estado: any;
+
   public lojista = lojista;
   public validarCampos = {
     cpf:"",
@@ -21,31 +28,51 @@ export class LojistaComponent implements OnInit {
     email:"",
     senha:""
   };
-  public categorias:any;
+
+  public categorias:Array<boolean> = [];
+  public isEntrega:any;
+  public estados:Array<any> = new UF().estados;
+  public loja = ls.get("loja");
 
   constructor(
     public rs:RequisicaoService,
     public rota:Router,
-    public validar:Validar
+    public validar:Validar    
   ) { }
 
   ngOnInit(): void {
-    
+    this.lojista.estado = "24";
   }
 
-  salvar(){
-    console.log(this.categorias);
-    //this.rota.navigate(["/dashboard/lojista"]);
-    /*
-    this.rs.lojista({
+  salvar(): any {
+    if (!this.validar.isRequired(this.obrigatorios)) return false;
+    if (lojista.categorias.length < 1){
+      $(".div-error").show("200");
+      return false;
+    }else{
+      $(".div-error").hide();
+    }
+    $("#preloader-active").show();
+    this.rs.get("lojista",{
       op:"salvar",
       lojista:this.lojista
-    }).subscribe( (response:any) => {
-      if (response.status == 0){
-        this.rota.navigate(["/dashboard"] , {queryParams:{isUser:false}});
+    }).subscribe( 
+      (response:any) => 
+      {
+        $("#preloader-active").hide();
+        if (response.status == 0){
+          ls.set("perfil","L");
+          ls.set("lojista",response.lojista);
+          ls.set("loja",response.loja);
+          ls.set("isLogado",true);
+          this.rota.navigate(["/dashboard"]);
+        }
+      },
+      (error) => 
+      {
+        $("#preloader-active").hide();
       }
-    });
-    */
+    );
   }
   validarCampo(campo:string){
     switch(campo){
@@ -108,8 +135,13 @@ export class LojistaComponent implements OnInit {
     }
   }
 
-  setCategorias(categorias:any){
-    console.log(categorias);
+  setCategorias(categoria:any){
+    let categoriasSel:Array<any> = [];
+    categoria.forEach( (c:any) => {
+      if (c.sel){
+        categoriasSel.push(c.id);
+      }
+    });
+    this.lojista.categorias = JSON.stringify(categoriasSel);
   }
 }
-

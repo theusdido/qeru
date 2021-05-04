@@ -1,6 +1,23 @@
-<h5>Descreva o que você deseja comprar</h5>
-<div class="atributo-list">
-    <div *ngFor="let a of atributos">
-        <input type="text" class="form-control" placeholder="{{a.label}}">
-    </div>   
+<div class="row" *ngIf="atributos.length > 0">
+    <div class="col">
+        <h5>Selecione as principais caracteristicas do seu produto</h5>
+        <div *ngFor="let a of atributos;let index;">
+            <ng-multiselect-dropdown
+            *ngIf="a.itens.length"
+            [settings]="dropdownSettings"
+            [data]="a.itens"
+            [placeholder]="a.descricao"
+            (onSelect)="onItemSelect($event)"
+            ></ng-multiselect-dropdown>
+
+            <input 
+                type="text" 
+                [placeholder]="a.descricao" 
+                class="form-control" 
+                *ngIf="a.itens.length==0" 
+                id="{{ a.id }}"
+                (blur) = "addAtributoManual( $event )"
+            />
+        </div>
+    </div>
 </div>

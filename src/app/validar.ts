@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Renderer2 , RendererFactory2 } from '@angular/core';
 import { Funcoes } from './funcoes';
 /*
     * Framework MILES
@@ -14,9 +14,30 @@ import { Funcoes } from './funcoes';
   })
 
 export class Validar {
+    public r: Renderer2;
     constructor(
-        public f:Funcoes
-    ) { }
+        public f:Funcoes,
+        public renderer:RendererFactory2
+    ) {
+        this.r = renderer.createRenderer(null, null);
+     }
+	/*
+		* Método isRequired
+		* Data de Criacao: 03/04/2021
+		* @author Edilson Valentim dos Santos Bitencourt (Theusdido)
+
+		* Verifica se todos os campos marcados required foram preenchidos
+        @params campos:Array
+	*/
+    isRequired(campos:any) : boolean {
+        for(let c of campos){
+            if (c.nativeElement.value == ''){
+                this.r.addClass(c.nativeElement,"td-validation-error");
+                return false;   
+            }            
+        }
+        return true;
+    }
 	/*
 		* Método isValidCPF
 		* Data de Criacao: 28/03/2021
@@ -25,7 +46,6 @@ export class Validar {
 		* Valida o número do CPF
         @params strCPF = número do CPF
 	*/
-    
     isValidCPF(strCPF:string) : boolean{
         var retorno = false;
         var strCPF = this.f.replaceAll(strCPF,".-","");
@@ -157,5 +177,5 @@ export class Validar {
     }
     getTDClass(result:boolean) : string {
         return result ? "td-validation-success" : "td-validation-error";
-    }
+    }    
 }

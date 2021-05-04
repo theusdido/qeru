@@ -1,9 +1,19 @@
 <h5>Adicione uma foto como referência</h5>
 <div class="item-list">
     <div *ngFor="let i of itens" class="card">
-        <img src="{{i.img}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <a href="#" class="btn">Adicionar Foto</a>
-        </div>
+        <form
+            id="uploadform"
+            #uploadform method="POST" action="{{ pahtupload }}"
+            enctype="multipart/form-data" 
+            target="iupload"
+        >
+            <img src="{{i.img}}" class="card-img-top item-img" alt="..." (click)="carregarFoto()">
+            <input type="file" name="foto" id="foto" [style.display]="'none'" [(ngModel)]="fileinput" />
+            <input type="hidden" [(ngModel)]="token" name="token" />
+            <div class="card-body">
+                <button href="#" class="btn btn-adicionarfoto btn-block" (click)="carregarFoto()">Adicionar Foto</button>
+            </div>
+        </form>
     </div>
 </div>
+<iframe class="iupload" name="iupload"></iframe>

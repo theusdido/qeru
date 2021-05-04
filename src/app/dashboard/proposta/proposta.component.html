@@ -1,20 +1,23 @@
-<app-categoria></app-categoria>
-<hr />
-<app-subcategoria></app-subcategoria>
-<hr />
-<app-atributo></app-atributo>
-<hr />
-<app-item></app-item>
-<hr />
-<div>
-    <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-        <label class="form-check-label" for="flexSwitchCheckChecked">Retirar no estabelecimento</label>
-      </div>
-</div>        
-<hr />
-<div class="botoes-grupo">
-    <button type="submit" value="submit" class="btn_3">
-        Enviar
-    </button>
+<div class="negociacoes-component">
+    <h2>Propostas</h2>
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th scope="col" width="10%">Data</th>
+                <th scope="col" width="40%">Estabelecimento</th>
+                <th scope="col" width="40%">Produto</th>
+                <th scope="col" width="5%">Mensagem</th>
+                <th scope="col" width="5%">Situação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let n of negociacoes">
+                <th scope="row">{{n.data}}</th>
+                <td>{{n.estabelecimento}} <br/> {{n.localizacao}} </td>
+                <td>{{n.produto}}</td>
+                <td><fa-icon [icon]="faRocketchat"></fa-icon></td>
+                <td><fontawesome-toogle></fontawesome-toogle></td>
+            </tr>
+        </tbody>
+    </table>
 </div>

@@ -1,26 +1,66 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren } from '@angular/core';
+import { PedidoService } from 'src/app/service/pedido.service';
+import { RequisicaoService } from '../../service/requisicao.service';
 
+
+declare var $:any;
 @Component({
   selector: 'app-atributo',
   templateUrl: './atributo.component.html',
   styleUrls: ['./atributo.component.scss']
 })
-export class AtributoComponent implements OnInit {
-  public atributos:Array<any> = [
-    {label:"Roupas" , itens:[{id:1,label:""}]},
-    {label:"Qual tipo de roupa?" , itens:[{id:1,label:""}]},
-    {label:"Estilo" , itens:[{id:1,label:""}]},
-    {label:"Tecido" , itens:[{id:1,label:""}]},
-    {label:"Tamanho" , itens:[{id:1,label:""}]},
-    {label:"Cor" , itens:[{id:1,label:""}]},
-    {label:"Marca" , itens:[{id:1,label:""}]},
-    {label:"Quantidade" , itens:[{id:1,label:""}]},
-    {label:"Valor Sugerido" , itens:[{id:1,label:""}]},
-    {label:"Forma Pagamento" , itens:[{id:1,label:""}]}
-  ];
-  constructor() { }
+export class AtributoComponent implements OnInit {  
+  public atributos:Array<any> = [];
 
-  ngOnInit(): void {
+  lista:Array<any> = [];
+  dropdownSettings: any = {};
+  atributosmanuais:Array<any> = [];
+
+  @ViewChildren('#atributomanual') attr: any;
+  constructor(
+    public rs:RequisicaoService,
+    public pedido:PedidoService
+  ) { }
+
+  ngOnInit(): void {    
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'descricao',
+      itemsShowLimit: 3,
+      allowSearchFilter: true,
+      enableCheckAll:false,
+      noDataAvailablePlaceholderText:"Nenhum Registro Encontrado",
+      searchPlaceholderText:"Pesquisar ..."
+    };    
   }
 
+  load(subcategoria:number){
+    this.rs.get("atributo",{
+      op:"load",
+      subcategoria:subcategoria
+    }).subscribe(
+      (response:any) => {
+        this.atributos.splice(0,this.atributos.length);
+        for(let a of response){
+          this.atributos.push({
+            id:a.id,
+            descricao:a.descricao,
+            itens:a.itens
+          });
+        }        
+      }
+    );
+  }
+
+  onItemSelect(itens:any){
+    this.pedido.atributos.push(itens);
+  }
+
+  addAtributoManual(e:any){
+    this.pedido.atributos.push({
+      id:e.target.id,
+      descricao:e.target.value
+    });
+  }
 }

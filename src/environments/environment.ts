@@ -2,17 +2,15 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { globalEnvironment } from '../../environments/environments';
+
 export const environment = {
   global: globalEnvironment,
   application: {
     project: 'Qeru'
   }
 };
-
-/* ************************************************************
-  ENVIADO PELO GIT - EDILSON 
-************************************************************* */
 
 // Lojista teste 
 export const lojista = {
@@ -34,11 +32,9 @@ export const lojista = {
   senha:"12345678",
   csenha:"12345678",
   isentrega:"S",
-  categorias:"[7,13]",
+  categorias:"[]",
   estado:""
 }
-
-export const perfil = "";
 
 // Cliente Teste
 export const cliente = {
@@ -48,10 +44,31 @@ export const cliente = {
   fixo:"(48) 3443-4141",
   celular:"(48) 9.9659-9350",
   endereco:"Rua Walter da Silva Medeiros, 85",
+  numero:"85",
+  complemento:"",  
   cep:"88804-770",
   bairro:"Jardim Angélica",
   cidade:"Criciúma",
-  estado:"SC"
+  estado:"SC",
+  email:"edilsonbitencourt@hotmail.com",
+  senha:"12345678"
+}
+
+// Seta o perfil de acesso
+export const perfil:string = "L";
+
+// Armazenamento local
+export const ls = new LocalStorageService();
+
+// Ambiente
+export const ambiente = "desenv";
+
+// Categorias 
+export const categorias:Array<number> = [7,13];
+
+// Limpa os dados locais
+export const lsClear = () => {
+    ls.clear();
 }
 
 /*

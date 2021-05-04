@@ -1,0 +1,6 @@
+<div class="alert alert-warning aviso-opcoes" *ngIf="opcoes.length < 1">Adicione uma opção</div>
+<mat-selection-list *ngIf="opcoes.length > 0">
+    <mat-list-option *ngFor="let o of opcoes" (click)="setar(o)" [selected]="o.inativo == 1 ? false : true">
+        {{ o.descricao }}
+    </mat-list-option>
+</mat-selection-list>
