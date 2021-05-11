@@ -13,6 +13,8 @@ import { PropostaComponent } from './dashboard/proposta/proposta.component';
 import { RetornoPedidoComponent } from './dashboard/retorno-pedido/retorno-pedido.component';
 import { HomeComponent } from './home/home/home.component';
 import { AutenticacaoComponent } from './logon/autenticacao/autenticacao.component';
+import { BannerComponent } from './dashboard/banner/banner.component';
+import { ContatoComponent } from './dashboard/contato/contato.component';
 
 export const routes: Routes = [
   { path: '', component:HomeComponent },
@@ -26,7 +28,9 @@ export const routes: Routes = [
     { path: 'categoria' , component:CategoriaComponent},
     { path: 'comprar' , component:ComprarComponent},
     { path: 'retorno' , component:RetornoPedidoComponent},
-    { path: 'chat' , component:ChatComponent}
+    { path: 'chat' , component:ChatComponent},
+    { path: 'banner' , component:BannerComponent},
+    { path: 'contato' , component:ContatoComponent}
   ]}
 ];
 

@@ -33,14 +33,16 @@ import { ProdutoComponent } from './dashboard/produto/produto.component';
 import { AtributoOpcaoComponent } from './dashboard/atributo-opcao/atributo-opcao.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DashboardLojistaComponent } from './dashboard/lojista/dashboard-lojista.component';
 import { DashboardClienteComponent } from './dashboard/cliente/dashboard-cliente.component';
 import { RetornoPedidoComponent } from './dashboard/retorno-pedido/retorno-pedido.component';
 import { ChatComponent } from './dashboard/chat/chat.component';
+import { BannerComponent } from './dashboard/banner/banner.component';
+import { ContatoComponent } from './dashboard/contato/contato.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { ChatComponent } from './dashboard/chat/chat.component';
     DashboardLojistaComponent,
     DashboardClienteComponent,
     RetornoPedidoComponent,
-    ChatComponent
+    ChatComponent,
+    BannerComponent,
+    ContatoComponent    
   ],
   imports: [
     BrowserModule,

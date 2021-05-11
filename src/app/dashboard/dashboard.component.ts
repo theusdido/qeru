@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
         this.perfil = "L";
       break;
       default:
-        this.rota.navigate(["/logon"]);
+       //this.rota.navigate(["/logon"]);
     }
   }
 }
