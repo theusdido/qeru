@@ -21,12 +21,12 @@
                     <div class="login_part_text">
                         <div class="login_part_text_iner">
                             <div class="text-center">
-                               <img src="assets/img/usuario.png" alt="" class="img_redonda">
-                               <h4>Nome da Pessoa</h4>
+                                <img src="assets/img/usuario.png" class="rounded-circle">
+                               <h4>{{userName}}</h4>
                                <p>fulano@hotmail.com</p>  
                             </div> <br/>
                             <div class="esquerda cor_l">
-                               <p><a routerLink="/dashboard"><img src="assets/img/icone_propostas.png" alt="" class="imagem"> Propostas de compra</a></p>
+                               <p><a routerLink="/dashboard/proposta"><img src="assets/img/icone_propostas.png" alt="" class="imagem"> Propostas de compra</a></p>
                                <p><a href="#"><img src="assets/img/icone_creditos.png" alt="" class="imagem"> Meus créditos</a></p>
                                <p><a href="#"><img src="assets/img/icone_propagandas.png" alt="" class="imagem"> Propagandas</a></p>
                                <p><a href="#"><img src="assets/img/icone_relatorios.png" alt="" class="imagem"> Relatórios</a></p>
@@ -36,10 +36,7 @@
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9">
-                    <app-dashboard-lojista *ngIf="perfil=='L'"></app-dashboard-lojista> 
-                    <app-dashboard-cliente *ngIf="perfil=='C'"></app-dashboard-cliente>
-                    <hr />                    
-                    <router-outlet></router-outlet>                    
+                    <router-outlet></router-outlet>
                 </div>
             </div>
         </div>

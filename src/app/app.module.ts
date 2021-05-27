@@ -41,6 +41,16 @@ import { DashboardLojistaComponent } from './dashboard/lojista/dashboard-lojista
 import { DashboardClienteComponent } from './dashboard/cliente/dashboard-cliente.component';
 import { RetornoPedidoComponent } from './dashboard/retorno-pedido/retorno-pedido.component';
 import { ChatComponent } from './dashboard/chat/chat.component';
+import { ContatoComponent } from './dashboard/contato/contato.component';
+import { BannerComponent } from './dashboard/banner/banner/banner.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
+import { AvatarComponent } from './widgets/avatar/avatar/avatar.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatCardModule } from '@angular/material/card';
+import { DashboardHomeComponent } from './dashboard/home/dashboard-home.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +73,11 @@ import { ChatComponent } from './dashboard/chat/chat.component';
     DashboardLojistaComponent,
     DashboardClienteComponent,
     RetornoPedidoComponent,
-    ChatComponent
+    ChatComponent,
+    ContatoComponent,
+    BannerComponent,
+    AvatarComponent,
+    DashboardHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +93,12 @@ import { ChatComponent } from './dashboard/chat/chat.component';
     MatIconModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
+    MatProgressSpinnerModule,
+    MatBadgeModule,
+    MatCardModule
   ],
   providers: [
     ConfigService,

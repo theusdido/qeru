@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RequisicaoMiles } from '../miles/src/requisicao';
 import { Lojista } from '../classe/lojista';
@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
 
   public titulo:string  = "";
   public userType       = "";
-  public perfil         = ls.get("perfil");
+  public userName       = "";
   constructor(
     public rota:Router,
     public lojista:Lojista,
@@ -22,20 +22,28 @@ export class DashboardComponent implements OnInit {
     public session:Sessao
   ) {
 
-   }
+  }
 
   ngOnInit(): void {
-    switch(this.perfil){
+    switch(ls.get("perfil")){
       case 'C':
-        this.titulo = "Cliente";
-        this.perfil = "C";
+        this.titulo   = "Cliente";
+        this.userName = "";
       break;
       case 'L':
-        this.titulo = "Lojista";
-        this.perfil = "L";
+        setTimeout( () => {
+       
+        },100);
+        
+        this.titulo   = "Lojista";
+        this.userName = this.lojista.nome;
       break;
-      default:
-        this.rota.navigate(["/logon"]);
     }
   }
+  /*
+  ngAfterViewInit(){
+    console.log(this.lojista.nome);
+    console.log(this.lojista.nomefantasia);   
+  }
+  */
 }

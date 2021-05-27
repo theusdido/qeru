@@ -4,18 +4,18 @@
         <thead>
             <tr>
                 <th scope="col" width="10%">Data</th>
-                <th scope="col" width="40%">Estabelecimento</th>
+                <th scope="col" width="40%">Cliente</th>
                 <th scope="col" width="40%">Produto</th>
-                <th scope="col" width="5%">Mensagem</th>
+                <th scope="col" width="5%">Chat</th>
                 <th scope="col" width="5%">Situação</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let n of negociacoes">
+            <tr *ngFor="let n of propostas">
                 <th scope="row">{{n.data}}</th>
-                <td>{{n.estabelecimento}} <br/> {{n.localizacao}} </td>
+                <td>{{n.cliente}} <br/> {{n.localizacao}} </td>
                 <td>{{n.produto}}</td>
-                <td><fa-icon [icon]="faRocketchat"></fa-icon></td>
+                <td><fa-icon [icon]="faRocketchat" (click)="iniciarProposta(n)"></fa-icon></td>
                 <td><fontawesome-toogle></fontawesome-toogle></td>
             </tr>
         </tbody>

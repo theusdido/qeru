@@ -55,6 +55,7 @@ export class ClienteComponent implements OnInit {
           ls.set("lojista",0);
           ls.set("loja",0);
           ls.set("isLogado",true);
+          ls.set("userid",response.id);
           this.rota.navigate(["/dashboard"]);
         }
       },

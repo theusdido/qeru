@@ -7,7 +7,7 @@ import { Sessao } from '../service/sessao.service';
 @Injectable()
 export class RequisicaoService {
   private projectid = ProjetoMiles.id;  
-  public host       = "http://teia.tec.br/miles/sistema/";
+  public host       = "http://localhost/miles/sistema/";
   public upload     = this.host + "index.php?controller=controller&file=upload&currentproject=" + this.projectid;
   public file       = this.host + "projects/" + this.projectid + '/arquivos/';
 
@@ -25,5 +25,9 @@ export class RequisicaoService {
       },
       responseType:"json"
     });
+  }
+
+  uploaded(fd:any){
+    return this.http.post(this.upload,fd);
   }
 }

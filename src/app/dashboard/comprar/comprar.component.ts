@@ -3,6 +3,7 @@ import { PedidoService } from 'src/app/service/pedido.service';
 import { RequisicaoService } from '../../service/requisicao.service';
 import { Sessao } from '../../service/sessao.service';
 import { Router } from '@angular/router';
+import { ls } from 'src/environments/environment';
 
 declare var $:any;
 @Component({
@@ -46,7 +47,7 @@ export class ComprarComponent implements OnInit {
     }
 
     this.pedido.categoria                 = this.categoria;
-    this.pedido.cliente                   = this.sessao.userid;
+    this.pedido.cliente                   = ls.get("userid");
     this.pedido.isretirarestabelecimento  = this.isretirarestabelecimento.nativeElement.checked;
     this.pedido.observacao                = this.observacao;
 

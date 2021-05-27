@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faRocketchat} from '@fortawesome/free-brands-svg-icons';
+import { Router } from '@angular/router';
+import { PropostaService } from './proposta.service';
+import { Lojista } from '../../classe/lojista';
 
 declare var $:any;
 
@@ -10,20 +13,25 @@ declare var $:any;
 })
 export class PropostaComponent implements OnInit {
   faRocketchat = faRocketchat;
-  public negociacoes:Array<any> = [  {
-    id:1,
-    data:"07/04/2021",
-    estabelecimento:"Peruchis Store",
-    localizacao:"Araranguá - SC",
-    produto:"Camiseta, Vermelha, Tamanho P ...",
-    mensagem:"",
-    status:"negociacao-open"
-  }];
+  public propostas:Array<any> = [];
+
   constructor(
-    
+    public rota:Router,
+    public ps:PropostaService,
+    public lojista:Lojista
   ) { }
 
   ngOnInit(): void {
-    
+    this.ps.getCategoria(this.lojista.getCategoriasVirgula()).subscribe(
+      (response:any) => {
+        this.propostas = response;
+      }
+    )
+  }
+  
+  iniciarProposta(pedido:any){
+    this.rota.navigate(["/dashboard/chat"],{queryParams:
+      {pedido:pedido.id}
+    });
   }
 }

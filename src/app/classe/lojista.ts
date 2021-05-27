@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { RequisicaoMiles } from '../miles/src/requisicao';
+import { RequisicaoService } from '../service/requisicao.service';
 
 @Injectable({ providedIn: 'root' })
 export class Lojista  {   
+    public id!:number;
     public nome!:string;
     public cpf!:string;
     public email!:string;
@@ -22,22 +23,28 @@ export class Lojista  {
     public categorias:Array<any> = [];
     public estado!:number;
     constructor(
-        public rm:RequisicaoMiles
+        public rs:RequisicaoService
     ){}
 
     async load(id:number){
-        return this.rm.loadForm(86,id).subscribe(
+        this.id = id;
+        return this.rs.get("lojista",{
+            op:"load",
+            id:id
+        }).subscribe(
             (r:any) => {
-                /*
+
                 // Dados pessoais
-                let pessoal = dados[0].dados;
-                this.nome               = pessoal[1].valor;
-                this.cpf                = pessoal[2].valor;
-                this.datanascimento     = pessoal[3].valor;
-                this.email              = pessoal[4].valor;
-                this.celular            = pessoal[6].valor;
+                let pessoal = r;
+                this.nome               = r.nome;
+                this.cpf                = r.cpf;
+                this.datanascimento     = r.datanascimento;
+                this.email              = r.email;
+                this.celular            = r.telefone;
+                
 
                 // Endereço
+                /*
                 let endereco            = dados[1].dados;
                 this.endereco           = endereco[2].valor;
                 this.numero             = endereco[3].valor;
@@ -45,16 +52,21 @@ export class Lojista  {
                 this.cep                = endereco[5].valor;
                 this.cidade             = endereco[6].valor;
                 this.bairro             = endereco[1].valor;
+                */
 
                 // Categorias
-                for (let d of dados){            
-                    let entidade        = d.entidade;
-                    if (entidade == 75){
-                        this.categorias.push({id:d.id,texto:d.dados[1].valor});
-                    }
+                for (let c of r.categorias){
+                    this.categorias.push({id:c.id,descricao:c.descricao});
                 }
-                */
             }
         );
+    }
+
+    getCategoriasVirgula():Array<any> {
+        let categorias = [];
+        for (let c of this.categorias){
+            categorias.push(c.id);
+        }
+        return categorias;
     }
 }
