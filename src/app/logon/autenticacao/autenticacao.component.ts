@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RequisicaoService } from '../../service/requisicao.service';
-import { ls,lojista } from '../../../environments/environment';
+import { ls,lojista,perfil, ambiente,cliente } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { Lojista } from '../../classe/lojista';
+import { Cliente } from '../../classe/cliente';
+import { LojistaService } from 'src/app/dashboard/lojista/lojista.service';
 
 declare var $:any;
 
@@ -17,32 +19,47 @@ export class AutenticacaoComponent implements OnInit {
   constructor(
     public rs:RequisicaoService,
     public rota:Router,
-    public lojista:Lojista
+    public lojista:Lojista,
+    public cliente:Cliente,
+    public ljs:LojistaService
   ) { }
 
   ngOnInit(): void {
-    this.email = lojista.email;
-    this.senha = lojista.senha;
+    if (ambiente == "desenv"){
+      if (perfil == "C"){
+        this.email = cliente.email;
+        this.senha = cliente.senha;
+      }else if (perfil == "L"){
+        this.email = lojista.email;
+        this.senha = lojista.senha;
+      }
+    }
   }
   autenticar(){
     this.rs.get("autentica",{
       login:this.email,
       senha:this.senha
     }).subscribe(
-      async (r:any) => {
+      (r:any) => {
         if (r.status == 0){
           ls.set("userid",r.id);
+          ls.set("username",r.username);
           if (r.usergroup == 3){
             ls.set("perfil","L");
             ls.set("lojista",r.perfil.lojista);
             ls.set("loja",r.perfil.loja);
-            await this.lojista.load(r.perfil.lojista).then(
+            console.log('Antes de ir carregar os dados do lojista');
+            this.ljs.load(r.perfil.lojista).then(
               () => {
+                console.log('Antes de ir para o Dashboard');
                 this.irDashBoard();
               }
-            );            
+            );
           }else if (r.usergroup == 4){
             ls.set("perfil","C");
+            ls.set("cliente",r.perfil.id);
+            this.cliente.id = r.perfil.id;
+            this.cliente.nome = r.perfil.nome;
             this.irDashBoard();
           }
           ls.set("isLogado",true);

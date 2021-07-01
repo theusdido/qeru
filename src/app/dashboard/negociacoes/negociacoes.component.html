@@ -1,23 +1,20 @@
 <div class="negociacoes-component">
     <h2>Negociações</h2>
-    <!-- <button class="btn" routerLink="proposta">Nova Proposta</button> -->
-    <table class="table table-sm">
+    <table class="table table-hover">
         <thead>
             <tr>
-                <th scope="col" width="10%">Data</th>
-                <th scope="col" width="40%">Estabelecimento</th>
-                <th scope="col" width="40%">Produto</th>
-                <th scope="col" width="5%">Mensagem</th>
-                <th scope="col" width="5%">Situação</th>
+                <th scope="col" width="20%">Data</th>
+                <th scope="col" width="35%">Estabelecimento</th>
+                <th scope="col" width="35%">Produto</th>
+                <th scope="col" width="10%">Mensagem</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let n of negociacoes">
+            <tr *ngFor="let n of negociacoes | async">
                 <th scope="row">{{n.data}}</th>
-                <td>{{n.estabelecimento}} <br/> {{n.localizacao}} </td>
+                <td>{{n.loja}} <br/> {{n.localizacao}} </td>
                 <td>{{n.produto}}</td>
-                <td><fa-icon [icon]="faRocketchat"></fa-icon></td>
-                <td><fontawesome-toogle></fontawesome-toogle></td>
+                <td><fa-icon [icon]="faRocketchat" (click)="iniciarChat(n)"></fa-icon></td>
             </tr>
         </tbody>
     </table>    

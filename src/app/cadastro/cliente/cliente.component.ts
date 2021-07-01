@@ -55,7 +55,10 @@ export class ClienteComponent implements OnInit {
           ls.set("lojista",0);
           ls.set("loja",0);
           ls.set("isLogado",true);
-          ls.set("userid",response.id);
+          ls.set("cliente",response.id);
+          ls.set("userid",response.userid);
+          ls.set("username",response.username);
+          ls.set("usergroup",response.usergroup);
           this.rota.navigate(["/dashboard"]);
         }
       },
@@ -65,7 +68,7 @@ export class ClienteComponent implements OnInit {
       }
     );
   }
-  
+
   validarCampo(campo:string){
     switch(campo){
       case 'cpf':

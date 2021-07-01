@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LojistaAcessoComponent } from './acesso/lojista-acesso/lojista-acesso.component';
 import { ClienteComponent } from './cadastro/cliente/cliente.component';
 import { LojistaComponent } from './cadastro/lojista/lojista.component';
 import { BannerComponent } from './dashboard/banner/banner/banner.component';
@@ -9,7 +10,8 @@ import { ComprarComponent } from './dashboard/comprar/comprar.component';
 import { ContatoComponent } from './dashboard/contato/contato.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardLojistaComponent } from './dashboard/lojista/dashboard-lojista.component';
+import { DashboardHomeComponent } from './dashboard/home/dashboard-home.component';
+import { MenuComponent } from './dashboard/menu/menu.component';
 import { NegociacoesComponent } from './dashboard/negociacoes/negociacoes.component';
 import { ProdutoComponent } from './dashboard/produto/produto.component';
 import { PropostaComponent } from './dashboard/proposta/proposta.component';
@@ -21,9 +23,9 @@ export const routes: Routes = [
   { path: '', component:HomeComponent },
   { path: 'logon' , component: AutenticacaoComponent },
   { path: 'cliente' , component:ClienteComponent },
-  { path: 'lojista' , component:LojistaComponent },
+  { path: 'lojista' , component:LojistaAcessoComponent },
   { path: 'dashboard' , component:DashboardComponent , children:[
-    { path: '', component:DashboardLojistaComponent}, 
+    { path: '', component:DashboardHomeComponent}, 
     { path: 'proposta' , component:PropostaComponent },
     { path: 'negociacoes' , component:NegociacoesComponent },
     { path: 'produto' , component:ProdutoComponent},
@@ -32,7 +34,9 @@ export const routes: Routes = [
     { path: 'retorno' , component:RetornoPedidoComponent},
     { path: 'chat' , component:ChatComponent},
     { path: 'contato' , component:ContatoComponent},
-    { path: 'banner' , component:BannerComponent}
+    { path: 'banner' , component:BannerComponent},
+    { path: 'menu' , component:MenuComponent},
+    { path: 'lojista', component:LojistaComponent}
   ]}
 ];
 

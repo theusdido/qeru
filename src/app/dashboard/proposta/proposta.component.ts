@@ -26,9 +26,9 @@ export class PropostaComponent implements OnInit {
       (response:any) => {
         this.propostas = response;
       }
-    )
+    );
   }
-  
+
   iniciarProposta(pedido:any){
     this.rota.navigate(["/dashboard/chat"],{queryParams:
       {pedido:pedido.id}

@@ -1,13 +1,7 @@
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="assets/img/slider/slide1.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/img/slider/slide2.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/img/slider/slide3.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-item {{ indice==0?'active':'' }}" *ngFor="let s of sliders;let indice=index;">
+        <img src="{{path}}{{s.id}}.{{s.extensao}}" class="d-block w-100" alt="...">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

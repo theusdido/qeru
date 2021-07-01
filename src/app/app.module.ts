@@ -51,6 +51,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
 import { DashboardHomeComponent } from './dashboard/home/dashboard-home.component';
+import { MenuLojistaComponent } from './dashboard/menu/lojista/menu-lojista.component';
+import { MenuClienteComponent } from './dashboard/menu/cliente/menu-cliente.component';
+import { NegociacaoHomeComponent } from './dashboard/negociacao-home/negociacao-home.component';
+import { LojistaAcessoComponent } from './acesso/lojista-acesso/lojista-acesso.component';
+import { ChatPedidoComponent } from './dashboard/chat-pedido/chat-pedido.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +82,12 @@ import { DashboardHomeComponent } from './dashboard/home/dashboard-home.componen
     ContatoComponent,
     BannerComponent,
     AvatarComponent,
-    DashboardHomeComponent
+    DashboardHomeComponent,
+    MenuLojistaComponent,
+    MenuClienteComponent,
+    NegociacaoHomeComponent,
+    LojistaAcessoComponent,
+    ChatPedidoComponent
   ],
   imports: [
     BrowserModule,

@@ -3,13 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { ProjetoMiles } from './projeto';
 import { RequisicaoService } from '../../service/requisicao.service';
 import { Sessao } from 'src/app/service/sessao.service';
-import { ls } from 'src/environments/environment';
+import { ls,environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
   })
 export class RequisicaoMiles {
-    public host = "http://teia.tec.br/miles/sistema/";
+    public host = environment.miles.host;
     constructor(
         public http:HttpClient,
         public projeto:ProjetoMiles,

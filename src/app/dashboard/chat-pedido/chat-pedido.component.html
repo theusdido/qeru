@@ -1,0 +1,48 @@
+<div class="card">
+    <h5 class="card-header">
+        <span>PEDIDO</span>
+        <span> - #001</span>
+    </h5>
+    <div class="card-body">    
+        <div class="row">
+            <div class="col-md-4">
+                <div class="fw-bold">Cliente</div>
+                <p>Edillson Bitencourt</p>
+            </div>
+            <div class="col-md-4">
+                <div class="fw-bold">Produto</div>
+                <p>Mouse Gamer ...</p>
+            </div>
+            <div class="col-md-4">
+                <div class="fw-bold">Data</div>
+                <p>30/06/2021 15:00</p>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <ol class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Cor</div>
+                        Vermelho
+                    </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">Tipo</div>
+                        Óptico
+                    </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-md-8">
+                <div class="owl-carousel owl-theme item-lista-imagens">
+                    <div *ngFor="let i of itens;let indice=index" class="item" id="miniatura-lista-item-{{indice}}">
+                        <img src="{{ i.src }}" />
+                    </div>
+                </div>        
+            </div>
+        </div>
+    </div>
+  </div>

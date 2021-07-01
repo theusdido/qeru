@@ -1,130 +1,101 @@
-<!-- Hero Area Start-->
-<div class="slider-area ">
-    <div class="slider-height2 d-flex align-items-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="hero-cap text-center">
-                        <h2>Cadastro de Lojista</h2>
-                    </div>
+<div class="login_part_form">
+    <div class="login_part_form_iner">
+        <h3>Seja bem-vindo! <br> Preencha suas informações para se cadastrar.</h3>
+        <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+            <fieldset>
+                <legend>Pessoais</legend>
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo" [(ngModel)]="dados.nome" #required>
+                </div> 
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control {{ validarCampos.cpf }}" id="cpf" name="cpf" placeholder="CPF" [(ngModel)]="dados.cpf" mask="000.000.000-00" (blur)="validarCampo('cpf')" #required>
+                </div>   
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control {{ validarCampos.celular }}" id="cel" name="celular" placeholder="Celular" [(ngModel)]="dados.celular" mask="(00) 0.0000-0000" (blur)="validarCampo('celular')" #required>
                 </div>
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control {{ validarCampos.datanascimento }}" id="dt" name="dat" placeholder="Data de Nascimento" [(ngModel)]="dados.datanascimento"  mask="00/00/0000" (blur)="validarCampo('datanascimento')" #required>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Estabelecimento</legend>
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control " id="nome_estabelecimento" name="nome_estabelecimento" placeholder="Nome do Estabelecimento" [(ngModel)]="dados.nomefantasia" #required>
+                </div>                                             
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control" id="razao" name="razao" placeholder="Razão Social" [(ngModel)]="dados.razaosocial" #required> 
+                </div>  
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control {{ validarCampos.cnpj }}" id="cnpj" name="cnpj" placeholder="CNPJ" [(ngModel)]="dados.cnpj"  mask="00.000.000/0000-00" (blur)="validarCampo('cnpj')" #required>
+                </div>                                          
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control {{ validarCampos.telefone }}" id="tel" name="telefone" placeholder="Telefone" [(ngModel)]="dados.fixo" mask="(00) 0000-0000" (blur)="validarCampo('telefone')" #required>
+                </div>
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control {{ validarCampos.cep }}" id="cep" name="cep" placeholder="CEP" [(ngModel)]="dados.cep" mask="00000-000" (blur)="validarCampo('cep')" #required>
+                </div>                                   
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control" id="rua" name="rua" placeholder="Endereço" [(ngModel)]="dados.endereco" #required>
+                </div>
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control" id="numero" name="nuemero" placeholder="Número" [(ngModel)]="dados.numero">
+                </div>
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento" [(ngModel)]="dados.complemento">
+                </div>                                
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" [(ngModel)]="dados.bairro" #required>
+                </div>
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" [(ngModel)]="dados.cidade" #required>
+                </div>
+                <div class="col-md-12 form-group p_star">
+                    <select id="estado" name="estado" class="form-control" [(ngModel)]="dados.estado">
+                        <option *ngFor="let e of estados;" value="{{ e.id }}">{{ e.nome }}</option>
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Usuário</legend>
+                <div class="col-md-12 form-group p_star">
+                    <input type="text" class="form-control {{ validarCampos.email }}" id="email" name="email" placeholder="E-Mail" [(ngModel)]="dados.email" (blur)="validarCampo('email')" #required>
+                </div>
+                <div class="col-md-12 form-group p_star">
+                    <input type="password" class="form-control {{ validarCampos.senha }}" id="senha" name="senha" placeholder="Senha" [(ngModel)]="dados.senha" (blur)="validarCampo('senha')" #required>
+                </div>
+            </fieldset>
+            <div class="col-md-12 form-group p_star">
+                <p class="destaque">O que o estabelecimento oferece</p>
+                <app-categoria 
+                    contexto="cadastro" 
+                    (getCategorias)="setCategorias( $event )"
+                    [loja]="loja"
+                ></app-categoria>
             </div>
-        </div>
+            <div class="col-md-12 form-group p_star">                                        
+                <hr />
+                <strong>Possui serviço de entrega?</strong>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="isEntregaCheck" id="isEntregaSim" value="S" checked [(ngModel)]="dados.isentrega" >
+                    <label class="form-check-label" for="isEntregaSim">
+                    Sim
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="isEntregaCheck" id="isEntregaNao" value="N" [(ngModel)]="dados.isentrega">
+                    <label class="form-check-label" for="isEntregaNao">
+                    Não
+                    </label>
+                </div>                                        
+            </div>
+            <div class="col-md-12 form-group">
+                <button type="submit" value="submit" class="btn_3" (click)="salvar()">
+                    Cadastrar
+                </button>
+            </div>
+            <div class="col-md-12 form-group div-error">
+                <div class="alert alert-danger">Selecione pelo menos uma categoria </div>
+            </div>
+        </form>
     </div>
 </div>
-<!-- Hero Area End-->
-<!--================login_part Area =================-->
-<section class="login_part section_padding ">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 topo">
-                <app-autenticacao></app-autenticacao>
-            </div>
-            <div class="col-lg-8 col-md-8">
-                <div class="login_part_form">
-                    <div class="login_part_form_iner">
-                        <h3>Seja bem-vindo! <br> Preencha suas informações para se cadastrar.</h3>
-                        <form class="row contact_form" action="#" method="post" novalidate="novalidate">
-                            <fieldset>
-                                <legend>Pessoais</legend>
-
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo" [(ngModel)]="lojista.nome" #required>
-                                </div> 
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control {{ validarCampos.cpf }}" id="cpf" name="cpf" placeholder="CPF" [(ngModel)]="lojista.cpf" mask="000.000.000-00" (blur)="validarCampo('cpf')" #required>
-                                </div>   
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control {{ validarCampos.celular }}" id="cel" name="celular" placeholder="Celular" [(ngModel)]="lojista.celular" mask="(00) 0.0000-0000" (blur)="validarCampo('celular')" #required>
-                                </div>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control {{ validarCampos.datanascimento }}" id="dt" name="dat" placeholder="Data de Nascimento" [(ngModel)]="lojista.datanascimento"  mask="00/00/0000" (blur)="validarCampo('datanascimento')" #required>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <legend>Estabelecimento</legend>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control " id="nome_estabelecimento" name="nome_estabelecimento" placeholder="Nome do Estabelecimento" [(ngModel)]="lojista.nomefantasia" #required>
-                                </div>                                             
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="razao" name="razao" placeholder="Razão Social" [(ngModel)]="lojista.razaosocial" #required> 
-                                </div>  
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control {{ validarCampos.cnpj }}" id="cnpj" name="cnpj" placeholder="CNPJ" [(ngModel)]="lojista.cnpj"  mask="00.000.000/0000-00" (blur)="validarCampo('cnpj')" #required>
-                                </div>                                          
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control {{ validarCampos.telefone }}" id="tel" name="telefone" placeholder="Telefone" [(ngModel)]="lojista.fixo" mask="(00) 0000-0000" (blur)="validarCampo('telefone')" #required>
-                                </div>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control {{ validarCampos.cep }}" id="cep" name="cep" placeholder="CEP" [(ngModel)]="lojista.cep" mask="00000-000" (blur)="validarCampo('cep')" #required>
-                                </div>                                   
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="rua" name="rua" placeholder="Endereço" [(ngModel)]="lojista.endereco" #required>
-                                </div>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="numero" name="nuemero" placeholder="Número" [(ngModel)]="lojista.numero">
-                                </div>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento" [(ngModel)]="lojista.complemento">
-                                </div>                                
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" [(ngModel)]="lojista.bairro" #required>
-                                </div>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" [(ngModel)]="lojista.cidade" #required>
-                                </div>
-                                <div class="col-md-12 form-group p_star">
-                                    <select id="estado" name="estado" class="form-control" [(ngModel)]="lojista.estado">
-                                        <option *ngFor="let e of estados;" value="{{ e.id }}">{{ e.nome }}</option>
-                                    </select>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <legend>Usuário</legend>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="text" class="form-control {{ validarCampos.email }}" id="email" name="email" placeholder="E-Mail" [(ngModel)]="lojista.email" (blur)="validarCampo('email')" #required>
-                                </div>
-                                <div class="col-md-12 form-group p_star">
-                                    <input type="password" class="form-control {{ validarCampos.senha }}" id="senha" name="senha" placeholder="Senha" [(ngModel)]="lojista.senha" (blur)="validarCampo('senha')" #required>
-                                </div>
-                            </fieldset>
-                            <div class="col-md-12 form-group p_star">
-                                <p class="destaque">O que o estabelecimento oferece</p>
-                                <app-categoria 
-                                    contexto="cadastro" 
-                                    (getCategorias)="setCategorias( $event )"
-                                    [loja]="loja"
-                                ></app-categoria>
-                            </div>
-                            <div class="col-md-12 form-group p_star">                                        
-                                <hr />
-                                <strong>Possui serviço de entrega?</strong>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="isEntregaCheck" id="isEntregaSim" value="S" checked [(ngModel)]="lojista.isentrega" >
-                                    <label class="form-check-label" for="isEntregaSim">
-                                    Sim
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="isEntregaCheck" id="isEntregaNao" value="N" [(ngModel)]="lojista.isentrega">
-                                    <label class="form-check-label" for="isEntregaNao">
-                                    Não
-                                    </label>
-                                </div>                                        
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <button type="submit" value="submit" class="btn_3" (click)="salvar()">
-                                    Cadastrar
-                                </button>
-                            </div>
-                            <div class="col-md-12 form-group div-error">
-                                <div class="alert alert-danger">Selecione pelo menos uma categoria </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--================login_part end =================-->

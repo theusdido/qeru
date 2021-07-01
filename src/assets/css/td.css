@@ -62,7 +62,7 @@
     NEGOCIAÇÃO
 ************************************************** */
 .negociacoes-component {
-    margin-top:50px;
+ 
 }
 
 .negociacao-open{
@@ -222,4 +222,70 @@ small.textos{
 ************************************************** */
 .img-check-retorno{
     width:300px;
+}
+
+/* **************************************************
+    MENU LATERAL DO DASHBOARD
+************************************************** */
+#menu-principal-dashboard , #menu-principal-dashboard li {
+    background-color: transparent;
+    color:#FFF;
+    border:0px;
+}
+#menu-principal-dashboard li{
+    border-bottom:1px solid rgba(0,0,0,0.1);
+}
+
+#menu-principal-dashboard li fa-icon {
+    width:25px;
+    float:left;
+}
+#menu-principal-dashboard li:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+
+.app-divisor{
+    border:1px solid #FDFDFD;
+}
+
+.logo-qeru-menu{
+    width:25px;
+    height:20px;
+    margin:0px;
+}
+
+#user-img-dashboard {
+    width:100%;
+}
+
+/* **************************************************
+    NEGOCIAÇÃO HOME DASHBOARD
+************************************************** */
+.img-logo-negociacao-home{
+    max-width:100%;
+}
+
+
+
+.item-lista-imagens .item {
+    border:1px solid #EEE;
+    padding:5px;
+    height:100px;
+}
+.item-lista-imagens .item img {
+    object-fit: cover;
+    min-width: 100%;
+    min-height: 100%;
+}
+.item-lista-imagens .item:hover{
+    border:1px solid #AAA;
+}
+.item-lista-imagens {
+    border:1px dotted #F0F0F0;
+}
+.excluir-imagem-lista-item {
+    color:#FF0000;
+    position:absolute;
+    right:5px;
+    cursor:pointer;
 }

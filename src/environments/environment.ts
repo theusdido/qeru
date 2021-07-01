@@ -4,6 +4,7 @@
 
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { globalEnvironment } from '../../environments/environments';
+import { Funcoes } from '../app/funcoes';
 
 export const environment = {
   global: globalEnvironment,
@@ -19,6 +20,9 @@ export const environment = {
     messagingSenderId: "924685319501",
     appId: "1:924685319501:web:3ac10436cb87c9b4610b04",
     measurementId: "G-NL8C6QZEX1"
+  },
+  miles:{
+    host:"https://teia.tec.br/miles/sistema/"
   }
 };
 
@@ -65,21 +69,24 @@ export const cliente = {
 }
 
 // Seta o perfil de acesso
-export const perfil:string = "L";
+export const perfil:string = "C";
 
 // Armazenamento local
 export const ls = new LocalStorageService();
 
 // Ambiente
-export const ambiente = "desenv";
+export var ambiente = "desenv";
 
 // Categorias 
 export const categorias:Array<number> = [7,13];
 
 // Limpa os dados locais
 export const lsClear = () => {
-    ls.clear();
+    if (ambiente == "desenv") ls.clear();
 }
+
+// Funções genéricas
+export const funcoes = new Funcoes();
 
 /*
  * For easier debugging in development mode, you can import the following file

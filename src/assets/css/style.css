@@ -8635,7 +8635,6 @@ input:focus{
 }
 @media (max-width: 991px){
     .login_part .login_part_text,.login_part .login_part_form{
-        padding:30px;
         height:400px
     }
 }

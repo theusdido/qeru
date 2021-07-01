@@ -15,7 +15,7 @@ $button-background:#EC4737 !important;
     float:left;
     width:100%;
 
-    background: url('../../../assets/img/background-chat.jpg');
+    background: url('/assets/img/background-chat.jpg');
     overflow-y: scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -34,7 +34,7 @@ $button-background:#EC4737 !important;
     background-color:#EEE;
     color:$font-color;
     font-size: 16px;
-    font-weight: 300;
+    
     padding-left:15px;
 }
 
@@ -134,10 +134,19 @@ $button-background:#EC4737 !important;
     width:100%;
     text-align:right;
 }
+.mat-card.mensagem{
+    padding: 5px;
+}
 .mat-card.mensagem p{
-    font-weight: 600;
+    font-weight: normal;
 }
 .imagem-interacao{
     max-width: 100%;
     max-height: 150px;
+}
+.qeru-produto{
+    
+}
+.imagens-produto{
+    margin:10px;
 }

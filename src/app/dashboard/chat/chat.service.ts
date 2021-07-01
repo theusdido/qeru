@@ -16,6 +16,7 @@ export class ChatService {
   public remetente!:Interlocutor;
   public perfil:string = "";
   public anexo:string = "";
+
   constructor(
     public db:AngularFireDatabase,
     public rs:RequisicaoService
@@ -24,7 +25,6 @@ export class ChatService {
 
   add(msg:string){
     let data = new Date();
-    if (msg != ''){
       this.db.list(this.pedido).push({
         datahora:data.toLocaleDateString('pt-br') + " " + data.toLocaleTimeString('en-US', { hour12: false }),
         tempo:data.getTime(),
@@ -36,19 +36,6 @@ export class ChatService {
         mensagem:msg,
         anexo:this.anexo
       });
-
-      this.db.list(this.pedido).push({
-        datahora:data.toLocaleDateString('pt-br') + " " + data.toLocaleTimeString('en-US', { hour12: false }),
-        tempo:data.getTime(),
-        emissor_id:2,
-        emissor_nome:'Bianca Peruchi',
-        remetente_id:1,
-        remetente_nome:'Edilson Bitencourt',
-        perfil:'C',
-        mensagem:'Tudo, e com você ?',
-        anexo:''
-      });
-    }
   }
 
   all(){
@@ -61,5 +48,8 @@ export class ChatService {
     fd.append('image',selectedFile,selectedFile.name);
     fd.append('indice',this.pedido);
     return this.rs.uploaded(fd);
+  }
+  count(){    
+    return this.db.list(this.pedido).valueChanges();
   }
 }

@@ -1,6 +1,13 @@
-<div id="topo" class="d-flex flex-row align-items-center">
-    <app-avatar customClass="conversacao-chat"></app-avatar>
-    <h2 class="remetente-nome">{{nomeremetente}}</h2>
+<app-chat-pedido></app-chat-pedido>
+<div id="topo" class="d-flex flex-row align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+        <app-avatar customClass="conversacao-chat"></app-avatar>
+        <h2 class="remetente-nome">{{nomeremetente}}</h2>
+    </div>    
+    <div class="qeru-produto d-flex align-items-center">
+        <small>Qeru: <strong>{{qeru}}</strong></small>
+        <fa-icon class="imagens-produto" [icon]="faImages"></fa-icon>
+    </div>
 </div>
 <div id="conversacao">
     <div class="interacao" *ngFor="let i of interacoes | async">
