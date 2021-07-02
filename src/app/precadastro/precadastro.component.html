@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4" style="background: #FF6347">
+            <img src="assets\img\logo\logo.png">   
+          </div>
+          <div class="col-lg-8 col-md-8">
+            <div class="card-body">
+                <h2 class="card-title">Cadastre seu estabelecimento</h2>
+                <h5 class="card-subtitle mb-2 text-muted">Quem pensa em ter mais clientes vem pra Qeru!</h5>
+                <form>
+                    <div class="mb-3">
+                    <label for="nome" class="col-sm-3 col-form-label">Nome completo:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do dono do estabelecimento" [(ngModel)]="precadastro.nome"/>
+                    </div>
+                    </div>
+                    <div class="mb-3">
+                    <label for="email" class="col-sm-2 col-form-label">E-mail:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control {{ validarCampos.email }}" id="email" name="email" placeholder="E-mail do dono do estabelecimento" [(ngModel)]="precadastro.email" (blur)="validarCampo('email')" #required />
+                    </div>
+                    </div>
+                    <div class="mb-3">
+                    <label for="celular" class="col-sm-2 col-form-label">Celular:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control {{ validarCampos.celular }}" id="celular" name="celular" placeholder="Celular do dono do estabelecimento" [(ngModel)]="precadastro.celular" mask="(00) 0.0000-0000" (blur)="validarCampo('celular')" #required/>
+                    </div>
+                    </div>
+                    <fieldset class="row mb-3">
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                        <input class="form-check-input" type="radio" id="concordoTermos" name="concordoTermos">
+                            Ao prosseguir, aceito que o Qeru entre em contato comigo por ligação,e-mail ou WhatsApp (incluindo mensagens automáticas para fins comerciais.)
+                        </div>
+                    </div>
+                    </fieldset>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button type="submit" value="submit" class="btn_1">Entrar</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

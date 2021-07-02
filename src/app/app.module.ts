@@ -56,6 +56,7 @@ import { MenuClienteComponent } from './dashboard/menu/cliente/menu-cliente.comp
 import { NegociacaoHomeComponent } from './dashboard/negociacao-home/negociacao-home.component';
 import { LojistaAcessoComponent } from './acesso/lojista-acesso/lojista-acesso.component';
 import { ChatPedidoComponent } from './dashboard/chat-pedido/chat-pedido.component';
+import { PrecadastroComponent } from './precadastro/precadastro.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { ChatPedidoComponent } from './dashboard/chat-pedido/chat-pedido.compone
     MenuClienteComponent,
     NegociacaoHomeComponent,
     LojistaAcessoComponent,
-    ChatPedidoComponent
+    ChatPedidoComponent,
+    PrecadastroComponent
   ],
   imports: [
     BrowserModule,

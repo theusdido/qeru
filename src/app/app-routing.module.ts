@@ -18,12 +18,14 @@ import { PropostaComponent } from './dashboard/proposta/proposta.component';
 import { RetornoPedidoComponent } from './dashboard/retorno-pedido/retorno-pedido.component';
 import { HomeComponent } from './home/home/home.component';
 import { AutenticacaoComponent } from './logon/autenticacao/autenticacao.component';
+import { PrecadastroComponent } from './precadastro/precadastro.component';
 
 export const routes: Routes = [
   { path: '', component:HomeComponent },
   { path: 'logon' , component: AutenticacaoComponent },
   { path: 'cliente' , component:ClienteComponent },
   { path: 'lojista' , component:LojistaAcessoComponent },
+  { path: 'precadastro', component:PrecadastroComponent},
   { path: 'dashboard' , component:DashboardComponent , children:[
     { path: '', component:DashboardHomeComponent}, 
     { path: 'proposta' , component:PropostaComponent },
