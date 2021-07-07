@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { RequisicaoService } from '../service/requisicao.service';
 import { Validar } from '../validar';
 
+declare var $:any;
+
 @Component({
   selector: 'app-precadastro',
   templateUrl: './precadastro.component.html',
@@ -54,5 +56,21 @@ export class PrecadastroComponent implements OnInit {
     }
   }
 
-  
+  salvar() : any {
+    if (!this.validar.isRequired(this.obrigatorios)) return false;
+    $("#preloader-active").show();
+    this.rs.get("precadastro",{
+      op:"salvar",
+      precadastro:this.precadastro
+    }).subscribe( 
+      (response:any) => {
+        $("#preloader-active").hide();
+      },
+      (error) => 
+      {
+        $("#preloader-active").hide();
+      }
+    );
+  }
+
 }
