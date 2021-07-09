@@ -14,8 +14,10 @@ declare var $:any;
   styleUrls: ['./autenticacao.component.scss']
 })
 export class AutenticacaoComponent implements OnInit {
-  public email:string = "";
+
+  public logon:string = "";
   public senha:string = "";
+
   constructor(
     public rs:RequisicaoService,
     public rota:Router,
@@ -27,17 +29,17 @@ export class AutenticacaoComponent implements OnInit {
   ngOnInit(): void {
     if (ambiente == "desenv"){
       if (perfil == "C"){
-        this.email = cliente.email;
+        this.logon = cliente.email;
         this.senha = cliente.senha;
       }else if (perfil == "L"){
-        this.email = lojista.email;
+        this.logon = lojista.email;
         this.senha = lojista.senha;
       }
     }
   }
   autenticar(){
     this.rs.get("autentica",{
-      login:this.email,
+      logon:this.logon,
       senha:this.senha
     }).subscribe(
       (r:any) => {

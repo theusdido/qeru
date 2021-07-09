@@ -11,13 +11,13 @@
                     <div class="mb-3">
                     <label for="logon" class="col-sm-3 col-form-label">E-mail ou usuário:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="logon" name="logon" placeholder="E-mail ou usuário de acesso" [(ngModel)]="autenticacao.usuario"/>
+                        <input type="text" class="form-control" id="logon" name="logon" placeholder="E-mail ou usuário de acesso" [(ngModel)]="logon" (blur)="logon" #required/>
                     </div>
                     </div>
                     <div class="mb-3">
                     <label for="senha" class="col-sm-2 col-form-label">Senha:</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control {{ validarCampos.email }}" id="senha" name="senha" placeholder="Senha" [(ngModel)]="autenticacao.senha" (blur)="validarCampo('email')" #required />
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" [(ngModel)]="senha" (blur)="senha" #required />
                     </div>
                     </div>
                     <fieldset class="row mb-3">
@@ -34,12 +34,11 @@
                     </div>
                 </form>
                 <div id="error_msg" [style.display]="'none'">
-                    <div class="alert alert-danger"><strong>Usu&aacute;rio</strong> ou <strong>Senha</strong> n&atilde;o conferem.</div>
-                    <a class="lost_pass" href="#">Esqueceu sua senha?</a>
-                    <button class="btn_3" (click)="tentarNovamente()">Tentar Novamente</button>
+                    <div class="alert alert-danger"><strong>Usuário</strong> ou <strong>Senha</strong> não conferem.</div>
+                    <button type="submit" value="submit" class="btn_3" (click)="tentarNovamente()">Tentar Novamente</button>
                 </div> 
             </div>
           </div>
         </div>
-      </div>
+    </div>
 </div>
