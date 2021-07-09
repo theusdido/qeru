@@ -18,6 +18,9 @@
                     <label for="senha" class="col-sm-2 col-form-label">Senha:</label>
                     <div class="col-sm-10">
                         <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" [(ngModel)]="senha" (blur)="senha" #required />
+                        <span class="input-group-text">
+                            <i class="material-icons">visibility</i>
+                        </span>    
                     </div>
                     </div>
                     <fieldset class="row mb-3">
@@ -30,7 +33,10 @@
                     </fieldset>
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button type="submit" value="submit" class="btn_1" (click)="autenticar()">Entrar</button>
-                        <a class="lost_pass" href="#">Esqueceu sua senha?</a>
+                    </div>
+                    <div>
+                        <a class="lost_pass">Esqueceu sua senha?</a>
+                        <a class="lost_pass">Cadastre-se</a>
                     </div>
                 </form>
                 <div id="error_msg" [style.display]="'none'">
