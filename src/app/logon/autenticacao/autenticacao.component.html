@@ -1,29 +1,45 @@
-<div class="login_part_text text-center">
-    <div class="login_part_text_iner">
-        <h2>Já e cadastrado?</h2>
-        <p>Clique no botão abaixo para se logar.</p>
-        <form id="formulario-contato" class="row contact_form" action="#" method="post">
-            <div class="col-md-12 form-group p_star">
-                <input type="text" class="form-control" id="email" name="email" placeholder="Usuário" [(ngModel)]="email" />
+<div class="container">
+    <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4" style="background: #FF6347">
+            <img src="assets\img\logo\logo.png">   
+          </div>
+          <div class="col-lg-8 col-md-8">
+            <div class="card-body">
+                <h2 class="card-title">Olá! Digite seu e-mail ou usuário</h2>
+                <form>
+                    <div class="mb-3">
+                    <label for="logon" class="col-sm-3 col-form-label">E-mail ou usuário:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="logon" name="logon" placeholder="E-mail ou usuário de acesso" [(ngModel)]="autenticacao.usuario"/>
+                    </div>
+                    </div>
+                    <div class="mb-3">
+                    <label for="senha" class="col-sm-2 col-form-label">Senha:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control {{ validarCampos.email }}" id="senha" name="senha" placeholder="Senha" [(ngModel)]="autenticacao.senha" (blur)="validarCampo('email')" #required />
+                    </div>
+                    </div>
+                    <fieldset class="row mb-3">
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="lembrar" name="lembrar">
+                            Lembrar-me
+                        </div>
+                    </div>
+                    </fieldset>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button type="submit" value="submit" class="btn_1" (click)="autenticar()">Entrar</button>
+                        <a class="lost_pass" href="#">Esqueceu sua senha?</a>
+                    </div>
+                </form>
+                <div id="error_msg" [style.display]="'none'">
+                    <div class="alert alert-danger"><strong>Usu&aacute;rio</strong> ou <strong>Senha</strong> n&atilde;o conferem.</div>
+                    <a class="lost_pass" href="#">Esqueceu sua senha?</a>
+                    <button class="btn_3" (click)="tentarNovamente()">Tentar Novamente</button>
+                </div> 
             </div>
-            <div class="col-md-12 form-group p_star">
-                <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" [(ngModel)]="senha" />
-            </div>
-            <div class="col-md-12 form-group">
-                <div class="creat_account d-flex align-items-center">
-                    <input type="checkbox" id="f-option" name="selector">
-                    <label for="f-option">Lembre-me</label>
-                </div>
-                <button type="submit" value="submit" class="btn_3" (click)="autenticar()">
-                    Entrar
-                </button>
-                <a class="lost_pass" href="#">Esqueceu sua senha?</a>
-            </div>          
-        </form>
-        <div id="error_msg" [style.display]="'none'">
-            <div class="alert alert-danger"><strong>Usu&aacute;rio</strong> ou <strong>Senha</strong> n&atilde;o conferem.</div>
-            <a class="lost_pass" href="#">Esqueceu sua senha?</a>
-            <button class="btn_3" (click)="tentarNovamente()">Tentar Novamente</button>
-        </div>            
-    </div>
+          </div>
+        </div>
+      </div>
 </div>
