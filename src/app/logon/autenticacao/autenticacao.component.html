@@ -18,9 +18,7 @@
                     <label for="senha" class="col-sm-2 col-form-label">Senha:</label>
                     <div class="col-sm-10">
                         <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" [(ngModel)]="senha" (blur)="senha" #required />
-                        <span class="input-group-text">
-                            <i class="fas fa-eye"></i>
-                        </span>    
+                          <i class="fas fa-eye"  id="olho" (click)="verSenha()"></i>                            
                     </div>
                     </div>
                     <fieldset class="row mb-3">
