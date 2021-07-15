@@ -19,6 +19,7 @@ import { RetornoPedidoComponent } from './dashboard/retorno-pedido/retorno-pedid
 import { HomeComponent } from './home/home/home.component';
 import { AutenticacaoComponent } from './logon/autenticacao/autenticacao.component';
 import { PrecadastroComponent } from './precadastro/precadastro.component';
+import { PropagandaComponent } from './dashboard/propaganda/propaganda.component';
 
 export const routes: Routes = [
   { path: '', component:HomeComponent },
@@ -38,7 +39,8 @@ export const routes: Routes = [
     { path: 'contato' , component:ContatoComponent},
     { path: 'banner' , component:BannerComponent},
     { path: 'menu' , component:MenuComponent},
-    { path: 'lojista', component:LojistaComponent}
+    { path: 'lojista', component:LojistaComponent},
+    { path: 'propaganda' , component:PropagandaComponent}
   ]}
 ];
 
