@@ -87,7 +87,8 @@ export class AutenticacaoComponent implements OnInit {
     $("#olho").mouseup(function() {
       $("#senha").attr("type", "password");
     });
-    
+
+    // para evitar o problema de arrastar a imagem e a senha continuar exposta
     $("#olho").mouseout(function(){
       $("#senha").attr("type", "password");
     });

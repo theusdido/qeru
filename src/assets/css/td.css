@@ -289,3 +289,16 @@ small.textos{
     right:5px;
     cursor:pointer;
 }
+
+/* **************************************************
+    AUTENTICAÇÃO - 13/07/2021 by Daniela
+************************************************** */
+.visualizar-senha-autenticacao{    
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    right: 0.5rem;
+    z-index: 2;
+    float: right;
+    bottom: 1.7rem;
+}    
