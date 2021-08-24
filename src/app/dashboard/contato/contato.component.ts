@@ -25,6 +25,7 @@ export class ContatoComponent implements OnInit {
       this.ps.getCategoria(this.lojista.getCategoriasVirgula()).subscribe(
         (response:any) => {
           this.contatos = response;
+          console.log(this.contatos);
         }
       );
     },1000);
@@ -32,6 +33,11 @@ export class ContatoComponent implements OnInit {
 
   abrirChat(pedido:number){
     this.rota.navigate(["dashboard/chat"],{queryParams:{
+      pedido:pedido
+    }});
+  }
+  abrirPreNegociacao(pedido:number){
+    this.rota.navigate(["dashboard/prenegociacao"],{queryParams:{
       pedido:pedido
     }});
   }

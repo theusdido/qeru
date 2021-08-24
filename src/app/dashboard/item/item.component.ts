@@ -3,6 +3,7 @@ import { PedidoService } from 'src/app/service/pedido.service';
 import { RequisicaoService } from 'src/app/service/requisicao.service';
 import { ls } from 'src/environments/environment';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import {MatDialog} from '@angular/material/dialog';
 
 declare var $:any;
 
@@ -12,31 +13,34 @@ declare var $:any;
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit,AfterViewInit {
-  public itens:Array<any> = [
-    {src:"assets/img/produtos/camisa_vermelha.jpg"},
-    {src:"assets/img/produtos/mouse-azul-gamer.jpg"},
-    {src:"assets/img/produtos/mouse-preto-gamer.jpg"}
-  ];
 
   public pahtupload:string    = this.rs.upload;
-  public token:string         = ls.get("token");
   public fileinput:string     = "";
-  public faTrash = faTrash;
-
+  public src_sem_foto = "assets/img/semimagem.jpg";
+  public indice:number = 0;
+  public itens:Array<string> = [];
   constructor(
     public rs:RequisicaoService,
-    public pedido:PedidoService
+    public pedido:PedidoService,
+    public dialog: MatDialog
   ) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {  
     $(".btn-adicionarfoto").click(function(e:any){
       e.stopPropagation();
       e.preventDefault();
     });
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit(){    
     this.owl();
+    setTimeout( ()=> {
+      $("#token").val(ls.get("token"));
+    },500);
+
+    $(document).on('click','.dialog-mat-close', () =>{
+      this.dialog.closeAll();
+    });
   }
 
   owl(){
@@ -55,27 +59,75 @@ export class ItemComponent implements OnInit,AfterViewInit {
               items:5
           }
       }
-    });    
+    });
   }
   carregarFoto(){
     $("#foto").click();
     $("#foto").change( () => {
         let extensao = this.fileinput.split(".").pop();
+        let indice = this.getIndiceFoto();
+
+        $("#indice").val(indice);
         $("#uploadform").submit();
         setTimeout(
           () => {
-            let src_img = this.rs.file + "temp/" + this.token + "." + extensao;
+            let src_img = this.rs.file + "temp/" + indice + "." + extensao + "?u=" + indice;
             $(".card-img-top").prop("src", src_img);
-            this.itens.push({
-              src:src_img
-            });
+            $("#src_temp").val(src_img);
           },500
         );
     });
   }
 
-  excluirItem(item:number){
-    this.itens.splice(item,1);
-    $("#miniatura-lista-item-" + item).remove();
+  addMiniatura(src:string){
+
+    var divItem = $('<div  class="item" data-indice="'+this.indice+'">');
+    var excluirItem =  $('<i class="fas fa-trash excluir-imagem-lista-item" ></i>');
+    var imgItem = $('<img src="'+src+'" />');
+    
+    excluirItem.click( (iconExcluir:any) => {
+      $(".owl-carousel").trigger('remove.owl.carousel', [this.indice]).trigger('refresh.owl.carousel');
+    });
+
+    divItem.append(excluirItem);
+    divItem.append(imgItem);
+
+    $('.owl-carousel')
+    .trigger('add.owl.carousel', [divItem, 0])
+    .trigger('refresh.owl.carousel')    
+  }
+
+  adicionarFoto(){
+    let src = $("#src_temp").val();
+    if (src == ''){
+      this.dialog.open(DialogElementsExampleDialog);
+    }else{
+      this.itens.push(src);
+      this.addMiniatura(src);
+      this.indice++;
+      this.rs.get("upload_rename",{
+        src:src,
+        indice:this.indice,
+        token:ls.get("token")
+      }).subscribe();
+      
+      this.fileinput = "";
+      $(".card-img-top").prop("src",this.src_sem_foto);
+      $("#src_temp,#foto").val("");
+    }
+  }
+
+  getIndiceFoto(){
+    return new Date().getTime();
   }
 }
+
+@Component({
+  selector: 'dialog-elements-example-dialog',
+  template: `
+    <i class="fas fa-window-close dialog-mat-close"></i>
+    <h2 mat-dialog-title>Nenhuma imagem carregada.</h2>
+    <div mat-dialog-content>Carregue uma imagem do seu computador para efetuar o upload.</div>
+`,
+})
+export class DialogElementsExampleDialog {}

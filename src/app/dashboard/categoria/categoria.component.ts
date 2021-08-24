@@ -18,11 +18,12 @@ import { ProdutoComponent } from '../../dashboard/produto/produto.component';
 export class CategoriaComponent implements OnInit,AfterViewInit {
   public sel = 0;
   public faCheck = faCheck;
-  public categorias:Array<any> = [];  
+  public categorias:Array<any> = [];
   public icons:any = [];
   public current:number = 0;
   public perfil:string = "";  
 
+  @Input() id:number = 0;
   @Input() loja             = 0;
   @Input() contexto:string = "";
   @Input() multiple:boolean = true;
@@ -56,17 +57,19 @@ export class CategoriaComponent implements OnInit,AfterViewInit {
   ngOnInit(): void {    
     this.rs.get("categoria",{
       op:'load',
-      loja:this.loja > 0 ? ls.get("loja") : null
+      loja:this.loja > 0 ? ls.get("loja") : null,
+      id:this.id
     }).subscribe( 
       (response:any) => {
         this.categorias.splice(0,this.categorias.length);
-       
+      
         for(let r of response){
 
           let id        = r.id;
           let descricao = r.descricao;
           let icon      = this.icons[r.icon] as IconProp;
-
+          
+          
           this.categorias.push({id:id,texto: descricao , icon:icon, sel:false});
         }
 

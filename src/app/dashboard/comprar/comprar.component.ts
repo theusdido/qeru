@@ -20,6 +20,7 @@ export class ComprarComponent implements OnInit {
   @ViewChild("subcategoriacomponent") sbc:any;
   @ViewChild("atributocomponent") atributo:any;
   @ViewChild("categoriacomponent") categoriacomponent:any;
+  @ViewChild("itemcomponent") item:any;
 
   constructor(
     public pedido:PedidoService,
@@ -39,6 +40,7 @@ export class ComprarComponent implements OnInit {
   }
 
   comprar():boolean {
+    console.log(this.item.itens);
     if (this.categoria == 0){
       window.scrollTo(0,0);
       $("#categoriacomponent").css("border","2px solid #FF0000");      
@@ -47,13 +49,15 @@ export class ComprarComponent implements OnInit {
     }
 
     this.pedido.categoria                 = this.categoria;
-    this.pedido.cliente                   = ls.get("userid");
+    this.pedido.cliente                   = ls.get("cliente");
     this.pedido.isretirarestabelecimento  = this.isretirarestabelecimento.nativeElement.checked;
     this.pedido.observacao                = this.observacao;
 
     this.rs.get("pedido",{
       op:"salvar",
-      pedido:JSON.stringify(this.pedido)
+      pedido:JSON.stringify(this.pedido),
+      anexos:this.item.itens,
+      token:ls.get("token")
     }).subscribe(
       (r:any) => {
         this.pedido.retorno = r;

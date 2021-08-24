@@ -58,6 +58,12 @@ import { LojistaAcessoComponent } from './acesso/lojista-acesso/lojista-acesso.c
 import { ChatPedidoComponent } from './dashboard/chat-pedido/chat-pedido.component';
 import { PrecadastroComponent } from './precadastro/precadastro.component';
 import { PropagandaComponent } from './dashboard/propaganda/propaganda.component';
+import { PrenegociacaoComponent } from './dashboard/prenegociacao/prenegociacao.component';
+import { ProdutodetalheComponent } from './dashboard/produtodetalhe/produtodetalhe.component';
+import { TitulopaginaComponent } from './dashboard/titulopagina/titulopagina.component';
+import { TopicopaginaComponent } from './dashboard/topicopagina/topicopagina.component';
+import { ProdutofotoComponent } from './dashboard/produtofoto/produtofoto.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -91,7 +97,12 @@ import { PropagandaComponent } from './dashboard/propaganda/propaganda.component
     LojistaAcessoComponent,
     ChatPedidoComponent,
     PrecadastroComponent,
-    PropagandaComponent
+    PropagandaComponent,
+    PrenegociacaoComponent,
+    ProdutodetalheComponent,
+    TitulopaginaComponent,
+    TopicopaginaComponent,
+    ProdutofotoComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +123,8 @@ import { PropagandaComponent } from './dashboard/propaganda/propaganda.component
     AngularFireStorageModule,
     MatProgressSpinnerModule,
     MatBadgeModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   providers: [
     ConfigService,

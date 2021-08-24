@@ -117,56 +117,56 @@ export class LojistaComponent implements OnInit {
   validarCampo(campo:string){
     switch(campo){
       case 'cpf':
-        if (this.dados.cpf == ""){
+        if (this.dados.cpf == "" || this.dados.cpf == undefined){
           this.validarCampos.cpf = "";
         }else{
           this.validarCampos.cpf = this.validar.getTDClass(this.validar.isValidCPF(this.dados.cpf));
         }
       break;
       case 'celular':
-        if (this.dados.celular == ""){
+        if (this.dados.celular == "" || this.dados.celular == undefined){
           this.validarCampos.celular = "";
         }else{        
           this.validarCampos.celular = this.validar.getTDClass(this.validar.isVvalidTelefone(this.dados.celular));
         }  
       break;
       case 'datanascimento':
-        if (this.dados.datanascimento == ""){
+        if (this.dados.datanascimento == "" || this.dados.datanascimento == undefined){
           this.validarCampos.datanascimento = "";
         }else{        
           this.validarCampos.datanascimento = this.validar.getTDClass(this.validar.isValidData(this.dados.datanascimento));
         }
       break;
       case 'cnpj':
-        if (this.dados.cnpj == ""){
+        if (this.dados.cnpj == "" || this.dados.cnpj == undefined){
           this.validarCampos.cnpj = "";
         }else{        
           this.validarCampos.cnpj = this.validar.getTDClass(this.validar.isValidCNPJ(this.dados.cnpj));
         }
       break;
       case 'telefone':
-        if (this.dados.fixo == ""){
+        if (this.dados.fixo == "" || this.dados.fixo == undefined){
           this.validarCampos.telefone = "";
         }else{        
           this.validarCampos.telefone = this.validar.getTDClass(this.validar.isVvalidTelefone(this.dados.fixo));
         }
       break;
       case 'cep':
-        if (this.dados.cep == ""){
+        if (this.dados.cep == "" || this.dados.cep == undefined){
           this.validarCampos.cep = "";
         }else{        
           this.validarCampos.cep = this.validar.getTDClass(this.validar.isValidCEP(this.dados.cep));
         }
       break;      
       case 'email':
-        if (this.dados.email == ""){
+        if (this.dados.email == "" || this.dados.email == undefined){
           this.validarCampos.email = "";
         }else{        
           this.validarCampos.email = this.validar.getTDClass(this.validar.isValidEmail(this.dados.email));
         }
       break;      
       case 'senha':
-        if (this.dados.senha == ""){
+        if (this.dados.senha == "" || this.dados.senha == undefined){
           this.validarCampos.senha = "";
         }else{        
           this.validarCampos.senha = this.validar.getTDClass(this.validar.isValidSenha(this.dados.senha));

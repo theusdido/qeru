@@ -33,8 +33,8 @@ export class Validar {
         for(let c of campos){
             if (c.nativeElement.value == ''){
                 this.r.addClass(c.nativeElement,"td-validation-error");
-                return false;   
-            }            
+                return false;
+            }
         }
         return true;
     }

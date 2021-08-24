@@ -1,5 +1,5 @@
 <span>
-    <h3>Selecione uma categoria</h3>
+    <app-topicopagina label="Selecione uma categoria"></app-topicopagina>
     <div class="categoria-list">
         <div *ngFor="let c of categorias"  class="card categoria-list-item {{c.sel? 'itemsel' : ''}}" (click)="selecionar(c)">
             <fa-icon [icon]="faCheck" class="categoria-check-icon" [style.display]="c.sel?'':'none'"></fa-icon>

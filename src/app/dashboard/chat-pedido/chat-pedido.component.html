@@ -2,6 +2,9 @@
     <h5 class="card-header">
         <span>PEDIDO</span>
         <span> - #001</span>
+
+        <div class="fw-bold">Data</div>
+        <p>30/06/2021 15:00</p>
     </h5>
     <div class="card-body">    
         <div class="row">
@@ -41,7 +44,7 @@
                     <div *ngFor="let i of itens;let indice=index" class="item" id="miniatura-lista-item-{{indice}}">
                         <img src="{{ i.src }}" />
                     </div>
-                </div>        
+                </div>
             </div>
         </div>
     </div>

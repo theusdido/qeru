@@ -289,3 +289,57 @@ small.textos{
     right:5px;
     cursor:pointer;
 }
+
+/* **************************************************
+    DASHBOARD - GERAL
+************************************************** */
+.div-titulo-pagina .titulo-pagina {
+    color:#000 !important;
+    margin-top:-5px !important;
+}
+
+.subtitulo-pagina {
+    color:#404040;
+    margin-bottom:-15px !important;
+}
+
+/* **************************************************
+    DASHBOARD - TÓPICO PÁGINA
+************************************************** */
+.topico-pagina mat-divider{
+    margin:-15px auto 15px auto;
+}
+
+/* **************************************************
+    DASHBOARD - ESPECIFICAÇÃO
+************************************************** */
+.box-especificacao {
+    background-color:#F0F0F0;
+    border-bottom:1px solid #8B8B8B;
+    padding-left:10px;
+    padding-top:5px;
+    height:60px;
+}
+
+.box-especificacao p {
+    color:#1F1F1F !important;
+}
+
+.prenegociacao-component .item-lista-imagens .item{
+    width:150px;
+    height: 150px;
+    margin:15px;
+}
+.prenegociacao-component .item-lista-imagens img{
+    width:120px;
+    height: 120px;
+}
+
+
+.dialog-mat-close {
+    float:right;
+    display: block;
+    width:100%;
+    text-align: right;
+    cursor:pointer;
+}

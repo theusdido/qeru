@@ -20,6 +20,7 @@ import { HomeComponent } from './home/home/home.component';
 import { AutenticacaoComponent } from './logon/autenticacao/autenticacao.component';
 import { PrecadastroComponent } from './precadastro/precadastro.component';
 import { PropagandaComponent } from './dashboard/propaganda/propaganda.component';
+import { PrenegociacaoComponent } from './dashboard/prenegociacao/prenegociacao.component';
 
 export const routes: Routes = [
   { path: '', component:HomeComponent },
@@ -40,7 +41,8 @@ export const routes: Routes = [
     { path: 'banner' , component:BannerComponent},
     { path: 'menu' , component:MenuComponent},
     { path: 'lojista', component:LojistaComponent},
-    { path: 'propaganda' , component:PropagandaComponent}
+    { path: 'propaganda' , component:PropagandaComponent},
+    { path: 'prenegociacao' , component:PrenegociacaoComponent},
   ]}
 ];
 

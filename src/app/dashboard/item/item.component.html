@@ -9,24 +9,21 @@
                     enctype="multipart/form-data" 
                     target="iupload"
                 >
-                    <img src="assets/img/semimagem.jpg" class="card-img-top item-img" alt="..." (click)="carregarFoto()">
+                    <img src="{{src_sem_foto}}" class="card-img-top item-img" alt="..." (click)="carregarFoto()">
                     <input type="file" name="foto" id="foto" [style.display]="'none'" [(ngModel)]="fileinput" />
-                    <input type="hidden" [(ngModel)]="token" name="token" />
+                    <input type="hidden" id="token" name="token" />
                     <input type="hidden" name="op" id="op" value="item" />
+                    <input type="hidden" name="src_temp" id="src_temp" />
+                    <input type="hidden" name="indice" id="indice" />
                     <div class="card-body">
-                        <button href="#" class="btn btn-adicionarfoto btn-block" (click)="carregarFoto()"> + Adicionar</button>
+                        <button href="#" class="btn btn-adicionarfoto btn-block" (click)="adicionarFoto()"> + Adicionar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     <div class="col-md-8">
-        <div class="owl-carousel owl-theme item-lista-imagens">
-            <div *ngFor="let i of itens;let indice=index" class="item" id="miniatura-lista-item-{{indice}}">
-                <fa-icon class="excluir-imagem-lista-item" [icon]="faTrash" (click)="excluirItem(indice)"></fa-icon>
-                <img src="{{ i.src }}" />
-            </div>
-        </div>
+        <div class="owl-carousel owl-theme item-lista-imagens"></div>
     </div>
 </div>
 <iframe class="iupload" name="iupload"></iframe>
