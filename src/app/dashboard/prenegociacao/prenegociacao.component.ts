@@ -10,12 +10,13 @@ import { PropostaService } from '../proposta/proposta.service';
 
 export class PrenegociacaoComponent implements OnInit {
   public pedido:any;
-  public categoria:number = 0;
   public produto = "";
+  public foto:Array<any> = [];
+  public cor:Array<any> = [];
 
-  //utilizar um nome para o viewchild diferente das variáveis.
+  //utilizar um nome para o viewchild diferente dos atributos.
   @ViewChild ("categoriaselecao") categoriaselecao:any;
-
+  
   constructor(
     public rota:ActivatedRoute,
     public ps:PropostaService
@@ -26,8 +27,9 @@ export class PrenegociacaoComponent implements OnInit {
           (response:any) => {
             console.log(response);
             this.produto = response[0].produto;
-            this.categoria = response[0].td_categoria;
-            this.load(this.categoria);
+            this.load(response[0].td_categoria);
+            this.foto = response[0].anexos;
+            //this.cor = response[0].;
           }
         );
       }

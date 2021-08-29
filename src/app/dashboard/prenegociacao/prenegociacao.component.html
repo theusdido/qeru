@@ -8,8 +8,12 @@
         contexto        = "dashboard-lojista"
         [multiple]      = "false"
     ></app-categoria>
-    <app-produtodetalhe></app-produtodetalhe>
-    <app-produtofoto></app-produtofoto>    
+    <app-produtodetalhe
+        [especificacao] = "cor"
+    ></app-produtodetalhe>
+    <app-produtofoto
+       [itens]          = "foto"
+    ></app-produtofoto>
     <hr/>
     <button class="btn">Iniciar Negociação</button>
 </div>

@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { RequisicaoService } from 'src/app/service/requisicao.service';
 
 declare var $:any;
+
 @Component({
   selector: 'app-produtofoto',
   templateUrl: './produtofoto.component.html',
   styleUrls: ['./produtofoto.component.scss']
 })
 export class ProdutofotoComponent implements OnInit {
-  public itens:Array<any> = [
-    {src:"assets/img/produtos/camisa_vermelha.jpg"},
-    {src:"assets/img/produtos/mouse-azul-gamer.jpg"},
-    {src:"assets/img/produtos/mouse-preto-gamer.jpg"}
-  ];
-  constructor() { }
+  @Input() itens:Array<any> = []; 
+
+  constructor(
+    public rs:RequisicaoService
+  ) { }
 
   ngOnInit(): void {
     $('.owl-carousel').owlCarousel({
@@ -32,5 +33,4 @@ export class ProdutofotoComponent implements OnInit {
       }
     });
   }
-
 }

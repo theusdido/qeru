@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { RequisicaoService } from 'src/app/service/requisicao.service';
 
 @Component({
   selector: 'app-produtodetalhe',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./produtodetalhe.component.scss']
 })
 export class ProdutodetalheComponent implements OnInit {
+  @Input() especificacao:Array<any> = [];
 
-  constructor() { }
+  constructor(
+    public rs:RequisicaoService
+  ) { }
 
   ngOnInit(): void {
   }

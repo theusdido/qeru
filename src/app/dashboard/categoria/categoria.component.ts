@@ -1,14 +1,12 @@
-import { Component,  OnInit, AfterViewInit, EventEmitter, Output , Input, ViewChild, ViewChildren } from '@angular/core';
+import { Component,  OnInit, AfterViewInit, EventEmitter, Output , Input } from '@angular/core';
 import { RequisicaoMiles } from '../../miles/src/requisicao';
-import { faAirFreshener, faCheck, faCar, faCouch, faDesktop, faFutbol, faGamepad, faGift, faLifeRing, faMicrophone, faMobile, faMobileAlt, faScrewdriver, faTshirt, faTv } from '@fortawesome/free-solid-svg-icons';
+import { faAirFreshener, faCheck, faCar, faCouch, faDesktop, faFutbol, faGamepad, faGift, faLifeRing, faMicrophone, faMobileAlt, faScrewdriver, faTshirt, faTv } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { SubcategoriaComponent } from '../subcategoria/subcategoria.component';
 import { PedidoService } from 'src/app/service/pedido.service';
 import { Sessao } from '../../service/sessao.service';
 import { RequisicaoService } from '../../service/requisicao.service';
 import { ActivatedRoute } from '@angular/router';
-import { ambiente,categorias,ls,environment } from 'src/environments/environment';
-import { ProdutoComponent } from '../../dashboard/produto/produto.component';
+import { categorias,ls,environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-categoria',
@@ -52,7 +50,8 @@ export class CategoriaComponent implements OnInit,AfterViewInit {
       this.icons["faFutbol"]        = faFutbol;
       this.icons["faGamepad"]       = faGamepad;
    }
-   ngAfterViewInit(){
+
+  ngAfterViewInit(){
     
   }
   ngOnInit(): void { 
