@@ -9,7 +9,9 @@ import { PropostaService } from '../proposta/proposta.service';
 })
 export class PrenegociacaoComponent implements OnInit {
   public pedido:any;
-  public categoria:number = 2;
+  public categoria:number = 5;
+  public produto="";
+
   constructor(
     public rota:ActivatedRoute,
     public ps:PropostaService
@@ -19,6 +21,7 @@ export class PrenegociacaoComponent implements OnInit {
         this.ps.getPedido(params.pedido).subscribe(
           (response:any) => {
             console.log(response);
+            this.produto = response[0].produto;
           }
         );
       }
