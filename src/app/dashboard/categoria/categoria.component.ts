@@ -1,14 +1,12 @@
-import { Component,  OnInit, AfterViewInit, EventEmitter, Output , Input, ViewChild, ViewChildren } from '@angular/core';
+import { Component,  OnInit, AfterViewInit, EventEmitter, Output , Input } from '@angular/core';
 import { RequisicaoMiles } from '../../miles/src/requisicao';
-import { faAirFreshener, faCheck, faCar, faCouch, faDesktop, faFutbol, faGamepad, faGift, faLifeRing, faMicrophone, faMobile, faMobileAlt, faScrewdriver, faTshirt, faTv } from '@fortawesome/free-solid-svg-icons';
+import { faAirFreshener, faCheck, faCar, faCouch, faDesktop, faFutbol, faGamepad, faGift, faLifeRing, faMicrophone, faMobileAlt, faScrewdriver, faTshirt, faTv } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { SubcategoriaComponent } from '../subcategoria/subcategoria.component';
 import { PedidoService } from 'src/app/service/pedido.service';
 import { Sessao } from '../../service/sessao.service';
 import { RequisicaoService } from '../../service/requisicao.service';
 import { ActivatedRoute } from '@angular/router';
-import { ambiente,categorias,ls,environment } from 'src/environments/environment';
-import { ProdutoComponent } from '../../dashboard/produto/produto.component';
+import { categorias,ls,environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-categoria',
@@ -29,6 +27,7 @@ export class CategoriaComponent implements OnInit,AfterViewInit {
   @Input() multiple:boolean = true;
   @Output() getCategorias = new EventEmitter<any>();
   @Output() getCategoria = new EventEmitter<number>();
+  @Output() loadCategoria = new EventEmitter<number>();
 
   constructor(
     public rm:RequisicaoMiles,
@@ -51,37 +50,12 @@ export class CategoriaComponent implements OnInit,AfterViewInit {
       this.icons["faFutbol"]        = faFutbol;
       this.icons["faGamepad"]       = faGamepad;
    }
-   ngAfterViewInit(){
+
+  ngAfterViewInit(){
     
   }
-  ngOnInit(): void {    
-    this.rs.get("categoria",{
-      op:'load',
-      loja:this.loja > 0 ? ls.get("loja") : null,
-      id:this.id
-    }).subscribe( 
-      (response:any) => {
-        this.categorias.splice(0,this.categorias.length);
-      
-        for(let r of response){
-
-          let id        = r.id;
-          let descricao = r.descricao;
-          let icon      = this.icons[r.icon] as IconProp;
-          
-          
-          this.categorias.push({id:id,texto: descricao , icon:icon, sel:false});
-        }
-
-        if (!environment.global.production && this.contexto == "cadastro"){
-          this.setar(categorias);
-        }
-      
-        if (this.categorias[0] != undefined && this.contexto == "dashboard-lojista"){
-          this.selecionar(this.categorias[0]);
-        }
-      }
-    );    
+  ngOnInit(): void { 
+    this.load();   
   }
 
   selecionar(indice:any){
@@ -103,5 +77,35 @@ export class CategoriaComponent implements OnInit,AfterViewInit {
         }
       }
     }
+  }
+
+  load(id:number = 0){
+    //this.loadCategoria.emit();
+    this.rs.get("categoria",{
+      op:'load',
+      loja:this.loja > 0 ? ls.get("loja") : null,
+      id:this.id == 0?id:this.id
+    }).subscribe( 
+      (response:any) => {
+        this.categorias.splice(0,this.categorias.length);
+      
+        for(let r of response){
+
+          let id        = r.id;
+          let descricao = r.descricao;
+          let icon      = this.icons[r.icon] as IconProp;
+          
+          this.categorias.push({id:id,texto: descricao , icon:icon, sel:false});
+        }
+
+        if (!environment.global.production && this.contexto == "cadastro"){
+          this.setar(categorias);
+        }
+      
+        if (this.categorias[0] != undefined && this.contexto == "dashboard-lojista"){
+          this.selecionar(this.categorias[0]);
+        }
+      }
+    );    
   }
 }

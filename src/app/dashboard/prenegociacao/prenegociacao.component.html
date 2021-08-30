@@ -1,15 +1,23 @@
 <div class="prenegociacao-component">    
     <app-titulopagina
+<<<<<<< HEAD
         titulo="{{produto}}"
+=======
+        titulo={{produto}}
+>>>>>>> fba0337ca0ee2b52b7a61c4e0cc5a00330f374f6
         subtitulo="Produto"
     ></app-titulopagina>
-    <app-categoria    
+    <app-categoria 
+        #categoriaselecao   
         contexto        = "dashboard-lojista"
         [multiple]      = "false"
-        [id]            = "categoria"
     ></app-categoria>
-    <app-produtodetalhe></app-produtodetalhe>
-    <app-produtofoto></app-produtofoto>    
+    <app-produtodetalhe
+        [especificacao] = "cor"
+    ></app-produtodetalhe>
+    <app-produtofoto
+       [itens]          = "foto"
+    ></app-produtofoto>
     <hr/>
     <button class="btn">Iniciar Negociação</button>
 </div>
