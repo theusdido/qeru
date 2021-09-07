@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RequisicaoService } from 'src/app/service/requisicao.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,8 @@ import { RequisicaoService } from 'src/app/service/requisicao.service';
 export class PropostaService {
 
   constructor(
-    public rs:RequisicaoService
+    public rs:RequisicaoService,
+    public rota:Router
   ) { }
 
   getCategoria(categorias:any){
@@ -22,4 +24,10 @@ export class PropostaService {
       pedido:pedido
     });
   }
+
+  iniciarProposta(pedido:any){
+    this.rota.navigate(["/dashboard/chat"],{queryParams:
+      {pedido:pedido}
+    });
+  }  
 }

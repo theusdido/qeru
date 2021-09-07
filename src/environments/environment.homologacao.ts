@@ -88,9 +88,6 @@ export const lsClear = () => {
 // Funções genéricas
 export const funcoes = new Funcoes();
 
-// Clear LocalStorage
-localStorage.clear();
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

@@ -1945,7 +1945,7 @@ input:hover,input:focus{
     background-color:#f4f4f4
 }
 .section_padding{
-    padding:80px 0px
+    padding:15px 0px
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px){
     .section_padding{
@@ -9515,11 +9515,13 @@ input:focus{
         font-size:30px
     }
 }
- 
-.topo {
-     margin-top: 70px!important;
-}
 
+.topo {
+    /*
+     * Retirado por Edilson Bitencourt  
+     * margin-top: 70px!important;
+     */
+}
 .destaque {
      background: #f76c5e!important;
      color: #fff!important;

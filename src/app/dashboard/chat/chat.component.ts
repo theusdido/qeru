@@ -49,7 +49,6 @@ export class ChatComponent implements OnInit,AfterViewInit {
         if (ambiente == "desenv"){
           this.chatservice.db.list('1').remove();
         }
-        
         switch(this.perfil){
           case 'L':
             this.ps.getPedido(params.pedido).subscribe(

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequisicaoMiles } from 'src/app/miles/src/requisicao';
 import { ClienteService } from '../../dashboard/cliente/cliente.service';
-import { ls } from '../../..//environments/environment';
-
 
 @Component({
   selector: 'app-main',

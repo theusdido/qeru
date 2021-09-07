@@ -64,6 +64,7 @@ import { TitulopaginaComponent } from './dashboard/titulopagina/titulopagina.com
 import { TopicopaginaComponent } from './dashboard/topicopagina/topicopagina.component';
 import { ProdutofotoComponent } from './dashboard/produtofoto/produtofoto.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ClienteAcessoComponent } from './acesso/cliente-acesso/cliente-acesso.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     ProdutodetalheComponent,
     TitulopaginaComponent,
     TopicopaginaComponent,
-    ProdutofotoComponent
+    ProdutofotoComponent,
+    ClienteAcessoComponent
   ],
   imports: [
     BrowserModule,

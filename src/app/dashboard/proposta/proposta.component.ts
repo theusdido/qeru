@@ -28,10 +28,7 @@ export class PropostaComponent implements OnInit {
       }
     );
   }
-
   iniciarProposta(pedido:any){
-    this.rota.navigate(["/dashboard/chat"],{queryParams:
-      {pedido:pedido.id}
-    });
+    this.ps.iniciarProposta(pedido);
   }
 }

@@ -9,7 +9,7 @@ import { PropostaService } from '../proposta/proposta.service';
 })
 
 export class PrenegociacaoComponent implements OnInit {
-  public pedido:any;
+  public pedido:number = 0;
   public produto = "";
   public foto:Array<any> = [];
   public cor:Array<any> = [];
@@ -23,6 +23,7 @@ export class PrenegociacaoComponent implements OnInit {
   ) { 
     this.rota.queryParams.subscribe(
       (params) => {
+        this.pedido = params.pedido;
         this.ps.getPedido(params.pedido).subscribe(
           (response:any) => {
             console.log(response);
@@ -42,5 +43,9 @@ export class PrenegociacaoComponent implements OnInit {
 
   load(categoria:number){
     this.categoriaselecao.load(categoria);
+  }
+
+  iniciarNegociacao(){
+    this.ps.iniciarProposta(this.pedido);
   }
 }
