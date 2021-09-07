@@ -14,6 +14,7 @@ export class ProdutodetalheComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.especificacao);
   }
 
 }
