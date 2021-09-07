@@ -29,6 +29,7 @@ export class PrenegociacaoComponent implements OnInit {
             this.produto = response[0].produto;
             this.load(response[0].td_categoria);
             this.foto = response[0].anexos;
+            console.log(response[0].atributos);
             this.atributo = response[0].atributos;
           }
         );
@@ -43,4 +44,5 @@ export class PrenegociacaoComponent implements OnInit {
   load(categoria:number){
     this.categoriaselecao.load(categoria);
   }
+
 }
