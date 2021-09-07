@@ -12,7 +12,7 @@ export class PrenegociacaoComponent implements OnInit {
   public pedido:any;
   public produto = "";
   public foto:Array<any> = [];
-  public cor:Array<any> = [];
+  public atributo:Array<any> = [];
 
   //utilizar um nome para o viewchild diferente dos atributos.
   @ViewChild ("categoriaselecao") categoriaselecao:any;
@@ -29,7 +29,7 @@ export class PrenegociacaoComponent implements OnInit {
             this.produto = response[0].produto;
             this.load(response[0].td_categoria);
             this.foto = response[0].anexos;
-            //this.cor = response[0].;
+            this.atributo = response[0].atributos;
           }
         );
       }
