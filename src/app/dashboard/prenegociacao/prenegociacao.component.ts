@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PropostaService } from '../proposta/proposta.service';
 
@@ -8,15 +8,19 @@ import { PropostaService } from '../proposta/proposta.service';
   styleUrls: ['./prenegociacao.component.scss']
 })
 
-export class PrenegociacaoComponent implements OnInit {
-  public pedido:number = 0;
-  public produto = "";
-  public foto:Array<any> = [];
-  public atributo:Array<any> = [];
+export class PrenegociacaoComponent implements OnInit,AfterViewInit {
+  public pedido:number        = 0;
+  public produto              = "";
+  public foto:Array<any>      = [];
+  public atributo:Array<any>  = [];
 
   //utilizar um nome para o viewchild diferente dos atributos.
-  @ViewChild ("categoriaselecao") categoriaselecao:any;
-  
+  @ViewChild ("categoria") categoriaselecao:any;
+
+  // Associa o componente produtodetalhe
+  @ViewChild ("produtodetalhe") pd:any;
+  @ViewChild("titulopagina") titulo:any;
+
   constructor(
     public rota:ActivatedRoute,
     public ps:PropostaService
@@ -24,28 +28,33 @@ export class PrenegociacaoComponent implements OnInit {
     this.rota.queryParams.subscribe(
       (params) => {
         this.pedido = params.pedido;
-        this.ps.getPedido(params.pedido).subscribe(
-          (response:any) => {
-            console.log(response);
-            this.produto = response[0].produto;
-            this.load(response[0].td_categoria);
-            this.foto = response[0].anexos;
-            console.log(response[0].atributos);
-            this.atributo = response[0].atributos;
-          }
-        );
       }
     );
   }
 
+  loadPedido(){
+    this.ps.getPedido(this.pedido).subscribe(
+      (response:any) => {
+
+        this.produto    = response[0].produto;
+        this.foto       = response[0].anexos;
+        this.atributo   = response[0].atributos;
+        this.titulo.load(response[0].td_subcategoria,'Produto',);
+        this.categoriaselecao.load(response[0].td_categoria); 
+        /*
+          By @theusdido 08/09/2021 13:49
+          Carrega os atributos no componente produtodetalhe
+        */
+       this.pd.setEspecificacoes(response[0].atributos);
+      }
+    );
+  }
   ngOnInit(): void {
     
   }
-
-  load(categoria:number){
-    this.categoriaselecao.load(categoria);
+  ngAfterViewInit(){
+    this.loadPedido();
   }
-
   iniciarNegociacao(){
     this.ps.iniciarProposta(this.pedido);
   }

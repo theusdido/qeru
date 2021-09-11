@@ -105,12 +105,6 @@ export class ItemComponent implements OnInit,AfterViewInit {
       this.itens.push(src);
       this.addMiniatura(src);
       this.indice++;
-      this.rs.get("upload_rename",{
-        src:src,
-        indice:this.indice,
-        token:ls.get("token")
-      }).subscribe();
-      
       this.fileinput = "";
       $(".card-img-top").prop("src",this.src_sem_foto);
       $("#src_temp,#foto").val("");

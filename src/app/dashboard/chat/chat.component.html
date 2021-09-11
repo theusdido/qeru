@@ -14,7 +14,7 @@
     <div class="interacao" *ngFor="let i of interacoes | async">
         <p class="cabecalho-mensagem cabecalho-perfil-{{classeMSG(i.perfil)}}">{{ i.emissor_nome }} - {{ i.datahora }}</p>        
         <mat-card class="mensagem {{classeMSG(i.perfil)}}">
-            <img class="imagem-interacao img-fluid img-thumbnail" src="http://teia.tec.br/miles/sistema/projects/31/arquivos/temp/{{i.anexo}}" *ngIf="i.anexo" />
+            <img class="imagem-interacao img-fluid img-thumbnail" src="{{url_host}}projects/31/arquivos/temp/{{i.anexo}}" *ngIf="i.anexo" />
             <p>{{ i.mensagem }}</p>
         </mat-card>
     </div>
@@ -28,7 +28,7 @@
     </div>    
     <div class="div-botao">
         <span matBadge="1" matBadgeOverlap="false" class="badge-upload" [style.display]="badgeUploadFile"></span>
-        <input type="file" (change)="onFileSelected($event)" style="display:none" #inputFile />
+        <input type="file" (change)="onFileSelected($event);" style="display:none" #inputFile />
         <button 
             class="btn-chat" 
             (click)="inputFile.click()" 

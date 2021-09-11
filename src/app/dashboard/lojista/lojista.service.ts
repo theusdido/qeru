@@ -13,13 +13,11 @@ export class LojistaService {
   ) { }
 
   async load(id:number){
-    console.log('Antes da requisição');
     return this.rs.get("lojista",{
         op:"load",
         id:id
     }).subscribe(
         async (r:any) => {            
-          console.log('Após a requisição');
             // Dados do Lojista
             this.lojista.id                 = id;
             this.lojista.nome               = r.nome;

@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChatService } from './chat.service';
 import { ActivatedRoute } from '@angular/router';
-import { ls,ambiente } from '../../../environments/environment';
+import { ls,ambiente,environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { PropostaService } from '../proposta/proposta.service';
-import { Lojista } from 'src/app/classe/lojista';
 import { faImages } from '@fortawesome/free-solid-svg-icons';
 import { NegociacaoService } from '../negociacoes/negociacao.service';
 import { Cliente } from '../../classe/cliente';
@@ -36,11 +35,14 @@ export class ChatComponent implements OnInit,AfterViewInit {
   public faImages = faImages;
   private isPrimeiraInteracao = true;
   public pedidoRequisicao!:Observable<any>;
+  private is_anexo:boolean = false;
+  public url_host = environment.miles.host;
+
+  @ViewChild('inputFile') anexo!:ElementRef;
   constructor(
     public chatservice:ChatService,
     public rota:ActivatedRoute,
     public ps:PropostaService,
-    public lojista:Lojista  ,
     public ns:NegociacaoService,
     public cliente:Cliente
   ) {
@@ -49,13 +51,14 @@ export class ChatComponent implements OnInit,AfterViewInit {
         if (ambiente == "desenv"){
           this.chatservice.db.list('1').remove();
         }
+        let loja = JSON.parse(ls.get('loja'));
         switch(this.perfil){
           case 'L':
             this.ps.getPedido(params.pedido).subscribe(
               (response:any) => {
                 this.pedido         = response[0];
-                this.emissor        = lojista.id;
-                this.nomeemissor    = lojista.nome;
+                this.emissor        = loja.id;
+                this.nomeemissor    = loja.nomefantasia;
                 this.remetente      = response[0].td_cliente;
                 this.nomeremetente  = response[0].cliente;
                 this.qeru           = response[0].produto;
@@ -65,13 +68,14 @@ export class ChatComponent implements OnInit,AfterViewInit {
           break;
           case 'C':
               this.ns.getPedido(params.pedido).subscribe(
-                (response:any) => {                  
-                  this.pedido         = response[0];
-                  this.emissor        = cliente.id;
-                  this.nomeemissor    = cliente.nome;
-                  this.remetente      = response[0].td_loja;
-                  this.nomeremetente  = response[0].loja;
-                  this.qeru           = response[0].produto;
+                (response:any) => {    
+                  let r = response[0];
+                  this.pedido         = r;
+                  this.emissor        = r.cliente.id;
+                  this.nomeemissor    = r.cliente.nome;
+                  this.remetente      = r.td_loja;
+                  this.nomeremetente  = r.loja;
+                  this.qeru           = r.produto;
                   this.setChatInfo();
                 }
               );
@@ -96,20 +100,23 @@ export class ChatComponent implements OnInit,AfterViewInit {
     this.interacoes           = this.chatservice.all();
   }
   async enviar(){
-    if (this.selectedFile == undefined){
+    if (this.selectedFile == undefined || !this.is_anexo){
+      this.chatservice.anexo  = '';
       this.enviarMensagem();
     }else{
 
       this.iconEnviarMensagem = "none";
       this.loadingFileChat    = "";
-      
+      this.is_anexo           = false;
+
       // Upload de Arquivo
       this.chatservice.upload(this.selectedFile).subscribe(
         (response:any) => {
           this.iconEnviarMensagem = "";
           this.loadingFileChat    = "none";
-          this.chatservice.anexo  = response.filename;
+          this.chatservice.anexo  = response.filename;          
           this.enviarMensagem();
+          
         }
       );
     }
@@ -119,21 +126,25 @@ export class ChatComponent implements OnInit,AfterViewInit {
     // Envia Mensagem de texto
     if (this.mensagem != "" || this.selectedFile != undefined){
       this.chatservice.add(this.mensagem);
-      this.mensagem = "";
-      this.buttonFileUploadColor = "";
-      this.badgeUploadFile = "none";
+      this.mensagem                   = "";
+      this.buttonFileUploadColor      = "";
+      this.badgeUploadFile            = "none";
 
-      this.endScrollChat();
+
       if (this.isPrimeiraInteracao){
         this.ns.iniciar(this.pedido);
       }
+      this.endScrollChat();
     }
   }
 
   onFileSelected(event:any){
-    this.selectedFile = <File>event.target.files[0];
-    this.buttonFileUploadColor = "green !important";
-    this.badgeUploadFile = "";
+    this.selectedFile               = <File>event.target.files[0];
+    this.buttonFileUploadColor      = "green !important";
+    this.badgeUploadFile            = "";
+    this.is_anexo                   = true; 
+    this.chatservice.anexo          = '';
+    this.anexo.nativeElement.value  = null;                
   }
 
   classeMSG(perfil:string):string{

@@ -22,7 +22,7 @@ export class NegociacaoService {
     this.rs.get("negociacao",{
       op:"iniciar",
       pedido:pedido.id,
-      loja:ls.get("loja")
+      loja:JSON.parse(ls.get("loja")).id
     }).subscribe();
   }
 

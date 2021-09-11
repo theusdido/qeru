@@ -3,6 +3,7 @@ import { faRocketchat} from '@fortawesome/free-brands-svg-icons';
 import { Router } from '@angular/router';
 import { PropostaService } from './proposta.service';
 import { Lojista } from '../../classe/lojista';
+import { ls } from '../../../environments/environment';
 
 declare var $:any;
 
@@ -22,7 +23,7 @@ export class PropostaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.ps.getCategoria(this.lojista.getCategoriasVirgula()).subscribe(
+    this.ps.getCategoria(ls.get('categorias')).subscribe(
       (response:any) => {
         this.propostas = response;
       }

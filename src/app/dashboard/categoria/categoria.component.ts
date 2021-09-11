@@ -80,7 +80,7 @@ export class CategoriaComponent implements OnInit,AfterViewInit {
   }
 
   load(id:number = 0){
-    //this.loadCategoria.emit();
+    this.loadCategoria.emit();
     this.rs.get("categoria",{
       op:'load',
       loja:this.loja > 0 ? ls.get("loja") : null,
@@ -88,7 +88,6 @@ export class CategoriaComponent implements OnInit,AfterViewInit {
     }).subscribe( 
       (response:any) => {
         this.categorias.splice(0,this.categorias.length);
-      
         for(let r of response){
 
           let id        = r.id;

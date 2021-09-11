@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RequisicaoService } from 'src/app/service/requisicao.service';
 
 @Component({
@@ -8,13 +8,24 @@ import { RequisicaoService } from 'src/app/service/requisicao.service';
 })
 export class ProdutodetalheComponent implements OnInit {
   @Input() especificacao:Array<any> = [];
+  @Output() setAtributos = new EventEmitter<any>();
 
   constructor(
     public rs:RequisicaoService
   ) { }
 
   ngOnInit(): void {
-    console.log(this.especificacao);
   }
-
+	/*  
+		* Método: setEspecificacoes 
+	  * Data de Criacao: 08/09/2021
+	  * @author: @theusdido
+		
+		Atribui valores as especificações do produto
+		@parms: atributos
+	*/  
+  setEspecificacoes(atributos:any){
+    this.setAtributos.emit();
+    this.especificacao = atributos;
+  }
 }

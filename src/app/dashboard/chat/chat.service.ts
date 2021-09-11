@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Router } from '@angular/router';
 import { RequisicaoService } from '../../service/requisicao.service';
+
 
 export interface Interlocutor {
   id:number,
@@ -19,7 +21,8 @@ export class ChatService {
 
   constructor(
     public db:AngularFireDatabase,
-    public rs:RequisicaoService
+    public rs:RequisicaoService,
+    public rota:Router
   ) { 
   }
 
@@ -52,4 +55,10 @@ export class ChatService {
   count(){    
     return this.db.list(this.pedido).valueChanges();
   }
+
+  ir(pedido:any){
+    this.rota.navigate(["/dashboard/chat"],{queryParams:
+      {pedido:pedido}
+    });
+  }  
 }

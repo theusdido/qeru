@@ -4,6 +4,7 @@ import { ChatService } from '../chat/chat.service';
 import { faCommentDollar } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { PropostaService } from '../proposta/proposta.service';
+import { ls } from '../../../environments/environment';
 
 @Component({
   selector: 'app-contato',
@@ -22,10 +23,9 @@ export class ContatoComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout( () => {
-      this.ps.getCategoria(this.lojista.getCategoriasVirgula()).subscribe(
+      this.ps.getCategoria(ls.get('categorias')).subscribe(
         (response:any) => {
           this.contatos = response;
-          console.log(this.contatos);
         }
       );
     },1000);

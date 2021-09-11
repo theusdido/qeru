@@ -36,6 +36,7 @@ export class AtributoComponent implements OnInit {
   }
 
   load(subcategoria:number){
+    this.pedido.subcategoria = subcategoria;
     this.rs.get("atributo",{
       op:"load",
       subcategoria:subcategoria

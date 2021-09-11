@@ -46,12 +46,11 @@ export class AutenticacaoComponent implements OnInit {
           ls.set("username",r.username);
           if (r.usergroup == 3){
             ls.set("perfil","L");
-            ls.set("lojista",r.perfil.lojista);
-            ls.set("loja",r.perfil.loja);
-            console.log('Antes de ir carregar os dados do lojista');
-            this.ljs.load(r.perfil.lojista).then(
+            ls.set("lojista",JSON.stringify(r.perfil.lojista[0]));
+            ls.set("loja",JSON.stringify(r.perfil.loja[0]));
+            ls.set("categorias",r.perfil.categorias);
+            this.ljs.load(r.perfil.lojista[0].id).then(
               () => {
-                console.log('Antes de ir para o Dashboard');
                 this.irDashBoard();
               }
             );

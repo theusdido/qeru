@@ -29,5 +29,5 @@ export class PropostaService {
     this.rota.navigate(["/dashboard/chat"],{queryParams:
       {pedido:pedido}
     });
-  }  
+  }
 }

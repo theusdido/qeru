@@ -40,14 +40,14 @@ export class ComprarComponent implements OnInit {
   }
 
   comprar():boolean {
-    console.log(this.item.itens);
     if (this.categoria == 0){
       window.scrollTo(0,0);
       $("#categoriacomponent").css("border","2px solid #FF0000");      
       setTimeout( () => $("#categoriacomponent").focus(), 1000   );
       return false;
     }
-
+    console.log(ls);
+    debugger;
     this.pedido.categoria                 = this.categoria;
     this.pedido.cliente                   = ls.get("cliente");
     this.pedido.isretirarestabelecimento  = this.isretirarestabelecimento.nativeElement.checked;

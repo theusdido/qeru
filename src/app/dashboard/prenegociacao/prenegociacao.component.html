@@ -1,14 +1,12 @@
 <div class="prenegociacao-component">    
-    <app-titulopagina
-        titulo="{{produto}}"
-        subtitulo="Produto"
-    ></app-titulopagina>
+    <app-titulopagina #titulopagina ></app-titulopagina>
     <app-categoria 
-        #categoriaselecao   
+        #categoria 
         contexto        = "dashboard-lojista"
         [multiple]      = "false"
     ></app-categoria>
     <app-produtodetalhe
+        #produtodetalhe
         [especificacao]     = "atributo"
     ></app-produtodetalhe>
     <app-produtofoto
