@@ -348,12 +348,26 @@ small.textos{
 /* **************************************************
     DASHBOARD - TIMER-RESPOSTA - Daniela 14/09/21
 ************************************************** */
+@font-face {
+    font-family: 'digital-7';
+    src: url('../fonts/digital-7.ttf');
+  }
 
 .display-timer {
-    display: block;
-    margin: auto;
+    margin: 0px !important;
     font-size: 50px !important;
-    border: 2px solid #404040;
-    width: fit-content;
-    padding: 5px;
+    font-family: 'digital-7',sans-serif !important; 
+}
+
+.icon-relogio {
+    font-size: 30px;
+    margin-right: 5px;
+}
+
+.align-relogio {
+    border: 2px solid #DCDCDC !important;
+    border-radius: 8px;
+    width: 215px;
+    align-items: center;
+    padding: 10px;
 }

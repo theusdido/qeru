@@ -9,6 +9,7 @@
         <fa-icon class="imagens-produto" [icon]="faImages"></fa-icon>
     </div>
     -->
+ <app-timer-resposta></app-timer-resposta>   
 </div>
 <div id="conversacao">
     <div class="interacao" *ngFor="let i of interacoes | async">
@@ -23,9 +24,6 @@
     
 </p>
 <div id="rodape">
-    <div class="div-mensagem">
-        <input type="text" [(ngModel)]="mensagem" id="mensagem" />
-    </div>    
     <div class="div-botao">
         <span matBadge="1" matBadgeOverlap="false" class="badge-upload" [style.display]="badgeUploadFile"></span>
         <input type="file" (change)="onFileSelected($event);" style="display:none" #inputFile />
@@ -37,6 +35,9 @@
             <i class="fa fa-paperclip"></i>
         </button>        
     </div>
+    <div class="div-mensagem">
+        <input type="text" [(ngModel)]="mensagem" id="mensagem" />
+    </div>    
     <div class="div-botao">
         <button class="btn-chat" (click)="enviar()">
             <i class="fa fa-paper-plane" [style.display]="iconEnviarMensagem"></i>
@@ -44,5 +45,4 @@
         </button>        
     </div>    
 </div>
-
 <div id="contatos"></div>
