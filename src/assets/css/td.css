@@ -344,3 +344,16 @@ small.textos{
     text-align: right;
     cursor:pointer;
 }
+
+/* **************************************************
+    DASHBOARD - TIMER-RESPOSTA - Daniela 14/09/21
+************************************************** */
+
+.display-timer {
+    display: block;
+    margin: auto;
+    font-size: 50px !important;
+    border: 2px solid #404040;
+    width: fit-content;
+    padding: 5px;
+}

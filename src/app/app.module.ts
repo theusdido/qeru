@@ -64,7 +64,11 @@ import { TitulopaginaComponent } from './dashboard/titulopagina/titulopagina.com
 import { TopicopaginaComponent } from './dashboard/topicopagina/topicopagina.component';
 import { ProdutofotoComponent } from './dashboard/produtofoto/produtofoto.component';
 import {MatDialogModule} from '@angular/material/dialog';
+<<<<<<< Updated upstream
 import { ClienteAcessoComponent } from './acesso/cliente-acesso/cliente-acesso.component';
+=======
+import { TimerRespostaComponent } from './dashboard/timer-resposta/timer-resposta.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -104,7 +108,11 @@ import { ClienteAcessoComponent } from './acesso/cliente-acesso/cliente-acesso.c
     TitulopaginaComponent,
     TopicopaginaComponent,
     ProdutofotoComponent,
+<<<<<<< Updated upstream
     ClienteAcessoComponent
+=======
+    TimerRespostaComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

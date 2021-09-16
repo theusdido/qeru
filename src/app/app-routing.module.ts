@@ -21,6 +21,7 @@ import { AutenticacaoComponent } from './logon/autenticacao/autenticacao.compone
 import { PrecadastroComponent } from './precadastro/precadastro.component';
 import { PropagandaComponent } from './dashboard/propaganda/propaganda.component';
 import { PrenegociacaoComponent } from './dashboard/prenegociacao/prenegociacao.component';
+import { TimerRespostaComponent } from './dashboard/timer-resposta/timer-resposta.component';
 
 export const routes: Routes = [
   { path: '', component:HomeComponent },
@@ -43,6 +44,7 @@ export const routes: Routes = [
     { path: 'lojista', component:LojistaComponent},
     { path: 'propaganda' , component:PropagandaComponent},
     { path: 'prenegociacao' , component:PrenegociacaoComponent},
+    { path: 'timerresposta' , component:TimerRespostaComponent}
   ]}
 ];
 
