@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 declare var $:any;
 
@@ -14,10 +14,12 @@ export class TimerRespostaComponent implements OnInit {
   public segundo:number = 0;
   public intervalo:any;
 
+  @Output() tempo = new EventEmitter(); //Cria um emissor de evento.
+
   constructor() { }
 
   ngOnInit(): void {
-    this.iniciarTimer();
+    this.zerarTimer();
   }
 
   timer(){
@@ -44,9 +46,11 @@ export class TimerRespostaComponent implements OnInit {
   }
 
   zerarTimer(){
+    this.tempo.emit();  //Emite o evento no escopo global do projeto. Permite que outros componentes o acessem esse método.
     this.segundo = 0;
     this.minuto = 0;
     this.hora = 0;
+    this.setDisplay();
   }
 
   reiniciarTimer(){

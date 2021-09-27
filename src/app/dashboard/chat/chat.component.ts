@@ -39,6 +39,8 @@ export class ChatComponent implements OnInit,AfterViewInit {
   public url_host = environment.miles.host;
 
   @ViewChild('inputFile') anexo!:ElementRef;
+  @ViewChild('timerResposta') timer:any;
+
   constructor(
     public chatservice:ChatService,
     public rota:ActivatedRoute,
@@ -130,11 +132,16 @@ export class ChatComponent implements OnInit,AfterViewInit {
       this.buttonFileUploadColor      = "";
       this.badgeUploadFile            = "none";
 
-
       if (this.isPrimeiraInteracao){
         this.ns.iniciar(this.pedido);
       }
       this.endScrollChat();
+
+      if(this.perfil = 'C'){
+        this.timer.iniciarTimer();
+      }else {
+        this.timer.reiniciarTimer();
+      }
     }
   }
 
