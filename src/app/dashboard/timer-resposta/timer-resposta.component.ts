@@ -40,13 +40,13 @@ export class TimerRespostaComponent implements OnInit {
   }
 
   iniciarTimer(){
+    this.tempo.emit();  //Emite o evento no escopo global do projeto. Permite que outros componentes o acessem esse método.
     this.zerarTimer();
     this.timer();
     
   }
 
-  zerarTimer(){
-    this.tempo.emit();  //Emite o evento no escopo global do projeto. Permite que outros componentes o acessem esse método.
+  zerarTimer(){  
     this.segundo = 0;
     this.minuto = 0;
     this.hora = 0;
@@ -54,6 +54,7 @@ export class TimerRespostaComponent implements OnInit {
   }
 
   reiniciarTimer(){
+    this.tempo.emit();
     this.zerarTimer();
     this.iniciarTimer();
   }

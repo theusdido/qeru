@@ -39,7 +39,7 @@ export class ChatComponent implements OnInit,AfterViewInit {
   public url_host = environment.miles.host;
 
   @ViewChild('inputFile') anexo!:ElementRef;
-  @ViewChild('timerResposta') timer:any;
+  @ViewChild('timerResposta') timer:any; //'timerResposta' = componente html
 
   constructor(
     public chatservice:ChatService,
