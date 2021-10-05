@@ -23,7 +23,6 @@ export class NegociacaoHomeComponent implements OnInit {
   }
 
   abrirChat(pedido:number){
-    debugger;
     this.cs.ir(pedido);
   }
 

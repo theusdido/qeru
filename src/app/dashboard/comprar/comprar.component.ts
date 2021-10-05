@@ -46,8 +46,7 @@ export class ComprarComponent implements OnInit {
       setTimeout( () => $("#categoriacomponent").focus(), 1000   );
       return false;
     }
-    console.log(ls);
-    debugger;
+    
     this.pedido.categoria                 = this.categoria;
     this.pedido.cliente                   = ls.get("cliente");
     this.pedido.isretirarestabelecimento  = this.isretirarestabelecimento.nativeElement.checked;
