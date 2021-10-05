@@ -51,7 +51,7 @@ export class ChatComponent implements OnInit,AfterViewInit {
     this.rota.queryParams.subscribe(
       (params) => {
         if (ambiente == "desenv"){
-          this.chatservice.db.list('1').remove();
+          //this.chatservice.db.list('1').remove();
         }
         let loja = JSON.parse(ls.get('loja'));
         switch(this.perfil){
