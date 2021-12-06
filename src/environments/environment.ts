@@ -13,19 +13,18 @@ export const environment = {
   },  
   firebase: {
     apiKey: "",
-    authDomain: "qeru-6981b.firebaseapp.com",
-    databaseURL: "https://qeru-6981b-default-rtdb.firebaseio.com",
+    authDomain: "",
+    databaseURL: "",
     projectId: "",
-    storageBucket: "qeru-6981b.appspot.com",
+    storageBucket: "",
     messagingSenderId: "",
     appId: "",
     measurementId: ""
   },
   miles:{
     host:"https://teia.tec.br/miles/sistema/"
-  }
+  }  
 };
-
 // Lojista teste 
 export const lojista = {
   nome:",
