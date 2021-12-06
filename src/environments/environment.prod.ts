@@ -8,14 +8,14 @@ export const environment = {
     project: 'Qeru'
   },  
   firebase: {
-    apiKey: "AIzaSyDcSQDPkFqpQBd8UbX-Wtw23tNTg-0dmn4",
-    authDomain: "qeru-6981b.firebaseapp.com",
-    databaseURL: "https://qeru-6981b-default-rtdb.firebaseio.com",
-    projectId: "qeru-6981b",
-    storageBucket: "qeru-6981b.appspot.com",
-    messagingSenderId: "924685319501",
-    appId: "1:924685319501:web:3ac10436cb87c9b4610b04",
-    measurementId: "G-NL8C6QZEX1"
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: "",
+    measurementId: ""
   },
   miles:{
     host:"https://teia.tec.br/miles/sistema/"
