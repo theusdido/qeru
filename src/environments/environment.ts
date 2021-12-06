@@ -12,14 +12,14 @@ export const environment = {
     project: 'Qeru'
   },  
   firebase: {
-    apiKey: "AIzaSyDcSQDPkFqpQBd8UbX-Wtw23tNTg-0dmn4",
+    apiKey: "",
     authDomain: "qeru-6981b.firebaseapp.com",
     databaseURL: "https://qeru-6981b-default-rtdb.firebaseio.com",
-    projectId: "qeru-6981b",
+    projectId: "",
     storageBucket: "qeru-6981b.appspot.com",
-    messagingSenderId: "924685319501",
-    appId: "1:924685319501:web:3ac10436cb87c9b4610b04",
-    measurementId: "G-NL8C6QZEX1"
+    messagingSenderId: "",
+    appId: "",
+    measurementId: ""
   },
   miles:{
     host:"https://teia.tec.br/miles/sistema/"
@@ -28,23 +28,23 @@ export const environment = {
 
 // Lojista teste 
 export const lojista = {
-  nome:"Bianca Peruchi",
-  cpf:"044.725.179-14",
-  email:"bianca_peruchi@hotmail.com",
-  datanascimento:"27/11/1983",
-  cnpj:"53.848.608/0001-37",
-  razaosocial:"Peruchis Store LTDA",
-  nomefantasia:"Peruchis Store",
-  fixo:"(48) 3443-4141",
-  celular:"(48) 9.9659-9350",
-  endereco:"Rua Walter da Silva Medeiros",
-  numero:"85",
+  nome:",
+  cpf:"",
+  email:"",
+  datanascimento:"",
+  cnpj:"",
+  razaosocial:"",
+  nomefantasia:"",
+  fixo:"",
+  celular:"",
+  endereco:"",
+  numero:"",
   complemento:"",
-  cep:"88804-770",
-  bairro:"Jardim Angélica",
-  cidade:"Criciúma",
-  senha:"12345678",
-  csenha:"12345678",
+  cep:"",
+  bairro:"",
+  cidade:"",
+  senha:"",
+  csenha:"",
   isentrega:"S",
   categorias:"[]",
   estado:""
@@ -52,20 +52,20 @@ export const lojista = {
 
 // Cliente Teste
 export const cliente = {
-  nome:"Edilson Bitencourt",
-  cpf:"044.725.179-14",
-  datanascimento:"27/11/1983",
-  fixo:"(48) 3443-4141",
-  celular:"(48) 9.9659-9350",
-  endereco:"Rua Walter da Silva Medeiros, 85",
-  numero:"85",
+  nome:"",
+  cpf:"",
+  datanascimento:"",
+  fixo:"",
+  celular:"",
+  endereco:"",
+  numero:"",
   complemento:"",  
-  cep:"88804-770",
-  bairro:"Jardim Angélica",
-  cidade:"Criciúma",
-  estado:"SC",
-  email:"edilsonbitencourt@hotmail.com",
-  senha:"12345678"
+  cep:"",
+  bairro:"",
+  cidade:"",
+  estado:"",
+  email:"",
+  senha:""
 }
 
 // Seta o perfil de acesso
