@@ -1,0 +1,10 @@
+<span>
+    <app-topicopagina *ngIf="is_show_label" label="Selecione uma categoria"></app-topicopagina>
+    <div class="categoria-list">
+        <div *ngFor="let c of categorias"  class="card categoria-list-item {{c.sel? 'itemsel' : ''}}" (click)="selecionar(c)">
+            <fa-icon [icon]="faCheck" class="categoria-check-icon" [style.display]="c.sel?'':'none'"></fa-icon>
+            <fa-icon *ngIf="c.icon != null" [icon]="c.icon"></fa-icon>
+            <small>{{c.texto}}</small>
+        </div>
+    </div>
+</span>

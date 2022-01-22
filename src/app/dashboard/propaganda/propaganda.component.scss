@@ -1,0 +1,23 @@
+.card-deck{
+    display: flex;
+    position: absolute;
+    justify-content: start;
+    height: 50%;
+    width: 80%;
+    padding:10px;
+    margin-right: right;
+    text-align: left;
+}
+.card-img-top{
+    padding: 5px;
+    width: 6rem;
+    margin: auto;
+}
+
+.linha-form-propaganda{
+    margin-top:30px;
+}
+
+.upload-card img {
+    height:50px !important;
+}

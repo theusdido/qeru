@@ -1,0 +1,56 @@
+<app-categoria 
+    [loja]            = "loja"
+    contexto        = "dashboard-lojista" 
+    [multiple]      = "false" 
+    (getCategoria)  = "load( $event )"
+></app-categoria>
+
+<div class="row">
+    <div class="col coluna-btn-subcategoria">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Novo Produto" aria-label="Adicionar Novo Produto" aria-describedby="Adicionar Novo Produto" [(ngModel)]="itemNome">
+            <button class="btn btn-outline-secondary btn-add-atributo" type="button" (click)="addProduto()">
+                <fa-icon [icon]="faPlusSquare"></fa-icon>
+            </button>
+        </div>
+        <hr class="separador-lista-subcategoria" />
+    </div>
+</div>
+<div class="row ">
+    <div class="col lista-produtos">
+        <div class="card" *ngFor="let a of itens;let i = index;" id="categoriaproduto-{{ i }}">
+            <div class="card-header" (click)="show(i)">
+                {{ a.descricao }}
+                <fa-icon class="botoes-acoes btn-card-header" [icon]="faTrash" (click)="excluirSubCategoria( $event,a,i )" [style.color]="'#f37575'"></fa-icon>
+                <fa-icon class="botoes-acoes btn-card-header" [icon]="faCheck" (click)="habilitarSubCategoria( $event,a )" [style.color]="a.inativo ? 'red' : 'green'"></fa-icon>
+            </div>
+            <div class="card-body" style="display: none;">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="new-atributo-{{i}}" placeholder="Adicionar" aria-label="Caracteristica do Produto" aria-describedby="Caracteristica do Produto">
+                    <button class="btn btn-outline-secondary btn-add-atributo" type="button" (click)="addAtributo(i,a)">
+                        <fa-icon [icon]="faPlus"></fa-icon>
+                    </button>
+                </div>        
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between" *ngFor="let c of a.atributos;let iOpcao = index;" id="atributo-{{c.id}}-{{iOpcao}}">
+                        <span>{{ c.descricao }}</span>
+                        <div>                                
+                            <mat-form-field appearance="legacy">
+                                <input matInput placeholder="Adicionar"  id="opcao-manual-{{ i }}-{{ iOpcao }}">
+                                <mat-icon matSuffix (click)="addOpcao(i,iOpcao,c)" class="btn-add-opcao">+</mat-icon>
+                            </mat-form-field> 
+
+                            <fa-icon class="botoes-acoes btn-atributo-opcoes" [icon]="faList" [matMenuTriggerFor]="opcoes"></fa-icon>
+                            <fa-icon class="botoes-acoes btn-atributo-opcoes" [icon]="faCheck" (click)="habilitarAtributo( $event,c,iOpcao )" [style.color]="c.inativo ? 'red' : 'green'"></fa-icon>
+                            <fa-icon class="botoes-acoes btn-atributo-opcoes" [icon]="faTrash" (click)="excluirAtributo( $event,c,iOpcao )" [style.color]="'#f37575'"></fa-icon>
+                            <mat-menu #opcoes="matMenu" xPosition="before">
+                                <app-atributo-opcao [opcoes]="c.itens"></app-atributo-opcao>
+                            </mat-menu>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>

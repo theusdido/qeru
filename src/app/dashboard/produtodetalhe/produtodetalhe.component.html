@@ -1,0 +1,9 @@
+<app-topicopagina label="Especificações"></app-topicopagina>
+<div class="row">
+    <div class="box-especificacao col-md-4 col-sm-2 col-xs-1" *ngFor="let e of especificacao;">
+        <div >
+            <small>{{ e.nome }}</small>
+            <p>{{ e.valores }}</p>
+        </div>
+    </div>
+</div>

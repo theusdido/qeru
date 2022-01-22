@@ -1,0 +1,22 @@
+<div class="row lista-negociacoes-home">
+    <div class="col-md-3">
+        <div class="card text-center" *ngFor="let n of negociacoes | async">
+            <div class="card-header">{{n.loja}} <span class="badge bg-warning text-dark">1</span></div>
+            <div class="card-body">
+                <img src="assets/img/teia-logo.png" class="img-logo-negociacao-home" />
+                <div>
+                    <fa-icon [icon]="faStar"></fa-icon>
+                    <fa-icon [icon]="faStar"></fa-icon>
+                    <fa-icon [icon]="faStar"></fa-icon>
+                    <fa-icon [icon]="faStar"></fa-icon>
+                    <fa-icon [icon]="faStar"></fa-icon>
+                </div>
+                <p class="card-text">{{n.produto}}</p>
+                
+            </div>
+            <div class="card-footer text-muted">
+                <button href="#" class="btn btn-primary" (click)="abrirChat(n)">Responder</button>
+            </div>
+        </div>
+    </div>
+</div>

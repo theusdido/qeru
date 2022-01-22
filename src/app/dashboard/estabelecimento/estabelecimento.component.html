@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <app-titulopagina 
+                titulo="Estabelecimento"
+                subtitulo="Altere e personalize os dados do seu estabelecimento."
+            ></app-titulopagina>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-md-10 col-md-2">
+            <button type="submit" value="submit" class="btn_3">Salvar</button>
+        </div>
+    </div>    
+    <div class="row">
+        <div class="col-md-12">
+            <mat-tab-group>
+                <mat-tab>
+                  <ng-template mat-tab-label>
+                    <fa-icon [icon]="faStore"></fa-icon>
+                    Loja
+                  </ng-template>
+                  <app-estabelecimento-loja></app-estabelecimento-loja>
+                </mat-tab>
+                <mat-tab>
+                  <ng-template mat-tab-label>
+                    <fa-icon [icon]="faUserTie"></fa-icon>
+                    Lojista
+                  </ng-template>
+                  <app-estabelecimento-lojista></app-estabelecimento-lojista>
+                </mat-tab>
+                <mat-tab>
+                  <ng-template mat-tab-label>
+                    <fa-icon [icon]="faImage"></fa-icon>
+                    Imagens
+                  </ng-template>
+                    <app-estabelecimento-imagens></app-estabelecimento-imagens>                  
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                      <fa-icon [icon]="faTruck"></fa-icon>
+                      Entrega
+                    </ng-template>
+                    <app-estabelecimento-entrega></app-estabelecimento-entrega>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

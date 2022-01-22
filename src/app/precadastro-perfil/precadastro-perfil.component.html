@@ -1,0 +1,19 @@
+<p>Escolha o seu perfil.</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card {{cliente_selected}} precadastro-card-select-perfil">
+            <fa-icon [icon]="faUser"></fa-icon>
+            <div class="card-body">
+                <button id="btn-sou-cliente" class="btn btn-primary" (click)="setPerfil('C')">Sou Cliente</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card {{lojista_selected}} precadastro-card-select-perfil">
+            <fa-icon [icon]="faTruck"></fa-icon>
+            <div class="card-body">
+                <button id="btn-sou-lojista" class="btn btn-primary" (click)="setPerfil('L')">Sou Lojista</button>
+            </div>
+        </div>
+    </div>
+</div>

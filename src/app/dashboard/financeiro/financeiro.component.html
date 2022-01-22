@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <app-titulopagina 
+            titulo="Financeiro"
+            subtitulo="Dados finceiros, banco, extrato e receita."
+        ></app-titulopagina>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <app-financeiro-card
+                caption="R$ 1.334,41"
+                item="Crédito"
+                color="red"
+            ></app-financeiro-card>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <button class="btn-menu-financeiro">
+                <i class="fas fa-file-alt"></i>
+                Meu Extrato
+            </button>
+        </div>
+        <div class="col-md-4">
+            <button class="btn-menu-financeiro">
+                <i class="fas fa-dollar-sign"></i>
+                Comprar Crédito
+            </button>
+        </div>         
+    </div>
+</div>    

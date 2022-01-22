@@ -1,0 +1,48 @@
+<div id="topo" class="d-flex flex-row align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+        <app-avatar customClass="conversacao-chat"></app-avatar>
+        <h2 class="remetente-nome">{{nomeremetente}}</h2>
+    </div>
+    <!--
+    <div class="qeru-produto d-flex align-items-center">
+        <small>Qeru: <strong>{{qeru}}</strong></small>
+        <fa-icon class="imagens-produto" [icon]="faImages"></fa-icon>
+    </div>
+    -->
+</div>
+<div id="conversacao">
+    <div class="interacao" *ngFor="let i of interacoes | async">
+        <p class="cabecalho-mensagem cabecalho-perfil-{{classeMSG(i.perfil)}}">{{ i.emissor_nome }} - {{ i.datahora }}</p>        
+        <mat-card class="mensagem {{classeMSG(i.perfil)}}">
+            <img class="imagem-interacao img-fluid img-thumbnail" src="{{url_host}}projects/31/arquivos/temp/{{i.anexo}}" *ngIf="i.anexo" />
+            <p>{{ i.mensagem }}</p>
+        </mat-card>
+    </div>
+</div>
+<p>
+    
+</p>
+<div id="rodape">
+    <div class="div-mensagem">
+        <input type="text" [(ngModel)]="mensagem" id="mensagem" />
+    </div>    
+    <div class="div-botao">
+        <span matBadge="1" matBadgeOverlap="false" class="badge-upload" [style.display]="badgeUploadFile"></span>
+        <input type="file" (change)="onFileSelected($event);" style="display:none" #inputFile />
+        <button 
+            class="btn-chat" 
+            (click)="inputFile.click()"
+            [style.backgroundColor]="buttonFileUploadColor"
+        >
+            <i class="fa fa-paperclip"></i>
+        </button>        
+    </div>
+    <div class="div-botao">
+        <button class="btn-chat" (click)="enviar()">
+            <i class="fa fa-paper-plane" [style.display]="iconEnviarMensagem"></i>
+            <mat-spinner class="loading-file-chat" [style.display]="loadingFileChat" mode="indeterminate" [diameter]="25"></mat-spinner>
+        </button>        
+    </div>    
+</div>
+
+<div id="contatos"></div>

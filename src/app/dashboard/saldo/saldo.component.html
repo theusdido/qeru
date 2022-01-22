@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <app-titulopagina 
+            titulo="Saldo"
+            subtitulo="Dados finceiros, a receber, extrato e receita."
+        ></app-titulopagina>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <app-financeiro-card
+                caption="R$ 650,00"
+                item="Saldo"
+                color="red"
+            ></app-financeiro-card>
+        </div>
+        <div class="col-md-4">
+            <app-financeiro-card
+                caption="R$ 800,00"
+                item="Sacado"
+                color="green"
+            ></app-financeiro-card>
+        </div>
+        <div class="col-md-4">
+            <app-financeiro-card
+                caption="R$ 100,00"
+                item="Transferido"
+                color="blue"
+            ></app-financeiro-card>            
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <button class="btn-menu-financeiro">
+                <i class="fas fa-file-alt"></i>
+                Meu Extrato
+            </button>
+        </div>
+        <div class="col-md-4">
+            <button class="btn-menu-financeiro">
+                <i class="fas fa-dollar-sign"></i>
+                Solicitar Saque
+            </button>
+        </div>
+        <div class="col-md-4">
+            <button class="btn-menu-financeiro">
+                <i class="fas fa-exchange-alt"></i>
+                Realizar Transfência
+            </button>
+        </div>                
+    </div>
+</div>    

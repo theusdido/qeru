@@ -1,0 +1,26 @@
+    <section class="login_part">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-lg-2 col-md-2 fundo-vermelho">
+                    <div class="login_part_text">
+                        <div class="login_part_text_iner">
+                            <div class="text-center">
+                                <img src="assets/img/usuario.png" class="rounded-circle" id="user-img-dashboard">
+                               <p class="user-name">{{ username }}</p>
+                               <small class="user-email">{{ useremaill }}</small>
+                            </div>
+                            <div class="esquerda cor_l">
+                                <ul class="list-group" id="menu-principal-dashboard">
+                                    <app-menu-lojista  *ngIf="perfil=='L'"></app-menu-lojista>
+                                    <app-menu-cliente  *ngIf="perfil=='C'"></app-menu-cliente>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-md-10">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </section>

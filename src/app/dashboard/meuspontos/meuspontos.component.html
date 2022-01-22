@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <app-titulopagina 
+            titulo="Meus Pontos"
+            subtitulo="Pontos acumulados para troca."
+        ></app-titulopagina>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <app-financeiro-card
+                caption="150.000 pts"
+                item="Atual"
+                color="red"
+            ></app-financeiro-card>
+        </div>
+        <div class="col-md-4">
+            <app-financeiro-card
+                caption="70.000 pts"
+                item="Trocado"
+                color="green"
+            ></app-financeiro-card>
+        </div>
+        <div class="col-md-4">
+            <app-financeiro-card
+                caption="1.000 pts"
+                item="Transferido"
+                color="blue"
+            ></app-financeiro-card>            
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <button class="btn-menu-financeiro">
+                <i class="fas fa-gift"></i>
+                Trocar por Produtos
+            </button>
+        </div>        
+        <div class="col-md-4">
+            <button class="btn-menu-financeiro">
+                <i class="fas fa-file-alt"></i>
+                Meu Extrato
+            </button>
+        </div>
+        <div class="col-md-4">
+            <button class="btn-menu-financeiro">
+                <i class="fas fa-exchange-alt"></i>
+                Transferir Pontos
+            </button>
+        </div>                
+    </div>
+</div>    

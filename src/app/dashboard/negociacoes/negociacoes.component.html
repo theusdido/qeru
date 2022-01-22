@@ -1,0 +1,21 @@
+<div class="negociacoes-component">
+    <h2>Negociações</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col" width="20%">Data</th>
+                <th scope="col" width="35%">Estabelecimento</th>
+                <th scope="col" width="35%">Produto</th>
+                <th scope="col" width="10%">Mensagem</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let n of negociacoes | async">
+                <th scope="row">{{n.data}}</th>
+                <td>{{n.loja}} <br/> {{n.localizacao}} </td>
+                <td>{{n.produto}}</td>
+                <td><fa-icon [icon]="faRocketchat" (click)="iniciarChat(n)"></fa-icon></td>
+            </tr>
+        </tbody>
+    </table>    
+</div>

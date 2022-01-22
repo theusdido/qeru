@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col">
+        <div class="form-subcategoria">
+            <h5><strong>Qeru</strong> este produto</h5>
+            <select id="lista-categoria" class="form-control" [(ngModel)]="subcategoria" (change)="setAtributo()">
+                <option *ngFor="let c of subcategorias" value="{{ c.id }}"> {{ c.descricao }}</option>
+            </select>
+        </div>
+    </div>
+</div>

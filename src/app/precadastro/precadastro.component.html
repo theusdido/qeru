@@ -1,0 +1,15 @@
+<section id="section-precadastro" class="login_part section_padding">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-9 col-md-9">
+                <h3 class="titulo-pagina text-center">Seja bem-vindo!</h3>
+                <hr />
+                <app-precadastro-perfil #perfil></app-precadastro-perfil>
+                <app-precadastro-form *ngIf="is_show_form" #form></app-precadastro-form>
+            </div>
+            <div class="col-lg-3 col-md-3 topo div-autenticacao">
+                <app-autenticacao></app-autenticacao>
+            </div>
+        </div>
+    </div>
+</section>

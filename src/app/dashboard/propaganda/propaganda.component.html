@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <app-titulopagina 
+            titulo="Criar Propaganda"
+            subtitulo="Os dados abaixo são muito importantes para seu produto. Preencha-os com atenção."
+        ></app-titulopagina>
+        </div>
+    </div>
+    <div class="row linha-form-propaganda">
+        <div class="col-md-8">
+            <form>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="data_inicial" class="control-label">Data Inicial</label>
+                        <input type="text" class="form-control" id="data_inicial" name="data_inicial" />
+                    </div> 
+                    <div class="form-group">
+                        <label for="data_final" class="control-label">Data Final</label>
+                        <input type="text" class="form-control " id="data_final" name="data_final" />
+                    </div>
+                    <div class="form-group">
+                        <label for="link_externo" class="control-label">Link Externo</label>
+                        <input type="text" class="form-control " id="link_externo" name="link_externo" />
+                    </div>
+                    <div class="form-group">
+                        <label for="link_externo" class="control-label">Produto Interno</label>
+                        <input type="text" class="form-control " id="produto" name="produto" />
+                    </div>                    
+                </fieldset>
+            </form>    
+        </div>
+        <div class="col-md-4">
+            <app-topicopagina label="Banner"></app-topicopagina>
+            <app-upload-image
+                heightImg="150px"
+                displayButton="Carregar"
+            ></app-upload-image>
+        </div>
+        <div class="col-md-12">
+            <button type="submit" value="submit" class="btn_3">Salvar</button>
+        </div>
+    </div>
+</div>
+
+
+<!--
+<div class="card-deck">
+    <div class="card">
+        <img class="card-img-top" src="assets/img/camisa_vermelha.jpg">
+        <div class="card-body">
+        <h5 class="card-title">Camiseta vermelha</h5>
+        <p class="card-text"><h3>R$10,00</h3>
+        </div>
+    </div>
+    <div class="card">
+    <img class="card-img-top" src="assets/img/camisa_vermelha.jpg">
+    <div class="card-body">
+        <h5 class="card-title">Título do card</h5>
+        <p class="card-text">Descrição</p>
+    </div>
+    </div>
+    <div class="card">
+    <img class="card-img-top" src="assets/img/camisa_vermelha.jpg">
+    <div class="card-body">
+        <h5 class="card-title">Título do card</h5>
+        <p class="card-text">Descrição</p>
+    </div>
+    </div>
+</div>        
+-->

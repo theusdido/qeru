@@ -1,0 +1,467 @@
+/* **************************************************
+    CATEGORIA
+************************************************** */
+.categoria-list{
+    display: flex; 
+    flex-wrap: wrap;
+    align-content: stretch;
+}
+.categoria-list-item {
+    width: 20%;
+    min-height:100px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border:1px solid #F9F9F9;
+    cursor:pointer;
+}
+.categoria-list-item:hover{
+    background-color: #F6F6F6 !important;
+}
+.itemsel {
+    background-color: #5a6fa5 !important;
+    color:#FFF;
+}
+.itemsel:hover{
+    background-color: #5a6fa5 !important;
+}
+.categoria-check-icon{
+    position: absolute;
+    right:5px;
+    top:5px;
+    color:#FFF;
+}
+/* **************************************************
+    ATRIBUTO
+************************************************** */
+.atributo-list div {
+    display: inline-flex;
+    align-items: center;
+    margin:auto 5px 5px auto;
+    justify-content: space-between;
+}
+/* **************************************************
+    ITEM
+************************************************** */
+.item-img {
+    cursor:pointer;
+    min-width: 100% !important;
+}
+.botoes-grupo input[type=button]{
+    margin:10px;
+}
+.item-list .card .card-body {
+    background-color: #EEE;
+}
+
+.iupload {
+    display: none;
+}
+
+/* **************************************************
+    NEGOCIAÇÃO
+************************************************** */
+.negociacoes-component {
+ 
+}
+
+.negociacao-open{
+    color:green;
+}
+.negociacao-close{
+    color:red;
+}
+
+/* **************************************************
+    DASHBOARD
+************************************************** */
+.titulo-dashboard{
+    text-transform: capitalize;
+}
+
+
+.td-validation-error {
+    background-color:#ffe6e6 !important;
+    border-bottom:2px solid #FF0000 !important;
+}
+.td-validation-success{
+    background-color:#f1ffee !important;
+    border-bottom:2px solid green !important;
+}
+.div-error{
+    display:none;
+}
+
+.menu-dashboard a{
+    color:#000;
+}
+.menu-dashboard a.active{
+    background-color: transparent !important;
+    color:#000 !important;
+}
+
+.menu-dashboard .nav-link {
+    border-radius: 0px !important;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border:1px solid #EEE;
+    height:70px;
+    padding:0px;
+    margin-right:15px;
+    text-align: left;
+}
+
+.menu-dashboard .nav-link fa-icon{
+    background-color:#ec4737;
+    color:#FFF;
+    padding:10px 15px;
+    font-size:32px;
+}
+.menu-dashboard .nav-link{
+    width:100%;
+    float:left;
+    clear:both;
+}
+.menu-dashboard .nav-link:hover{
+    background-color: #ffe8e6 !important;
+    color:#FFF !important;
+}
+.textos {
+    width:100%;
+    float:left;
+    clear:left;
+    margin:0px;
+    padding-left:15px;
+}
+p.textos {
+    font-weight: bold;
+}
+small.textos{
+    color:#999;
+}
+
+/* **************************************************
+    PRODUTO - SUBCATEGORIA 
+************************************************** */
+.form-subcategoria {
+    margin-top:50px;
+    width:100% !important;
+}
+
+.form-subcategoria label {
+    font-size: 12px;
+    width: 100%;
+}
+.form-subcategoria .nice-select {
+    width:100%;
+    line-height: 28px;
+}
+.form-subcategoria .nice-select ul {
+    width:100%;
+}
+.btn-subcategoria-produto{
+    margin-top:50px;
+    float:right;
+}
+.separador-lista-subcategoria {
+    border-bottom:1px solid #ff2020;
+}
+
+.lista-produtos .card-header {
+    cursor:pointer;
+}
+.botoes-acoes {
+    margin-left:25px;
+    cursor:pointer;
+}
+.botoes-acoes.btn-card-header{
+    float:right;    
+}
+
+.btn-add-atributo{
+    height: 38px;
+    width:40px;
+    padding:0px;
+}
+
+.coluna-btn-subcategoria {
+    margin-top:50px;
+}
+
+.lista-produtos .card {
+    margin-bottom:15px;
+}
+.btn-add-atributo-opcao{
+    cursor:pointer;
+}
+
+.btn-add-opcao {
+    cursor:pointer;
+}
+.aviso-opcoes{
+    margin: auto 10px;
+}
+/* **************************************************
+    MULTISELECT MASTER CHECKBOX
+************************************************** */
+.multiselect-item-checkbox input[type=checkbox]:checked + div:before{
+    background-color: #ec4737 !important;
+}
+.multiselect-item-checkbox input[type=checkbox] + div:before {
+    color:#ec4737 !important;
+    border:2px solid #ec4737 !important;
+}
+.multiselect-dropdown .dropdown-btn .selected-item{
+    border: 1px solid #ec4737 !important;
+    background: #ec4737 !important;
+}
+
+/* **************************************************
+    RETORNO PEDIDO
+************************************************** */
+.img-check-retorno{
+    width:300px;
+}
+
+/* **************************************************
+    MENU LATERAL DO DASHBOARD
+************************************************** */
+#menu-principal-dashboard , #menu-principal-dashboard li {
+    background-color: transparent;
+    color:#FFF;
+    border:0px;
+}
+#menu-principal-dashboard li{
+    border-bottom:1px solid rgba(0,0,0,0.1);
+}
+
+#menu-principal-dashboard li fa-icon {
+    width:25px;
+    float:left;
+}
+#menu-principal-dashboard li:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+
+.app-divisor{
+    border:1px solid #FDFDFD;
+}
+
+.logo-qeru-menu{
+    width:25px;
+    height:20px;
+    margin:0px;
+}
+
+#user-img-dashboard {
+    width:50%;
+}
+
+.div-autenticacao
+{
+    background-color:#ec4737;
+}
+
+/* **************************************************
+    NEGOCIAÇÃO HOME DASHBOARD
+************************************************** */
+.img-logo-negociacao-home{
+    max-width:100%;
+}
+
+
+
+.item-lista-imagens .item {
+    border:1px solid #EEE;
+    padding:5px;
+    height:100px;
+}
+.item-lista-imagens .item img {
+    object-fit: cover;
+    min-width: 100%;
+    min-height: 100%;
+}
+.item-lista-imagens .item:hover{
+    border:1px solid #AAA;
+}
+.item-lista-imagens {
+    border:1px dotted #F0F0F0;
+}
+.excluir-imagem-lista-item {
+    color:#FF0000;
+    position:absolute;
+    right:5px;
+    cursor:pointer;
+}
+
+/* **************************************************
+    DASHBOARD - GERAL
+************************************************** */
+.div-titulo-pagina .titulo-pagina {
+    color:#000 !important;
+    margin-top:-5px !important;
+}
+
+.subtitulo-pagina {
+    color:#404040;
+    margin-top:-20px !important;
+    float:left;
+}
+.suptitulo-pagina{
+    margin-bottom:-15px !important;
+    color:#404040;
+}
+
+/* **************************************************
+    DASHBOARD - TÓPICO PÁGINA
+************************************************** */
+.topico-pagina mat-divider{
+    margin:-15px auto 15px auto;
+}
+
+/* **************************************************
+    DASHBOARD - ESPECIFICAÇÃO
+************************************************** */
+.box-especificacao {
+    background-color:#F0F0F0;
+    border-bottom:1px solid #8B8B8B;
+    padding-left:10px;
+    padding-top:5px;
+    height:60px;
+    margin:5px;
+}
+
+.box-especificacao p {
+    color:#1F1F1F !important;
+}
+
+.prenegociacao-component .item-lista-imagens .item{
+    width:150px;
+    height: 150px;
+    margin:15px;
+}
+.prenegociacao-component .item-lista-imagens img{
+    width:120px;
+    height: 120px;
+}
+
+
+.dialog-mat-close {
+    float:right;
+    display: block;
+    width:100%;
+    text-align: right;
+    cursor:pointer;
+}
+
+.header-area{
+    box-shadow: 0 0 3px 0 #BBB;
+}
+.fundo-vermelho{
+    background-color: #ec4737;
+}
+
+.login_part_text_iner .user-name {
+    font-weight: bold;
+    color:#FFF;
+    margin:0px;
+    padding:0px;
+}
+.login_part_text_iner .user-email{
+    color:#FFF;
+    margin-top:-10px !important;
+    float:left;
+    text-align: center;
+    width: 100%;
+}
+
+#menu-principal-dashboard{
+    display:table;
+    margin-top:20px;
+    width:100%;
+}
+.titulo-home-dashboard .div-titulo-pagina {
+    margin:15px auto 30px auto;
+}
+
+/* **************************************************
+    FORMULÁRIO GERAL
+************************************************** */
+.login_part_form_iner h3 {
+    margin-bottom:5px;
+}
+.login_part_form_iner form legend {
+    font-size: 18px;
+    border-bottom: 1px solid #999;
+    color:#333;
+    text-align: left;
+}
+
+/* **************************************************
+    SITE - PÚBLICO
+************************************************** */
+.titulo-pagina {
+    text-align: right;
+    font-weight: bold !important;
+    font-size:20px;
+}
+
+.div-conteudo .subtitulo-publico {
+    text-align: right !important;
+}
+
+/* **************************************************
+    PROPOSTA - COMPONENTE
+************************************************** */
+.ichat-proposta {
+    cursor:pointer;
+}
+
+/* **************************************************
+    PRÉ CADASTRO - COMPONENTE
+************************************************** */
+.precadastro-card-select-perfil fa-icon {
+    font-size: 48px;
+    margin:15px;
+    color:#444 !important;
+}
+
+.card {
+    text-align: center;
+    border:2px solid #EEE;
+}
+
+.perfil_selected{
+    border:2px solid #103a00;
+    background-color: #ceffd2;
+}
+.perfil_no_selected{
+    background-color: #eee;
+}
+.btn_disabled{
+    background-color: #AAA;
+}
+#form-pre_cadastro
+{
+    margin-top:15px !important;
+}
+#form-pre_cadastro hr {
+    border:1px double #103a00;
+}
+
+/* **************************************************
+    UPLOAD IMAGEM - COMPONENTE
+************************************************** */
+.upload-image-componente{
+    width:100px;
+}
+
+.excluir-imagem-upload-image{
+    position: absolute;
+    color:#FF0000;
+    top: 50px;
+    right: 25px;
+    z-Index: 1000;
+    cursor:pointer;
+}
