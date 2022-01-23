@@ -1,0 +1,36 @@
+.msg-error-formgroup{
+	display:none;
+}
+
+
+.loading2{
+	width:32px;
+	height:32px;
+	display:none;
+}
+
+#valorsubtotal-pagamento , #valorfrete-pagamento{
+	float:left;
+	width:100%;
+	margin:0px;
+    text-align: right;
+	background-color: #E9E9E9;
+	margin-top:10px;
+}
+
+#valortotalcompra-pagamento{
+	text-align:right;
+	height: 90px;
+}
+
+#valortotalcompra-pagamento .valor-total-compra-checkout{
+	font-size:24px;
+}
+
+#lista-itens-checkout{
+	float:left;
+}
+
+#valortotalcompra-pagamento .label-valortotal{
+    text-align: right !important;
+}

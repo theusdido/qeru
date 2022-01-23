@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { ProjetoMiles } from './projeto';
 import { RequisicaoService } from '../../service/requisicao.service';
 import { Sessao } from 'src/app/service/sessao.service';
@@ -38,9 +38,31 @@ export class RequisicaoMiles {
             (r:any) => {
                 Sessao.token = r.token;
                 ls.set("token",r.token);
-                return Sessao.token;                
+                return Sessao.token;
             }
         );
+    }
 
+    get(parametros:any){
+        parametros.currentproject   = ProjetoMiles.id;
+        parametros.key              = 'k';
+        parametros.responseType     ='json';
+
+        let http_params = new HttpParams({
+            fromObject:parametros
+        });
+
+        return this.http.get(this.host,{params:http_params}); 
+    }
+
+    httpParams(parametros:any):HttpParams{
+        parametros.currentproject   = ProjetoMiles.id;
+        parametros.key              = 'k';
+        parametros.responseType     ='json';
+
+        let http_params = new HttpParams({
+            fromObject:parametros
+        });
+        return http_params;
     }
 }

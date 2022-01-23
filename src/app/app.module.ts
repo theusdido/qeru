@@ -83,6 +83,7 @@ import { PropagandaVisualizarComponent } from './dashboard/propaganda-visualizar
 import { IndicadoresComponent } from './dashboard/indicadores/indicadores.component';
 import { PrecadastroPerfilComponent } from './precadastro-perfil/precadastro-perfil.component';
 import { PrecadastroFormComponent } from './precadastro-form/precadastro-form.component';
+import { AdicionarCreditoComponent } from './dashboard/carteriadigital/adicionar-credito/adicionar-credito.component';
 
 
 @NgModule({
@@ -140,7 +141,8 @@ import { PrecadastroFormComponent } from './precadastro-form/precadastro-form.co
     PropagandaVisualizarComponent,
     IndicadoresComponent,
     PrecadastroPerfilComponent,
-    PrecadastroFormComponent
+    PrecadastroFormComponent,
+    AdicionarCreditoComponent
   ],
   imports: [
     BrowserModule,

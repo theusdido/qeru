@@ -40,11 +40,16 @@ export class AutenticacaoComponent implements OnInit {
             ls.set("lojista",JSON.stringify(r.perfil.lojista[0]));
             ls.set("loja",JSON.stringify(r.perfil.loja[0]));
             ls.set("categorias",r.perfil.categorias);
-            this.ljs.load(r.perfil.lojista[0].id).then(
-              () => {
-                this.irDashBoard();
-              }
-            );
+
+            if (r.perfil.lojista.length <= 0){
+              this.irDashBoard();
+            }else{
+              this.ljs.load(r.perfil.lojista[0].id).then(
+                () => {
+                  this.irDashBoard();
+                }
+              );
+            }
           }else if (r.usergroup == 4){
             ls.set("perfil","C");
             ls.set("cliente",r.perfil.id);

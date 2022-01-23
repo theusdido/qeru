@@ -68,7 +68,9 @@
               "src/assets/js/jquery.ajaxchimp.min.js",
               "src/assets/js/plugins.js",
               "src/assets/owl-carousel/2.3.4/dist/owl.carousel.min.js",
-              "src/assets/js/main.js"
+              "src/assets/js/main.js",
+              "src/assets/jquery/jquery.mask.js",
+              "src/assets/jquery/jquery.payment-master/lib/jquery.payment.js"
             ],
             "vendorChunk": true,
             "extractLicenses": false,
