@@ -1,0 +1,69 @@
+<div class="container">    
+    <form class="form">
+        <fieldset>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label class="control-label">Nome</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="nome" 
+                        name="nome"
+                        [(ngModel)]="nome"
+                    />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="control-label">CPF</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="cpf" 
+                        name="cpf"
+                        [(ngModel)]="cpf"
+                        (blur)="validarCampo($event)"
+                    /> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group ">
+                    <label class="control-label">E-Mail</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="email" 
+                        name="email" 
+                        [(ngModel)]="email"
+                        (blur)="validarCampo($event)"
+                    />
+                </div>
+                <div class="col-md-6 form-group ">
+                    <label class="control-label">Telefone</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="telefone" 
+                        name="telefone" 
+                        [(ngModel)]="telefone"
+                        (blur)="validarCampo($event)"
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <button 
+                        type="submit" 
+                        value="submit" 
+                        class="btn_3"
+                        (click)="salvar()"
+                    >Salvar</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div 
+    class="alert alert-success" 
+    style="display:none" 
+    id="vendedor-msg-retorno"
+    >Salvo com Sucesso !
+</div>

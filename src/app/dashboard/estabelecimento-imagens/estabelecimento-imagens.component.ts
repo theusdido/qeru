@@ -34,7 +34,8 @@ export class EstabelecimentoImagensComponent implements OnInit,AfterViewInit , A
     
   }
   ngAfterViewInit(): void {
-    this.setaLogoLoja(ls.get('logo-loja'));
+    //this.setaLogoLoja(ls.get('logo-loja'));
+    this.upload_logo.noImagem();
   }
   ngAfterContentInit(){
     
@@ -68,7 +69,7 @@ export class EstabelecimentoImagensComponent implements OnInit,AfterViewInit , A
       setTimeout(function(){
         $('#icon-excluir-logo-loja').show();
       },3000);
-      this.upload_logo.setImagem(this.ljs.getLogoLojaSRC());      
+      this.upload_logo.setImagem(this.ljs.getLogoLojaSRC());
     }
     //ls.set('logosrc-loja',filename);
   }

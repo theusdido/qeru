@@ -15,21 +15,24 @@ import { Categoria } from 'src/app/classe/categoria';
   styleUrls: ['./categoria.component.scss']
 })
 export class CategoriaComponent implements OnInit,AfterViewInit {
-  public sel = 0;
-  public faCheck = faCheck;
-  public categorias:Array<Categoria> = [];
-  public icons:any = [];
-  public current:number = 0;
-  public perfil:string = "";  
+  public sel                            = 0;
+  public faCheck                        = faCheck;
+  public categorias:Array<Categoria>    = [];
+  public icons:any                      = [];
+  public current:number                 = 0;
+  public perfil:string                  = "";
 
-  @Input() id:number = 0;
-  @Input() loja             = 0;
-  @Input() contexto:string = "";
-  @Input() multiple:boolean = true;
-  @Input() is_show_label:boolean = true;
-  @Output() getCategorias = new EventEmitter<any>();
-  @Output() getCategoria = new EventEmitter<number>();
-  @Output() loadCategoria = new EventEmitter<number>();
+  @Input() id:number                    = 0;
+  @Input() loja                         = 1;
+  @Input() contexto:string              = "";
+  @Input() multiple:boolean             = true;
+  @Input() is_show_label:boolean        = true;
+  @Input() is_show_all                  = false;
+  @Input() categorias_sel:Array<number> = [];             
+  @Output() getCategorias               = new EventEmitter<any>();
+  @Output() getCategoria                = new EventEmitter<number>();
+  @Output() loadCategoria               = new EventEmitter<number>();
+  @Output() set_categorias              = new EventEmitter<any>();
 
   constructor(
     public rm:RequisicaoMiles,
@@ -54,7 +57,7 @@ export class CategoriaComponent implements OnInit,AfterViewInit {
    }
 
   ngAfterViewInit(){
-    
+
   }
   ngOnInit(): void { 
     this.load();   
@@ -83,13 +86,25 @@ export class CategoriaComponent implements OnInit,AfterViewInit {
 
   load(id:number = 0){
     this.loadCategoria.emit();
+    let params_id   = this.id == 0?id:this.id;
+    let params_loja = this.loja > 0 ? ls.get("loja") : null;
+
+    // Força carregar todas as categorias
+    if (this.is_show_all){
+      params_id   = 0;
+      params_loja = null;
+    }
+
     this.rs.get("categoria",{
       op:'load',
-      loja:this.loja > 0 ? ls.get("loja") : null,
-      id:this.id == 0?id:this.id
+      loja:params_loja,
+      id:params_id
     }).subscribe( 
       (response:any) => {
+
+        // Limpa as categorias existentes
         this.categorias.splice(0,this.categorias.length);
+
         for(let r of response){
 
           let id        = r.id;
@@ -98,7 +113,29 @@ export class CategoriaComponent implements OnInit,AfterViewInit {
           
           this.categorias.push({id:id,texto: descricao , icon:icon, sel:false});
         }
+
+        // Selecionar categorias caso exista na lista
+        if (this.categorias_sel.length > 0){
+          this.setarCategorias(this.categorias_sel);
+        }
       }
-    );    
+    );
+  }
+
+  setarCategorias(categorias:Array<number>){
+    this.set_categorias.emit();
+    for(let c of categorias){
+      this.selecionar(this.getCategoriaOBJ(c));
+    }
+  }
+
+  getCategoriaOBJ(id:number){
+    let c = {};
+    this.categorias.forEach( (categoria:any) => {
+      if (categoria.id == id){
+        c = categoria;
+      }
+    });
+    return c;
   }
 }

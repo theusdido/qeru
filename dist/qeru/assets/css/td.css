@@ -455,6 +455,7 @@ small.textos{
 ************************************************** */
 .upload-image-componente{
     width:100px;
+    object-fit:contain;
 }
 
 .excluir-imagem-upload-image{

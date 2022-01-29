@@ -13,59 +13,41 @@
                 <fieldset>
                     <div class="form-group">
                         <label for="data_inicial" class="control-label">Data Inicial</label>
-                        <input type="text" class="form-control" id="data_inicial" name="data_inicial" />
+                        <input type="text" class="form-control" id="data_inicial" name="data_inicial" [(ngModel)]="data_inicial" />
                     </div> 
                     <div class="form-group">
                         <label for="data_final" class="control-label">Data Final</label>
-                        <input type="text" class="form-control " id="data_final" name="data_final" />
+                        <input type="text" class="form-control " id="data_final" name="data_final" [(ngModel)]="data_final" />
                     </div>
                     <div class="form-group">
                         <label for="link_externo" class="control-label">Link Externo</label>
-                        <input type="text" class="form-control " id="link_externo" name="link_externo" />
+                        <input type="text" class="form-control " id="link_externo" name="link_externo" [(ngModel)]="link_externo" />
                     </div>
-                    <div class="form-group">
-                        <label for="link_externo" class="control-label">Produto Interno</label>
-                        <input type="text" class="form-control " id="produto" name="produto" />
-                    </div>                    
                 </fieldset>
             </form>    
         </div>
         <div class="col-md-4">
             <app-topicopagina label="Banner"></app-topicopagina>
             <app-upload-image
-                heightImg="150px"
+                #upload
+                height="125"
                 displayButton="Carregar"
+                (uploaded)="processaUpload($event)"
+                [params]="params"
             ></app-upload-image>
         </div>
         <div class="col-md-12">
-            <button type="submit" value="submit" class="btn_3">Salvar</button>
+            <button type="submit" value="submit" class="btn_3" (click)="salvar()">Salvar</button>            
+        </div>        
+    </div>
+    <div class="row">
+        <div class="col">
+            <div 
+                class="alert alert-success" 
+                style="display:none" 
+                id="propaganda-msg-retorno"
+            >Salvo com Sucesso !</div>
         </div>
     </div>
+
 </div>
-
-
-<!--
-<div class="card-deck">
-    <div class="card">
-        <img class="card-img-top" src="assets/img/camisa_vermelha.jpg">
-        <div class="card-body">
-        <h5 class="card-title">Camiseta vermelha</h5>
-        <p class="card-text"><h3>R$10,00</h3>
-        </div>
-    </div>
-    <div class="card">
-    <img class="card-img-top" src="assets/img/camisa_vermelha.jpg">
-    <div class="card-body">
-        <h5 class="card-title">Título do card</h5>
-        <p class="card-text">Descrição</p>
-    </div>
-    </div>
-    <div class="card">
-    <img class="card-img-top" src="assets/img/camisa_vermelha.jpg">
-    <div class="card-body">
-        <h5 class="card-title">Título do card</h5>
-        <p class="card-text">Descrição</p>
-    </div>
-    </div>
-</div>        
--->

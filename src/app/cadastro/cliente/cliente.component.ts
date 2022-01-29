@@ -6,6 +6,7 @@ import { Validar } from '../../validar';
 import { ls } from 'src/environments/environment';
 import { UF } from '../../classe/uf';
 import { Cliente } from 'src/app/classe/cliente';
+import { EnderecoService } from 'src/app/service/endereco.service';
 
 declare var $:any;
 @Component({
@@ -32,7 +33,8 @@ export class ClienteComponent implements OnInit {
     public session:Sessao,
     public validar:Validar,
     public sessao:Sessao,
-    public cliente:Cliente 
+    public cliente:Cliente,
+    public es:EnderecoService
   ) {
     this.sessao.currentPerfil     = 'C';
   }
@@ -95,8 +97,18 @@ export class ClienteComponent implements OnInit {
       case 'cep':
         if (this.cliente.cep == ""){
           this.validarCampos.cep = "";
-        }else{        
-          this.validarCampos.cep = this.validar.getTDClass(this.validar.isValidCEP(this.cliente.cep));
+        }else{
+          this.validarCampos.cep = this.validar.getTDClass(this.validar.isValidCEP(this.cliente.cep));          
+          if (this.validarCampos.cep == 'td-validation-success'){          
+            this.es.consultaCEP(this.cliente.cep).subscribe(              
+              (endereco:any) => {
+                this.cliente.endereco = endereco.end;
+                this.cliente.bairro   = endereco.bairro;
+                this.cliente.estado   = new UF().getId(endereco.uf);
+                this.cliente.cidade   = endereco.cidade;
+              }
+            );
+          }   
         }
       break;      
       case 'email':

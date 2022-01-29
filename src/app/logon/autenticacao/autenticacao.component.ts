@@ -38,7 +38,8 @@ export class AutenticacaoComponent implements OnInit {
           if (r.usergroup == 3){
             ls.set("perfil","L");
             ls.set("lojista",JSON.stringify(r.perfil.lojista[0]));
-            ls.set("loja",JSON.stringify(r.perfil.loja[0]));
+            console.log(r.perfil.loja[0].id);
+            ls.set("loja",r.perfil.loja[0].id);
             ls.set("categorias",r.perfil.categorias);
 
             if (r.perfil.lojista.length <= 0){

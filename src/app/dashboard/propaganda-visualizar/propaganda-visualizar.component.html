@@ -6,11 +6,11 @@
                 subtitulo="Veja as propagandas para ganhar créditos na Qeru."
             ></app-titulopagina>
         </div>
-    </div>    
-    <div class="row lista-negociacoes-home">
-        <div class="col-md-3">
-            <div class="card text-center" *ngFor="let n of negociacoes | async">
-                <div class="card-header">{{n.loja}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" *ngFor="let p of propagandas | async">
+            <div class="card text-center">
+                <div class="card-header">{{ p.loja_nome }}</div>
                 <div class="card-body">
                     <img src="assets/img/teia-logo.png" class="img-logo-negociacao-home" />
                     <div>
@@ -20,13 +20,17 @@
                         <fa-icon [icon]="faStar"></fa-icon>
                         <fa-icon [icon]="faStar"></fa-icon>
                     </div>
-                    <p class="card-text">{{n.produto}}</p>
-                    
+                    <p class="card-text">Pontos 5pts </p>
                 </div>
                 <div class="card-footer text-muted">
-                    <button href="#" class="btn btn-primary">Visualizar</button>
+                    <button 
+                        href="#" 
+                        class="btn btn-primary"
+                        (click)="visualizar(p)"
+                    >Visualizar</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<app-propaganda-view #propandaview></app-propaganda-view>

@@ -84,7 +84,12 @@ import { IndicadoresComponent } from './dashboard/indicadores/indicadores.compon
 import { PrecadastroPerfilComponent } from './precadastro-perfil/precadastro-perfil.component';
 import { PrecadastroFormComponent } from './precadastro-form/precadastro-form.component';
 import { AdicionarCreditoComponent } from './dashboard/carteriadigital/adicionar-credito/adicionar-credito.component';
-
+import { ProdutocadastroComponent } from './dashboard/produtocadastro/produtocadastro.component';
+import { ProdutolojaComponent } from './dashboard/produtoloja/produtoloja.component';
+import {MatSliderModule} from '@angular/material/slider';
+import { VendedorCadastroComponent } from './dashboard/vendedor-cadastro/vendedor-cadastro.component';
+import { DialogDataViewPropaganda, PropagandaViewComponent } from './propaganda-view/propaganda-view.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -142,7 +147,12 @@ import { AdicionarCreditoComponent } from './dashboard/carteriadigital/adicionar
     IndicadoresComponent,
     PrecadastroPerfilComponent,
     PrecadastroFormComponent,
-    AdicionarCreditoComponent
+    AdicionarCreditoComponent,
+    ProdutocadastroComponent,
+    ProdutolojaComponent,
+    VendedorCadastroComponent,
+    PropagandaViewComponent,
+    DialogDataViewPropaganda
   ],
   imports: [
     BrowserModule,
@@ -164,7 +174,9 @@ import { AdicionarCreditoComponent } from './dashboard/carteriadigital/adicionar
     MatBadgeModule,
     MatCardModule,
     MatDialogModule,
-    MatTabsModule    
+    MatTabsModule  ,  
+    MatSliderModule,
+    MatProgressBarModule
   ],
   providers: [
     ConfigService,
@@ -174,7 +186,7 @@ import { AdicionarCreditoComponent } from './dashboard/carteriadigital/adicionar
     UF,
     Lojista,
     RequisicaoService,
-    Sessao    
+    Sessao 
   ],
   bootstrap: [MainComponent]  
 })

@@ -1,0 +1,8 @@
+<mat-progress-bar #progressbar mode="determinate" [value]="percentual"></mat-progress-bar>
+<div class="moldura" style.background="url({{ data.image.src }})">
+    <div class="pontos-ganhhos">
+        <fa-icon [icon]="faCheck"></fa-icon>
+        <p>5pts</p>
+    </div>
+    <div class="cortina {{ percentual >= 100 ? 'complete' : '' }}"></div>
+</div>

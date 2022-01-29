@@ -1,4 +1,4 @@
-<span>
+<div id="categoriacomponent" name="categoriacomponent">
     <app-topicopagina *ngIf="is_show_label" label="Selecione uma categoria"></app-topicopagina>
     <div class="categoria-list">
         <div *ngFor="let c of categorias"  class="card categoria-list-item {{c.sel? 'itemsel' : ''}}" (click)="selecionar(c)">
@@ -7,4 +7,4 @@
             <small>{{c.texto}}</small>
         </div>
     </div>
-</span>
+</div>

@@ -18,6 +18,7 @@ export class UploadImageComponent implements OnInit,AfterViewInit{
   @Input() srcImage!:string;
   @Input() params!:HttpParams;
   @Input('id') idImage:string = '';
+  @Input('height') heightImage:string = '';
   @Output() uploaded = new EventEmitter();
   @Output() no_image = new EventEmitter<any>();
   @Output() set_image = new EventEmitter<any>();
@@ -35,24 +36,24 @@ export class UploadImageComponent implements OnInit,AfterViewInit{
   onFileSelected(event:any){  
 
     // Arquivo Uploaded
-    let selectedFile               = <File>event.target.files[0];
-    this.uploaded.emit(selectedFile.name);
+    let selectedFile = <File>event.target.files[0];
 
     // Upload de Arquivo
     this.us.upload(selectedFile,this.params).subscribe(
       (response:any) => {
-        this.srcImage = environment.miles.arquivos + response.filename;
+        this.srcImage = response.src;
+        this.uploaded.emit(response);
       }
     );
-
   }
 
   noImagem(){
+    console.log('imagem tem que sumir');
     this.no_image.emit();
     this.srcImage = this.sem_imagem_src;
   }
 
-  setImagem(src:string){    
+  setImagem(src:string){
     this.set_image.emit();
     this.srcImage = src;
   }

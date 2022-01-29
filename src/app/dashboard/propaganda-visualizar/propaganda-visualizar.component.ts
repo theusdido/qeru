@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { NegociacaoService } from '../negociacoes/negociacao.service';
 import { Observable } from 'rxjs';
+import { PropagandaViewComponent } from 'src/app/propaganda-view/propaganda-view.component';
+import { PropagandaService } from 'src/app/service/propaganda.service';
 
 @Component({
   selector: 'app-propaganda-visualizar',
@@ -10,13 +11,18 @@ import { Observable } from 'rxjs';
 })
 export class PropagandaVisualizarComponent implements OnInit {
   public faStar = faStar;
-  public negociacoes!:Observable<any>;
-  constructor(
-    public ns:NegociacaoService
-  ) {
-    this.negociacoes = this.ns.abertas();
-   }
+  public propagandas!:Observable<any>;
+  @ViewChild('propandaview') view:any;
 
-  ngOnInit(): void {
+  constructor(
+    public ps:PropagandaService
+  ) {
+    this.propagandas = this.ps.disponiveis();
   }
+  ngOnInit(): void {}
+
+  visualizar(propaganda:any){
+    this.view.show(propaganda);
+  }
+
 }

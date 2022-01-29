@@ -11,8 +11,8 @@
                             </div>
                             <div class="esquerda cor_l">
                                 <ul class="list-group" id="menu-principal-dashboard">
-                                    <app-menu-lojista  *ngIf="perfil=='L'"></app-menu-lojista>
-                                    <app-menu-cliente  *ngIf="perfil=='C'"></app-menu-cliente>
+                                    <app-menu-lojista  *ngIf="perfil=='L'" #menu_lojista (ir)="topScroll()"></app-menu-lojista>
+                                    <app-menu-cliente  *ngIf="perfil=='C'" #menu_cliente></app-menu-cliente>
                                 </ul>
                             </div>
                         </div>

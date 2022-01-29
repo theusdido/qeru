@@ -6,6 +6,7 @@ import { Validar } from '../../validar';
 import { UF } from '../../classe/uf';
 import { Lojista } from '../../classe/lojista';
 import { LojistaService } from '../../dashboard/lojista/lojista.service';
+import { EnderecoService } from 'src/app/service/endereco.service';
 
 declare var $:any;
 @Component({
@@ -32,18 +33,19 @@ export class LojistaComponent implements OnInit {
   public categorias:Array<boolean> = [];
   public isEntrega:any;
   public estados:Array<any> = new UF().estados;
-  public loja = ls.get("loja");
+  public loja = 0;
 
   constructor(
     public rs:RequisicaoService,
     public rota:Router,
     public validar:Validar,
     public lojista:Lojista,
-    public ljs:LojistaService  
+    public ljs:LojistaService ,
+    public es:EnderecoService
   ) {    
   }
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
     this.dados.estado = "24";
   }
 
@@ -96,6 +98,7 @@ export class LojistaComponent implements OnInit {
           ls.set("lojista",response.lojista);
           ls.set("loja",response.loja);
           ls.set("isLogado",true);
+          ls.set("categorias",this.dados.categorias);
           this.rota.navigate(["/dashboard"]);
         }
       },
@@ -147,8 +150,19 @@ export class LojistaComponent implements OnInit {
           this.validarCampos.cep = "";
         }else{        
           this.validarCampos.cep = this.validar.getTDClass(this.validar.isValidCEP(this.dados.cep));
+          if (this.validarCampos.cep == 'td-validation-success'){
+            this.es.consultaCEP(this.dados.cep).subscribe(
+              (endereco:any) => {
+                this.dados.endereco = endereco.end;
+                this.dados.bairro   = endereco.bairro;
+                this.dados.cep      = endereco.cep;
+                this.dados.estado   = new UF().getId(endereco.uf);
+                this.dados.cidade   = endereco.cidade;
+              }
+            );
+          }
         }
-      break;      
+      break;
       case 'email':
         if (this.dados.email == "" || this.dados.email == undefined){
           this.validarCampos.email = "";

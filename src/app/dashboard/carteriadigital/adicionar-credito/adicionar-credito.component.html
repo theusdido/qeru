@@ -3,7 +3,7 @@
 	    <img class="logo-forma-pagamento" src="assets/img/logo-pagseguro.png" />
     </div>
 </div>
-<div class="row">    
+<div class="row" style="display: none;">
 	<div id="btns-metodo-pagamento" class="btn-group btn-group-justified" role="group" aria-label="Métodos de Pagamento">
         <div class="col-md-6">
 		    <a href="#" class="btn btn-info active" id="btn-div-cartao">Cartão de Crédito</a>
@@ -13,13 +13,26 @@
         </div>
     </div>
 </div>
-<div id="div-pagamento-cartaocredito" class="row">
+<div class="row">
     <div class="col-md-12">
-        <div id="retorno-pagamento-cartao"></div>
+        <div id="retorno-pagamento-cartao" class="alert alert-success" style="display:none"></div>
     </div>
-</div>     
+</div>
 <div class="pagamento-cartaocredito row">
-    <div class="titularidade-pagamento col-md-12">
+    <div class="form-group col-md-12">
+        <p class="label-valor">Valor do Crédito</p>
+        <h1 class="display-valor">R$ {{ valor_total }},00</h1>
+        <mat-slider
+            thumbLabel
+            tickInterval="1000"
+            step="50"
+            min="0"
+            max="500"
+            aria-label="units"
+            [(ngModel)]="valor_total"
+        ></mat-slider>
+    </div>    
+    <div class="titularidade-pagamento col-md-12" style="display: none;">
         <div class="radio-inline">
             <input type="radio" name="optionsRadios" id="soutitularcartao1" value="S" checked>
             <label>Sou titular</label>
@@ -35,22 +48,31 @@
         </select>
     </div>
     <div class="form-group col-md-6">
-        <label for="titularcartao">Titular</label>
-        <input type="text" class="form-control" id="titularcartao" name="titularcartao" placeholder="Nome do Titular do Cartão" required>
+        <label for="nome">Titular</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="nome"
+            name="nome"
+            placeholder="Nome do Titular do Cartão" 
+            #required
+            [(ngModel)]="nome"
+        >
     </div>			
     <div class="form-group col-md-6">
         <label for="numerocartao">Número</label>
         <input 
-            type="text" 
-            class="form-control" 
-            id="numerocartao" 
-            name="numerocartao" 
-            placeholder="Número do Cartão" 
-            required
+            type="text"
+            class="form-control"
+            id="numerocartao"
+            name="numerocartao"
+            placeholder="Número do Cartão"
+            #required
             [(ngModel)]="numero_cartao"
             (blur)="loadParcelamento()"
         >
         <input type="hidden" class="form-control" id="bandeiracartao" name="bandeiracartao">
+        <input type="hidden" class="form-control" id="identificador" name="identificador">
         <div id="msg-erro-numerocartao"  class="alert alert-danger msg-error-formgroup"></div>
     </div>
     <div class="form-group col-md-6" style="display:none;">
@@ -58,28 +80,76 @@
         <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
     </div>
     <div class="form-group col-md-6">
-        <label for="datavencimento">Validade</label>
-        <input type="text" class="form-control" id="datavencimento" name="datavencimento" placeholder="Validade" readonly>
-        <div id="msg-erro-datavencimento"  class="alert alert-danger msg-error-formgroup"></div>
+        <label for="validade">Validade</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="validade" 
+            name="validade" 
+            placeholder="Validade" 
+            readonly
+            #required
+            (blur)="checkValidade()"
+        >
+        <div id="msg-erro-validade"  class="alert alert-danger msg-error-formgroup"></div>
     </div>
     <div class="form-group col-md-6">
         <label for="codigoseguranca">Código de Segurança</label>
-        <input type="text" class="form-control" id="codigoseguranca" name="codigoseguranca" placeholder="Código de Segurança" readonly>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="codigoseguranca" 
+            name="codigoseguranca" 
+            placeholder="Código de Segurança" 
+            readonly
+            #required
+            [(ngModel)]="cvc"
+        >
         <div id="msg-erro-codigoseguranca"  class="alert alert-danger msg-error-formgroup"></div>
     </div>
     <div class="form-group col-md-6">
-        <label for="cpftiular">CPF</label>
-        <input type="text" class="form-control" id="cpftiular" name="cpftiular" placeholder="CPF do Titular" required>
-        <div id="msg-erro-cpftitular"  class="alert alert-danger msg-error-formgroup"></div>
+        <label for="cpf-cartao">CPF</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="cpf-cartao" 
+            name="cpf-cartao" 
+            placeholder="CPF do Titular" 
+            required
+            #required
+            [(ngModel)]="cpf"
+            (blur)="checkCPF()"
+        >
+        <div id="msg-erro-cpf-cartao"  class="alert alert-danger msg-error-formgroup"></div>
     </div>
     <div class="form-group col-md-6">
-        <label for="datanascimento">Data Nascimento</label>
-        <input type="text" class="form-control" id="datanascimento" name="datanascimento" placeholder="Data de Nascimento" required>
-    </div>				
+        <label for="datanascimento-cartao">Data Nascimento</label>
+        <input 
+            type="text"
+            class="form-control"
+            id="datanascimento-cartao"
+            name="datanascimento-cartao"
+            placeholder="Data de Nascimento"
+            #required
+            [(ngModel)]="data_nascimento"
+            (blur)="checkDataNascimento()"
+        >
+        <div id="msg-erro-datanascimento-cartao"  class="alert alert-danger msg-error-formgroup"></div>
+    </div>
     <div class="form-group col-md-6">
         <label for="telefone">Telefone</label>
-        <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone do Titular" required>
-    </div>			
+        <input 
+            type="text" 
+            class="form-control" 
+            id="telefone-cartao" 
+            name="telefone-cartao" 
+            placeholder="Telefone do Titular" 
+            #required
+            [(ngModel)]="telefone"
+            (blur)="checkTelefone()"
+        >
+        <div id="msg-erro-telefone-cartao"  class="alert alert-danger msg-error-formgroup"></div>
+    </div>
     <div class="form-group col-md-6">
         <label for="parcelamento">Parcelamento</label>
         <select class="form-control" id="parcelamento" name="parcelamento" readonly required>
@@ -94,10 +164,16 @@
             <input class="form-check-input" type="checkbox" value="" id="chktermo" name="chktermo">
             <label class="form-check-label" for="chktermo">Li e aceito os termos da política de prividade de dados.</label>
         </div>
+        <div id="msg-erro-politicaprivacidade"  class="alert alert-danger msg-error-formgroup"></div>
     </div>
     <div class="col-md-12">  
-        <button type="button" class="btn btn-success" id="finalizar-cartaocredito">Pagar e Finalizar Pedido</button>
-        <img src="loading2.gif" class="loading-finalizar" style="display:none" />				
+        <button 
+            type="button" 
+            class="btn btn-success" 
+            id="finalizar-cartaocredito"
+            (click)="finalizarCartao()"
+        >Pagar e Finalizar Pedido</button>
+        <img src="loading2.gif" class="loading-finalizar" style="display:none" />		
         <div id="msg-erro-pedido"  class="alert alert-danger msg-error-formgroup"></div>
     </div>
 </div>

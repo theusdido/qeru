@@ -31,6 +31,8 @@ import { VendedorComponent } from './dashboard/vendedor/vendedor.component';
 import { PropagandaVisualizarComponent } from './dashboard/propaganda-visualizar/propaganda-visualizar.component';
 import { IndicadoresComponent } from './dashboard/indicadores/indicadores.component';
 import { AdicionarCreditoComponent } from './dashboard/carteriadigital/adicionar-credito/adicionar-credito.component';
+import { ProdutocadastroComponent } from './dashboard/produtocadastro/produtocadastro.component';
+import { ProdutolojaComponent } from './dashboard/produtoloja/produtoloja.component';
 
 export const routes: Routes = [
   { path: ''            , component:HomeComponent },
@@ -42,7 +44,19 @@ export const routes: Routes = [
     { path: ''              , component:DashboardHomeComponent}, 
     { path: 'proposta'      , component:PropostaComponent },
     { path: 'negociacoes'   , component:NegociacoesComponent },
-    { path: 'produto'       , component:ProdutoListarComponent},
+    {
+      path: 'produto'       ,
+      children:[
+        {
+          path:'',
+          component:ProdutolojaComponent
+        },
+        {          
+          path:'cadastro',
+          component:ProdutocadastroComponent
+        }
+      ]
+    },
     { path: 'categoria'     , component:CategoriaComponent},
     { path: 'comprar'       , component:ComprarComponent},
     { path: 'retorno'       , component:RetornoPedidoComponent},

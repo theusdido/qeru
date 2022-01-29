@@ -1,0 +1,29 @@
+.moldura,.cortina {
+    width: 700px;
+    height: 300px;
+}
+
+.cortina.complete {
+    background-color: rgba(0,0,0,0.5);
+}
+
+
+.pontos-ganhhos {
+    width:75px;
+    height: 75px;
+    position: absolute;
+    padding: 5px;
+    text-align: center;
+    margin:115px 310px;
+    display: none;
+    background-color: rgba(0,0,0,0.8);
+    padding-top: 10px;
+}
+
+.pontos-ganhhos p {
+    color:#FFF;
+}
+.pontos-ganhhos fa-icon {
+    color:#098b1f;
+    font-size: 20px;
+}

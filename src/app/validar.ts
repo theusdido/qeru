@@ -185,4 +185,8 @@ export class Validar {
     getTDClass(result:boolean) : string {
         return result ? "td-validation-success" : "td-validation-error";
     }
+
+    validField(field:any){
+
+    }
 }

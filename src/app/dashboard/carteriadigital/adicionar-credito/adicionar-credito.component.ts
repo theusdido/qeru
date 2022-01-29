@@ -1,5 +1,6 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit, ViewChildren } from '@angular/core';
 import { PagseguroService } from 'src/app/service/pagseguro.service';
+import { Validar } from '../../../validar';
 
 declare var $:any;
 
@@ -10,14 +11,23 @@ declare var $:any;
 })
 export class AdicionarCreditoComponent implements OnInit,AfterContentInit {
 
-  public numero_cartao  = '';
-  public valor_total    = 0;
+  public nome             = '';
+  public numero_cartao    = '';
+  public valor_total      = 50;
+  public validade         = '';
+  public cvc              = '';
+  public cpf              = '';
+  public data_nascimento  = '';
+  public telefone         = '';
+
+  @ViewChildren('required')  obrigatorios: any;
+  
   constructor(
-    public pagseguro:PagseguroService
+    public pagseguro:PagseguroService,
+    public validar:Validar
   ) { }
 
-  ngOnInit(): void {
-    this.pagseguro.valor_total = 100;
+  ngOnInit(): void {    
     this.setCartoes();
   }
 
@@ -26,14 +36,13 @@ export class AdicionarCreditoComponent implements OnInit,AfterContentInit {
 		$("#btn-checkout-pagamento").removeClass("btn-default");
 		$("#btn-checkout-pagamento").addClass("btn-warning");
   
-    $("#div-pagamento-cartaocredito #cpftiular,#div-pagamento-boleto #cpftiular").mask("999.999.999-99");
-    $("#div-pagamento-cartaocredito #telefone,#div-pagamento-boleto #telefone").mask("(99) 99999-9999");
-    $("#div-pagamento-cartaocredito #datanascimento").mask("99/99/9999");
+    $("#cpf-cartao,#div-pagamento-boleto #cpftiular").mask("999.999.999-99");
+    $("#telefone-cartao,#div-pagamento-boleto #telefone").mask("(99) 99999-9999");
+    $("#datanascimento-cartao").mask("99/99/9999");
     
     $('#numerocartao').payment('formatCardNumber');
-    $('#datavencimento').payment('formatCardExpiry');
+    $('#validade').payment('formatCardExpiry');
     $('#codigoseguranca').payment('formatCardCVC');
-    
   }
 
   setCartoes (){
@@ -42,6 +51,7 @@ export class AdicionarCreditoComponent implements OnInit,AfterContentInit {
 
   loadParcelamento():boolean
   {
+    this.pagseguro.valor_total  = this.valor_total;
     let numero_cartao           = this.numero_cartao;
 		if (numero_cartao == "") {
       $('#numerocartao').parent().removeClass("has-error");
@@ -62,6 +72,66 @@ export class AdicionarCreditoComponent implements OnInit,AfterContentInit {
       }
     }
     this.pagseguro.setParcelamento();
+    this.pagseguro.getBrand(numero_cartao);
     return true;
+  }
+
+  checkValidade(){
+    this.pagseguro.setValidade(this.validade);
+  }
+
+  checkCodigoSeguranca(){
+    this.pagseguro.setCVC(this.cvc);
+  }
+
+  checkCPF(){
+    if (!this.validar.isValidCPF(this.cpf)){
+      $(this).parent().addClass("has-error");
+      $(this).css("background-color","#ffe6e6");
+      $("#msg-erro-cpf-cartao").html("Número do Cartão de Crédito é Inválido !");
+      $("#msg-erro-cpf-cartao").show();
+    }else{
+      $(this).parent().removeClass("has-error");
+      $(this).css("background-color","#333");
+      $("#msg-erro-cpf-cartao").hide();
+    }
+  }
+
+  checkDataNascimento(){
+    if (!this.validar.isValidData(this.data_nascimento)){
+      $(this).parent().addClass("has-error");
+      $(this).css("background-color","#ffe6e6");
+      $("#msg-erro-datanascimento-cartao").html("Data de Nascimento é Inválido !");
+      $("#msg-erro-datanascimento-cartao").show();
+    }else{
+      $(this).parent().removeClass("has-error");
+      $(this).css("background-color","#333");
+      $("#msg-erro-datanascimento-cartao").hide();
+    }
+  }
+  checkTelefone(){
+    if (!this.validar.isVvalidTelefone(this.telefone)){
+      $(this).parent().addClass("has-error");
+      $(this).css("background-color","#ffe6e6");
+      $("#msg-erro-telefone-cartao").html("Telefone é Inválido !");
+      $("#msg-erro-telefone-cartao").show();
+    }else{
+      $(this).parent().removeClass("has-error");
+      $(this).css("background-color","#333");
+      $("#msg-erro-telefone-cartao").hide();
+    }
+  }
+
+  finalizarCartao(){
+    if (this.validar.isRequired(this.obrigatorios)){
+      if (!$("#chktermo").is(":checked")){
+        $("#msg-erro-politicaprivacidade").html("Você precisa aceitar os termos da <b>Política de Privacidade</b>.");
+      }else{
+        this.pagseguro.tokenCartao();
+        $('#retorno-pagamento-cartao').html('Crédito adicionado com sucesso !!');
+        $('#retorno-pagamento-cartao').show();
+        $('.pagamento-cartaocredito').hide();
+      }
+    }
   }
 }

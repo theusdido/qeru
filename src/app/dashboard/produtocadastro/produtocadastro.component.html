@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col">
+        <app-categoria 
+            [multiple]=false 
+            (getCategoria)="setCategoria( $event )"
+            [loja]="loja"
+        ></app-categoria>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-9 off-set-md-3">
+        <h5>Descrição do Produto</h5>
+        <textarea class="form-control" [(ngModel)]="observacao"></textarea>
+    </div>
+</div>
+<div class="col-md-9 off-set-md-3">
+    <app-item #itemcomponent></app-item>
+</div>
+<hr />
+<div class="botoes-grupo">
+    <button type="submit" value="submit" class="btn_3" (click)="comprar()">
+        Cadastrar
+    </button>
+</div>

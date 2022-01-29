@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RequisicaoMiles } from 'src/app/miles/src/requisicao';
 import { ClienteService } from '../../dashboard/cliente/cliente.service';
 
+declare var $:any;
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -17,10 +19,14 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    $(document).on('click','.list-group-item', () =>{
+      window.scrollTo( 0, 0 );
+    });
   }
 
   async setSessionToken(){
     await this.rm.setSessionToken();
   }
 
+  
 }

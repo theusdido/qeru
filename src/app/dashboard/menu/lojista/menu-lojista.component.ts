@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faBoxOpen,faSitemap,faUserTie,faHome,faCreditCard,faBullhorn,faClipboardList,faStore } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -15,9 +15,14 @@ export class MenuLojistaComponent implements OnInit {
   public faBullhorn      = faBullhorn;
   public faClipboardList = faClipboardList;
   public faStore         = faStore;
+
+  @Output() clicked_menu = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  
+  ir(){
+    this.clicked_menu.emit();
+  }
 }

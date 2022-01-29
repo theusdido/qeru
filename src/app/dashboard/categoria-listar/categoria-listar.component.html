@@ -9,7 +9,11 @@
     </div>    
     <div class="row">
         <div class="col-md-12">
-            <app-categoria [is_show_label]=false></app-categoria>
+            <app-categoria 
+                [is_show_label]=false 
+                #categoria_listar_componente
+                [categorias_sel]="categorias_sel"
+            ></app-categoria>
         </div>
     </div>    
 </div>
