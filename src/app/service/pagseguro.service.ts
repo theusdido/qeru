@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RequisicaoMiles } from '../miles/src/requisicao';
-import { environment } from '../../environments/environment';
+import { environment, ls } from '../../environments/environment';
 
 declare var PagSeguroDirectPayment:any;
 declare var $:any;
@@ -13,7 +13,8 @@ export class PagseguroService {
   constructor(
     public rm:RequisicaoMiles
   ) {
-   
+    let directpaymentJS = $('<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>');
+    //$('head').append(directpaymentJS);
   }
 
   getSessionID(){
@@ -274,6 +275,7 @@ export class PagseguroService {
     let identificador         = $('#identificador').val();
     let token_cartao          = $("#tokencartao").val();
     let is_titular            = $("input[type=radio]:checked").val();
+    let email                 = ls.get('useremail');
 
 		$.ajax({
 			type:"POST",
@@ -290,13 +292,17 @@ export class PagseguroService {
 				nome:nome,
 				soutitular:is_titular,
 				telefone:telefone,
-				datanascimento:datanascimento
+				datanascimento:datanascimento,
+        email:email,
+        usuario:ls.get('userid')
 			},
 			error:function(){
+        /*
 				$("#div-pagamento-cartaocredito .pagamento-cartaocredito").hide(200);
 				$("#valortotalcompra-pagamento").hide(100);
 				$("#valortotalcompra-pagamento").val("0,00");
 				$("#retorno-pagamento-cartao").html("<div class=\'alert alert-danger\' role=\'alert\'><b>Erro ao Finalizar Pedido </b> Pedimos desculpas pelo incoveniente, favor entrar em contato conosco ou tentar comprar mais tarde.</div>");
+        */
 			},
 			complete:function(retorno:any){
         /*

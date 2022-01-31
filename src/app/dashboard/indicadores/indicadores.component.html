@@ -7,5 +7,25 @@
             ></app-titulopagina>
         </div>
     </div>    
-    <div class="row lista-negociacoes-home"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <h5>Vertical</h5>
+                <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+            </div>
+        </div>
+        <div class="col-md-6">
+            Explicação
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            Explicação
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <p-chart type="doughnut" [data]="data" [options]="chartOptions" [style]="{'width': '40%'}"></p-chart>
+            </div>
+        </div>
+    </div>
 </div>

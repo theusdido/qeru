@@ -182,6 +182,12 @@ export class Validar {
             return true;
         }
     }
+
+    isSenhaForte(senha:string){
+        let pattern     = "(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}";
+        let regex       = new RegExp(pattern,"g");
+        return regex.test(senha);
+    }
     getTDClass(result:boolean) : string {
         return result ? "td-validation-success" : "td-validation-error";
     }

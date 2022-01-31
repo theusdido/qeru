@@ -40,7 +40,7 @@ import { MatInputModule } from '@angular/material/input';
 import { DashboardLojistaComponent } from './dashboard/lojista/dashboard-lojista.component';
 import { DashboardClienteComponent } from './dashboard/cliente/dashboard-cliente.component';
 import { RetornoPedidoComponent } from './dashboard/retorno-pedido/retorno-pedido.component';
-import { ChatComponent } from './dashboard/chat/chat.component';
+import { ChatComponent, DialogSemCredito } from './dashboard/chat/chat.component';
 import { ContatoComponent } from './dashboard/contato/contato.component';
 import { BannerComponent } from './dashboard/banner/banner/banner.component';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -86,10 +86,13 @@ import { PrecadastroFormComponent } from './precadastro-form/precadastro-form.co
 import { AdicionarCreditoComponent } from './dashboard/carteriadigital/adicionar-credito/adicionar-credito.component';
 import { ProdutocadastroComponent } from './dashboard/produtocadastro/produtocadastro.component';
 import { ProdutolojaComponent } from './dashboard/produtoloja/produtoloja.component';
-import {MatSliderModule} from '@angular/material/slider';
+import { MatSliderModule} from '@angular/material/slider';
 import { VendedorCadastroComponent } from './dashboard/vendedor-cadastro/vendedor-cadastro.component';
 import { DialogDataViewPropaganda, PropagandaViewComponent } from './propaganda-view/propaganda-view.component';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule} from '@angular/material/progress-bar';
+import { ChartModule } from 'node_modules/primeng/chart/';
+import { LogoutComponent } from './logout/logout.component';
+import { LogonPageComponent } from './logon-page/logon-page.component';
 
 @NgModule({
   declarations: [
@@ -152,7 +155,10 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     ProdutolojaComponent,
     VendedorCadastroComponent,
     PropagandaViewComponent,
-    DialogDataViewPropaganda
+    DialogDataViewPropaganda,
+    LogoutComponent,
+    LogonPageComponent,
+    DialogSemCredito
   ],
   imports: [
     BrowserModule,
@@ -176,7 +182,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatDialogModule,
     MatTabsModule  ,  
     MatSliderModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    ChartModule
   ],
   providers: [
     ConfigService,

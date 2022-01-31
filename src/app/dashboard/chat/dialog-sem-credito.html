@@ -1,0 +1,14 @@
+<div id="dialog-semsaldo-chat">
+    <h2 mat-dialog-title>Seu saldo é insuficiente</h2>
+    <mat-dialog-content class="mat-typography">
+      <small>
+        Você não tem saldo para enviar mensagem para os clientes.
+        <br/>
+        Adicione crédito acessando o menu <strong>Financeiro -> Adicionar Crédito</strong> ou clicando no botão verde abaixo.
+      </small>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button [mat-dialog-close]="false" class="mat-dialog-cancel">Ok, Entendi.</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="mat-dialog-confirm">Adicionar Crédito!</button>
+    </mat-dialog-actions>
+  </div>

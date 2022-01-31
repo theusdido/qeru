@@ -3,6 +3,35 @@
     <p>Preencha suas informações para se cadastrar.</p>
     <form class="contact_form" action="#" method="post" novalidate="novalidate">
         <fieldset>
+
+            <div class="mb-3">
+                <div class="form-check form-check-inline">
+                    <input
+                        class="form-check-input check-perfil"
+                        type="radio"
+                        name="perfil"
+                        id="perfilUsuario"
+                        value="C"
+                        checked
+                    >
+                    <label class="form-check-label" for="perfilUsuario">
+                        Usuário
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input 
+                        class="form-check-input check-perfil"
+                        type="radio"
+                        name="perfil"
+                        id="perfilParceiro"
+                        value="L"
+                    >
+                    <label class="form-check-label" for="perfilParceiro">
+                        Parceiro
+                    </label>
+                </div>
+            </div>
+
             <div class="mb-3">
                 <label for="nome" class="col-form-label">Nome:</label>
                 <input type="text" class="form-control {{ validarCampos.nome }}" id="nome" name="nome" placeholder="Insira o nome" [(ngModel)]="precadastro.nome" (blur)="validarCampo('nome')"  #required />
@@ -14,11 +43,19 @@
             <div class="mb-3">
                 <label for="senha" class="col-sm-2 col-form-label">Senha:</label>
                 <input type="password" class="form-control {{ validarCampos.senha }}" id="senha" name="senha" placeholder="Insira a senha" [(ngModel)]="precadastro.senha" (blur)="validarCampo('senha')" #required />
+                <ul class="list-group" id="lista-senha-forte">
+                    <li class="list-group-item list-group-item-danger">Mínimo de 8 caracteres</li>
+                    <li class="list-group-item list-group-item-danger">Uma letra em maíuculo</li>
+                    <li class="list-group-item list-group-item-danger">Pelo menos um número </li>
+                    <li class="list-group-item list-group-item-danger">Um desses caracteres especiais ( <b>@ $ ! % * ? &</b> ) </li>
+                  </ul>
             </div>                                                                
             <div class="mb-3">
                 <div class="form-check" id="aceite-checkbox">
-                    <input class="form-check-input" type="radio" id="concordoTermos" name="concordoTermos" />
-                    Ao prosseguir, aceito que a Qeru entre em contato comigo por ligação, e-mail ou WhatsApp (incluindo mensagens automáticas para fins comerciais.)
+                    <input class="form-check-input" type="checkbox" id="concordoTermos" name="concordoTermos" />
+                    <label for="concordoTermos">
+                        Ao prosseguir, aceito que a Qeru entre em contato comigo por ligação, e-mail ou WhatsApp (incluindo mensagens automáticas para fins comerciais.)
+                    </label>
                 </div>
             </div>
             <div class="mb-3">

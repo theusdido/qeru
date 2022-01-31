@@ -33,13 +33,19 @@ import { IndicadoresComponent } from './dashboard/indicadores/indicadores.compon
 import { AdicionarCreditoComponent } from './dashboard/carteriadigital/adicionar-credito/adicionar-credito.component';
 import { ProdutocadastroComponent } from './dashboard/produtocadastro/produtocadastro.component';
 import { ProdutolojaComponent } from './dashboard/produtoloja/produtoloja.component';
+import { Sessao } from './service/sessao.service';
+import { LogoutComponent } from './logout/logout.component';
+import { LogonPageComponent } from './logon-page/logon-page.component';
 
 export const routes: Routes = [
   { path: ''            , component:HomeComponent },
+  { path: 'home'            , component:HomeComponent },
   { path: 'logon'       , component: AutenticacaoComponent },
   { path: 'cliente'     , component:ClienteComponent },
   { path: 'lojista'     , component:LojistaComponent },
-  { path: 'cadastro' , component:PrecadastroComponent},
+  { path: 'cadastro'    , component:PrecadastroComponent },
+  { path: 'logout'      , component:LogoutComponent },
+  { path: 'entrar'      , component: LogonPageComponent },
   { path: 'dashboard'   , component:DashboardComponent , children:[
     { path: ''              , component:DashboardHomeComponent}, 
     { path: 'proposta'      , component:PropostaComponent },
@@ -81,8 +87,7 @@ export const routes: Routes = [
     { path: 'saldo', component:SaldoComponent},
     { path: 'vendedor' , component:VendedorComponent},
     { path: 'propagandas' , component:PropagandaVisualizarComponent},
-    { path: 'indicadores' , component:IndicadoresComponent},
-    
+    { path: 'indicadores' , component:IndicadoresComponent}
   ]}
 ];
 

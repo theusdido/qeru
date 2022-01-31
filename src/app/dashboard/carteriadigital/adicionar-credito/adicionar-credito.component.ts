@@ -1,5 +1,7 @@
 import { AfterContentInit, Component, OnInit, ViewChildren } from '@angular/core';
+import { CarteiraDigitalService } from 'src/app/realtime-database/carteira-digital.service';
 import { PagseguroService } from 'src/app/service/pagseguro.service';
+import { ls } from 'src/environments/environment';
 import { Validar } from '../../../validar';
 
 declare var $:any;
@@ -22,17 +24,21 @@ export class AdicionarCreditoComponent implements OnInit,AfterContentInit {
 
   @ViewChildren('required')  obrigatorios: any;
   
+  public saldo:number = 0;
   constructor(
     public pagseguro:PagseguroService,
-    public validar:Validar
-  ) { }
+    public validar:Validar,
+    public cd:CarteiraDigitalService
+  ) {
+  }
 
   ngOnInit(): void {    
     this.setCartoes();
+    //this.cd.create();
+    //;
   }
 
-  ngAfterContentInit(): void {
-    
+  ngAfterContentInit(): void {    
 		$("#btn-checkout-pagamento").removeClass("btn-default");
 		$("#btn-checkout-pagamento").addClass("btn-warning");
   

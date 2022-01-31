@@ -70,7 +70,7 @@ export const cliente = {
 }
 
 // Seta o perfil de acesso
-export const perfil:string = "C";
+export const perfil:string = "L";
 
 // Armazenamento local
 export const ls = new LocalStorageService();
@@ -86,6 +86,12 @@ export const categorias:Array<number> = [7,13];
 
 // Funções genéricas
 export const funcoes = new Funcoes();
+
+// Usuário Cliente
+export var td_user:any = {
+  email:(perfil == 'C'?'cliente':'lojista') + '@sandbox.pagseguro.com.br',
+  senha:'spespcfc@Dido10-'
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

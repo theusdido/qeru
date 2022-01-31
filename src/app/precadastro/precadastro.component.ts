@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ls } from 'src/environments/environment';
 import { PrecadastroService } from '../service/precadastro.service';
 
 @Component({
@@ -7,17 +9,16 @@ import { PrecadastroService } from '../service/precadastro.service';
   styleUrls: ['./precadastro.component.scss']
 })
 export class PrecadastroComponent implements OnInit {
-
-  is_show_form:boolean = false;
   constructor(
-    public pc:PrecadastroService
+    public pc:PrecadastroService,
+    public rota:Router
   ){
-    pc.choosePerfil.subscribe( p => {
-      this.is_show_form = true;
-     });
   }
 
   ngOnInit(): void {
-    
+    console.log(ls.get('is_logado'));
+    if (ls.get('is_logado')){
+      this.rota.navigate(["/dashboard"]);
+    }
   }
 }

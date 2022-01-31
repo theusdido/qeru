@@ -29,9 +29,13 @@ export class DashboardComponent implements OnInit {
     public cliente:Cliente,
     public ljs:LojistaService
   ) {
+    if (!this.session.isLogado()){
+      this.rota.navigate(['/']);
+    }
   }
 
   ngOnInit(): void {
+    this.session.isLogado();
     switch(ls.get("perfil")){
       case 'C':
         this.titulo   = "Cliente";
@@ -48,17 +52,5 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
       $('#logo-topo').focus();
     },500);
-    /*
-    let mydiv         = $('html');
-    let inicialScroll = 0;
-    let endscroll     = setInterval(() => {
-      if (inicialScroll == mydiv.prop("scrollHeight")){
-        clearInterval(endscroll);
-      }else{
-        mydiv.scrollTop(mydiv.prop("scrollHeight"));
-      }
-      inicialScroll = mydiv.prop("scrollHeight");
-    },500);
-    */
   }
 }

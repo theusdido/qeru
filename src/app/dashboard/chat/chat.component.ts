@@ -7,6 +7,9 @@ import { PropostaService } from '../proposta/proposta.service';
 import { faImages } from '@fortawesome/free-solid-svg-icons';
 import { NegociacaoService } from '../negociacoes/negociacao.service';
 import { Cliente } from '../../classe/cliente';
+import { CarteiraDigitalService } from 'src/app/realtime-database/carteira-digital.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 declare var $:any;
 
@@ -44,7 +47,10 @@ export class ChatComponent implements OnInit,AfterViewInit {
     public rota:ActivatedRoute,
     public ps:PropostaService,
     public ns:NegociacaoService,
-    public cliente:Cliente
+    public cliente:Cliente,
+    public cd:CarteiraDigitalService,
+    public dialog:MatDialog,
+    public router:Router
   ) {
     this.rota.queryParams.subscribe(
       (params) => {
@@ -96,6 +102,26 @@ export class ChatComponent implements OnInit,AfterViewInit {
     this.chatservice.perfil   = this.perfil;
     this.interacoes           = this.chatservice.all();
   }
+
+  verificaSaldo(){
+
+    this.cd.getSaldo().subscribe(
+      (saldo:any) => {
+        if (saldo[0] > 0){
+          this.enviar()
+        }else{
+          const dialogRef = this.dialog.open(DialogSemCredito);
+          dialogRef.afterClosed().subscribe(result => {
+            if (result){
+              this.router.navigate(['/dashboard/financeiro/adicionarcredito']);
+            }
+          });          
+
+        }
+      }
+    );
+  }
+
   async enviar(){
     if (this.selectedFile == undefined || !this.is_anexo){
       this.chatservice.anexo  = '';
@@ -162,3 +188,9 @@ export class ChatComponent implements OnInit,AfterViewInit {
     },500);
   }
 }
+
+@Component({
+  selector: 'dialog-sem-credito',
+  templateUrl: 'dialog-sem-credito.html'
+})
+export class DialogSemCredito {}

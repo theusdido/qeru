@@ -29,6 +29,8 @@ export class PrecadastroFormComponent implements OnInit {
     senha:""
   };
 
+  public perfil = '';
+
   constructor(
     public rs:RequisicaoService,
     public rota:Router,
@@ -65,36 +67,43 @@ export class PrecadastroFormComponent implements OnInit {
         }else{
           this.validarCampos.senha = this.validar.getTDClass(this.validar.isValidSenha(this.precadastro.senha));
         }
+        this.isSenhaForte();
       break;
     }
   }
 
   salvar() : any {
-    this.precadastro.perfil = this.pc.perfil_selected;
-    ls.set("perfil",this.pc.perfil_selected);
+    this.precadastro.perfil = $('.check-perfil:checked').val();
+    if (this.precadastro.perfil == undefined){
+      $('.check-perfil').parents('.form-check').css('border-bottom','2px solid #FF0000');
+      return;
+    }
+
     if (!this.validar.isRequired(this.obrigatorios)) return false;
 
     if ($('input').hasClass('td-validation-error')){
       return false;
     }
     if (!$('#concordoTermos').is(':checked')){
-      $('#aceite-checkbox').css('border','2px solid #FF0000');
+      $('#aceite-checkbox').css('border-bottom','2px solid #FF0000');
       return false;
     }else{
       $('#aceite-checkbox').css('border','none');
     }
 
     $("#preloader-active").show();
-    this.rs.get("precadastro",{
+    this.rs.get("cadastro",{
       op:"salvar",
       dados:this.precadastro
     }).subscribe( 
       (response:any) => {
         if (response.status == 0){
-          ls.set("lojista",0);
-          ls.set("loja",0);
-          ls.set("isLogado",true);
-          ls.set("cliente",0);
+          ls.set("perfil",this.precadastro.perfil);
+          ls.set("useremail",this.precadastro.email);
+          ls.set("lojista",response.loja);
+          ls.set("loja",response.loja);
+          ls.set("is_logado",true);
+          ls.set("cliente",response.cliente);
           ls.set("userid",response.userid);
           ls.set("username",response.username);
           ls.set("usergroup",response.usergroup);
@@ -107,5 +116,21 @@ export class PrecadastroFormComponent implements OnInit {
         $("#preloader-active").hide();
       }
     );
-  }  
+  }
+
+  isSenhaForte(){
+    let senha = this.precadastro.senha;
+    if (senha ==''){
+      this.validarCampos.senha = '';
+      $('#lista-senha-forte').hide('100');
+      return;
+    }
+    if (!this.validar.isSenhaForte(senha)){
+      this.validarCampos.senha = 'td-validation-error';
+      $('#lista-senha-forte').show('100');
+    }else{
+      this.validarCampos.senha = 'td-validation-success';
+      $('#lista-senha-forte').hide('100');
+    }
+  }
 }

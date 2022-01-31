@@ -73,7 +73,6 @@ export class LojistaService {
     }else{
       src = this.getLogoLojaSRC();
     }
-    console.log(src);
     setTimeout( function(){
       $('#user-img-dashboard').attr('src',src);
     } , 500);

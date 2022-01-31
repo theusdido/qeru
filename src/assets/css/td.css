@@ -446,10 +446,13 @@ small.textos{
 {
     margin-top:15px !important;
 }
-#form-pre_cadastro hr {
-    border:1px double #103a00;
-}
 
+#lista-senha-forte{
+    display: none;
+}
+#lista-senha-forte .list-group-item {
+    border:2px solid #FFF !important;
+}
 /* **************************************************
     UPLOAD IMAGEM - COMPONENTE
 ************************************************** */
@@ -465,4 +468,34 @@ small.textos{
     right: 25px;
     z-Index: 1000;
     cursor:pointer;
+}
+
+/* **************************************************
+    LOGON - HEADER
+************************************************** */
+.opcoes-logon a {
+    color:#000;
+    margin:10px;
+}
+.is-logado , .isnot-logado {
+    display: none;
+}
+
+/* **************************************************
+    CHAT COMPONENTE
+************************************************** */
+#dialog-semsaldo-chat button[mat-button]
+{
+    padding:5px 10px;
+    border:0px;
+    margin:5px;
+}
+
+.mat-dialog-cancel {
+    background-color: #FF0000 !important;
+    color:#FFF;
+}
+.mat-dialog-confirm {
+    background-color: #103a00 !important;
+    color:#FFF;
 }
