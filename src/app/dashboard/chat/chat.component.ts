@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChatService } from './chat.service';
 import { ActivatedRoute } from '@angular/router';
-import { ls,ambiente,environment } from '../../../environments/environment';
+import { ls,environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { PropostaService } from '../proposta/proposta.service';
 import { faImages } from '@fortawesome/free-solid-svg-icons';
@@ -20,26 +20,26 @@ declare var $:any;
 })
 export class ChatComponent implements OnInit,AfterViewInit {
   public pedido:any;
-  public mensagem:string = "";
+  public mensagem:string          = "";
   public interacoes!:Observable<any>;
   public selectedFile!:File;
-  public buttonFileUploadColor = "";
-  public loadingFileChat = "none";
-  public iconEnviarMensagem = "";
-  public badgeUploadFile = "none";
-  public perfil = ls.get("perfil");
+  public buttonFileUploadColor    = "";
+  public loadingFileChat          = "none";
+  public iconEnviarMensagem       = "";
+  public badgeUploadFile          = "none";
+  public perfil                   = ls.get("perfil");
 
   public remetente      = 0;
   public nomeremetente  = "";
   public emissor        = 0;
   public nomeemissor    = "";
 
-  public qeru = "";
-  public faImages = faImages;
+  public qeru                 = "";
+  public faImages             = faImages;
   private isPrimeiraInteracao = true;
   public pedidoRequisicao!:Observable<any>;
-  private is_anexo:boolean = false;
-  public url_host = environment.miles.host;
+  private is_anexo:boolean    = false;
+  public url_host             = environment.miles.host;
 
   @ViewChild('inputFile') anexo!:ElementRef;
   constructor(
@@ -54,14 +54,13 @@ export class ChatComponent implements OnInit,AfterViewInit {
   ) {
     this.rota.queryParams.subscribe(
       (params) => {
-        let loja = JSON.parse(ls.get('loja'));
         switch(this.perfil){
           case 'L':
             this.ps.getPedido(params.pedido).subscribe(
               (response:any) => {
                 this.pedido         = response[0];
-                this.emissor        = loja.id;
-                this.nomeemissor    = loja.nomefantasia;
+                this.emissor        = ls.get('loja');
+                this.nomeemissor    = ls.get('username');
                 this.remetente      = response[0].td_cliente;
                 this.nomeremetente  = response[0].cliente;
                 this.qeru           = response[0].produto;
@@ -71,7 +70,7 @@ export class ChatComponent implements OnInit,AfterViewInit {
           break;
           case 'C':
               this.ns.getPedido(params.pedido).subscribe(
-                (response:any) => {    
+                (response:any) => {
                   let r = response[0];
                   this.pedido         = r;
                   this.emissor        = r.cliente.id;
@@ -95,12 +94,27 @@ export class ChatComponent implements OnInit,AfterViewInit {
     this.endScrollChat();
   }
 
-  setChatInfo(){
-    this.chatservice.pedido   = this.pedido.id;
-    this.chatservice.emissor  = {id:this.emissor,nome:this.nomeemissor};
-    this.chatservice.remetente= {id:this.remetente,nome:this.nomeremetente};
-    this.chatservice.perfil   = this.perfil;
-    this.interacoes           = this.chatservice.all();
+  async setChatInfo(){
+
+    // Cria entidade do Chat no Firebase Realtime
+    await this.chatservice.createCollection();
+
+    this.chatservice.pedido       = this.pedido.id;
+    this.chatservice.emissor      = {id:this.emissor,nome:this.nomeemissor};
+    this.chatservice.remetente    = {id:this.remetente,nome:this.nomeremetente};
+    this.chatservice.perfil       = this.perfil;
+    switch(this.perfil){
+      case 'L':
+        this.chatservice.loja     = this.emissor;
+        this.chatservice.cliente  = this.remetente;
+      break;
+      case 'C':
+        this.chatservice.loja     = this.remetente;
+        this.chatservice.cliente  = this.emissor;
+      break;
+    }
+
+    this.interacoes               = this.chatservice.all();
   }
 
   verificaSaldo(){
@@ -108,7 +122,7 @@ export class ChatComponent implements OnInit,AfterViewInit {
     this.cd.getSaldo().subscribe(
       (saldo:any) => {
         if (saldo[0] > 0){
-          this.enviar()
+          this.enviar();
         }else{
           const dialogRef = this.dialog.open(DialogSemCredito);
           dialogRef.afterClosed().subscribe(result => {

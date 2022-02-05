@@ -5,7 +5,16 @@
         </div>
     </div>
     <div class="card-footer">
-        <button href="#" class="btn btn-adicionarfoto btn-block" (click)="inputFile.click()">{{ displayButton }}</button>
+        <button 
+            href="#" 
+            class="btn btn-adicionarfoto btn-block" 
+            (click)="inputFile.click()"
+        >{{ displayButton }}</button>
     </div>
 </div>
-<input type="file" style="display:none" #inputFile (change)="onFileSelected($event);" />
+<input 
+    type="file" 
+    style="display:none" 
+    #inputFile 
+    (change)="onFileSelected($event);"
+/>

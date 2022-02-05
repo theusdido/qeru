@@ -17,11 +17,11 @@ export class CarteiraDigitalService {
 
   create(){
     this.dados = this.collection.valueChanges();
-    this.db.object('carteiradigital:' + ls.get('userid')).set({valor:0});
+    this.db.object('carteiradigital:' + ls.get('loja')).set({valor:0});
   }
 
   getSaldo(){
-    return this.db.list('carteiradigital:' + ls.get('userid'))
+    return this.db.list('carteiradigital:' + ls.get('loja'))
     .valueChanges();
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit,Inject, Output, EventEmitter, ViewChild } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faCopy } from '@fortawesome/free-solid-svg-icons';
 
 declare var $:any;
 
@@ -12,8 +12,7 @@ declare var $:any;
 
 export class PropagandaViewComponent implements OnInit {
   
-  @Output() openDialog = new EventEmitter();
-  
+  @Output() openDialog = new EventEmitter();  
   constructor(
     public dialog: MatDialog
   ) { }
@@ -40,9 +39,13 @@ export class DialogDataViewPropaganda {
   public tempo_duracao  = 50; // Segundos
   public intervalo      = 100; // Milesegundos
   public faCheck        = faCheck;
+  public hide           = true;
+  public faCopy         = faCopy;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    console.log(data);
     this.startProgressBar();
   }
 

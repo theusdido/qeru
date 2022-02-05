@@ -14,7 +14,7 @@ declare var $:any;
 })
 export class UploadImageComponent implements OnInit,AfterViewInit{
   @Input() displayButton = '+ Adicionar';
-  @ViewChild('inputFile') anexo!:ElementRef;
+  @ViewChild('inputFile') input!:ElementRef;
   @Input() srcImage!:string;
   @Input() params!:HttpParams;
   @Input('id') idImage:string = '';
@@ -22,6 +22,7 @@ export class UploadImageComponent implements OnInit,AfterViewInit{
   @Output() uploaded = new EventEmitter();
   @Output() no_image = new EventEmitter<any>();
   @Output() set_image = new EventEmitter<any>();
+  @Output() show_dialog  = new EventEmitter();
   public sem_imagem_src = 'assets/img/semimagem.jpg';
   constructor(
     public us:UploadService
@@ -56,5 +57,11 @@ export class UploadImageComponent implements OnInit,AfterViewInit{
   setImagem(src:string){
     this.set_image.emit();
     this.srcImage = src;
+  }
+
+  showDialog()
+  {
+    this.show_dialog.emit();
+    this.input.nativeElement.click();
   }
 }

@@ -6,3 +6,12 @@
     </div>
     <div class="cortina {{ percentual >= 100 ? 'complete' : '' }}"></div>
 </div>
+<div class="comparilhar-link-propaganda">
+    <mat-form-field appearance="fill">
+      <mat-label>Compartilhe esse link</mat-label>
+      <input matInput type="text" value="https://qeru.com.br/view/{{ data.hash }}">
+      <button matSuffix (click)="hide = !hide" [attr.aria-label]="'Copiado!'" [attr.aria-pressed]="hide">
+        <fa-icon class="icone-copiar" [icon]="faCopy"></fa-icon>
+      </button>
+    </mat-form-field>
+  </div>

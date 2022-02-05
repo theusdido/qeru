@@ -8,17 +8,42 @@
     </div>
 </div>
 <div class="row">
+    <app-subcategoria #subcategoriacomponent></app-subcategoria>
+</div>
+<div class="row">
+    <app-atributo #atributocomponent></app-atributo>
+</div>
+<div class="row">
     <div class="col-md-9 off-set-md-3">
         <h5>Descrição do Produto</h5>
-        <textarea class="form-control" [(ngModel)]="observacao"></textarea>
+        <textarea class="form-control" [(ngModel)]="descricao"></textarea>
     </div>
 </div>
-<div class="col-md-9 off-set-md-3">
-    <app-item #itemcomponent></app-item>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="valor">Valor ( R$ )</label>
+            <input type="text" class="form-control" id="valor" name="valor" placeholder="Valor" [(ngModel)]="valor">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 off-set-md-8">
+
+        <app-upload-image
+            #upload
+            height="125"
+            displayButton="Carregar"
+            (uploaded)="processaUpload($event)"
+            [params]="params"
+        ></app-upload-image>
+
+    </div>
 </div>
 <hr />
 <div class="botoes-grupo">
-    <button type="submit" value="submit" class="btn_3" (click)="comprar()">
+    <button type="submit" value="submit" class="btn_3" (click)="cadastrar()">
         Cadastrar
     </button>
 </div>

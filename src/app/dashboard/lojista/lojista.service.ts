@@ -62,32 +62,4 @@ export class LojistaService {
         }
     );
   }
-  setImagemMenu()
-  {
-    
-    $('#user-img-dashboard').removeAttr('src');    
-    let src = ls.get('logo-loja');
-
-    if (src == '' || src == null || src == undefined){
-      src = 'assets/img/usuario.png';
-    }else{
-      src = this.getLogoLojaSRC();
-    }
-    setTimeout( function(){
-      $('#user-img-dashboard').attr('src',src);
-    } , 500);
-  }
-
-  getLogoLojaSRC(){
-    let logo_loja = ls.get('logo-loja');
-    if (logo_loja == '' || logo_loja == null || logo_loja == undefined){
-      return '';
-    }else{
-      return environment.miles.arquivos + 'logo-94-' + this.getIdLoja() + '.' + logo_loja.split('.').pop();
-    }
-  }
-
-  getIdLoja(){
-    return JSON.parse(ls.get('loja')).id;
-  }
 }

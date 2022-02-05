@@ -1,0 +1,19 @@
+<div id="div-brand-dashboard" class="rounded">
+    <i 
+        id="icone-upload-logo-dashboard" 
+        class="fas fa-camera-retro" 
+        (click)="uploadImage()"
+    ></i>
+    <img 
+        src="{{ src_brand }}" 
+        class="rounded-circle" 
+        id="user-img-dashboard" 
+    />
+</div>
+<p class="user-name">{{ username }}</p>
+<small class="user-email">{{ useremaill }}</small>
+<app-upload-image 
+    #upload
+    (uploaded)="uploaded($event)"
+    [params]="params"
+></app-upload-image>

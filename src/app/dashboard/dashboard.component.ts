@@ -17,8 +17,6 @@ declare var $:any;
 export class DashboardComponent implements OnInit {
   public titulo:string  = "";
   public userType       = "";
-  public username       = ls.get("username");
-  public useremaill     = ls.get("useremail");
   public perfil         = ls.get("perfil");
 
   constructor(
@@ -44,7 +42,7 @@ export class DashboardComponent implements OnInit {
         this.titulo   = "Lojista";
       break;
     }
-    this.ljs.setImagemMenu();
+    //this.ljs.setImagemMenu();
   }
 
   topScroll(){

@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ls,environment } from 'src/environments/environment';
 import { Categoria } from 'src/app/classe/categoria';
 
+
 @Component({
   selector: 'app-categoria',
   templateUrl: './categoria.component.html',

@@ -1,7 +1,6 @@
 import { AfterContentInit, Component, OnInit, ViewChildren } from '@angular/core';
 import { CarteiraDigitalService } from 'src/app/realtime-database/carteira-digital.service';
 import { PagseguroService } from 'src/app/service/pagseguro.service';
-import { ls } from 'src/environments/environment';
 import { Validar } from '../../../validar';
 
 declare var $:any;

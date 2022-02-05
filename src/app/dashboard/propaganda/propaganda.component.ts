@@ -3,6 +3,7 @@ import { HttpParams } from '@angular/common/http';
 import { ls } from 'src/environments/environment';
 import { Validar } from '../../validar';
 import { RequisicaoService } from 'src/app/service/requisicao.service';
+import { Md5 } from 'ts-md5/dist/md5';
 
 declare var $:any;
 @Component({
@@ -16,6 +17,7 @@ export class PropagandaComponent implements OnInit,AfterViewInit {
   public data_final   = '';
   public link_externo = '';
   public banner       = '';
+  public hash:any  = '';
 
   @ViewChild('upload') upload:any;
   @ViewChildren('required')  obrigatorios: any;
@@ -24,6 +26,7 @@ export class PropagandaComponent implements OnInit,AfterViewInit {
   .append('param','{"op":"propaganda-banner-temp"}')
   .append('param','{"loja":'+ls.get('loja')+'}');
   
+  public md5 = new Md5();
   constructor(
     public validar:Validar,
     public rs:RequisicaoService
@@ -31,7 +34,7 @@ export class PropagandaComponent implements OnInit,AfterViewInit {
 
   ngOnInit(): void {
     $('#data_inicial,#data_final').mask('99/99/9999');
-    this.link_externo = 'https://qeru.com.br/view/';
+    this.setLink();
   }
 
   ngAfterViewInit(): void {
@@ -65,7 +68,8 @@ export class PropagandaComponent implements OnInit,AfterViewInit {
       data_final:this.data_final,
       link_externo:this.link_externo,
       banner:this.banner,
-      loja:ls.get('loja')
+      loja:ls.get('loja'),
+      hash:this.hash
     }).subscribe(
       (response:any) => {
         if (response.status == 0){
@@ -74,13 +78,13 @@ export class PropagandaComponent implements OnInit,AfterViewInit {
           this.data_final   = '';
           this.link_externo = '';
           this.banner       = '';
+          this.hash         = '';
           this.upload.noImagem();
           
           $('#propaganda-msg-retorno').show();
           setTimeout( () => {
             $('#propaganda-msg-retorno').hide('200');
           },3000);
-
 
         }
       },
@@ -89,5 +93,10 @@ export class PropagandaComponent implements OnInit,AfterViewInit {
 
       }
     );
-  }    
+  }
+
+  setLink(){
+    this.hash = this.md5.appendStr( ls.get('loja') + new Date().getUTCMilliseconds()).end();
+    this.link_externo = 'https://qeru.com.br/view/' + this.hash;
+  }
 }

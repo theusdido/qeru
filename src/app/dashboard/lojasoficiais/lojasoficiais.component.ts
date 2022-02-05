@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { NegociacaoService } from '../negociacoes/negociacao.service';
 import { Observable } from 'rxjs';
+import { LojasoficiaisService } from 'src/app/service/lojasoficiais.service';
+
 
 @Component({
   selector: 'app-lojasoficiais',
@@ -10,11 +12,11 @@ import { Observable } from 'rxjs';
 })
 export class LojasoficiaisComponent implements OnInit {
   public faStar = faStar;
-  public negociacoes!:Observable<any>;
+  public lojas!:Observable<any>;
   constructor(
-    public ns:NegociacaoService
+    public ls:LojasoficiaisService
   ) {
-    this.negociacoes = this.ns.abertas();
+    this.lojas = this.ls.all();
    }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
-import { PropagandaViewComponent } from 'src/app/propaganda-view/propaganda-view.component';
 import { PropagandaService } from 'src/app/service/propaganda.service';
 
 @Component({
@@ -15,10 +15,21 @@ export class PropagandaVisualizarComponent implements OnInit {
   @ViewChild('propandaview') view:any;
 
   constructor(
-    public ps:PropagandaService
+    public ps:PropagandaService,
+    public rota:ActivatedRoute
   ) {
-    this.propagandas = this.ps.disponiveis();
+    this.rota.params.subscribe( (p)=> {
+      if (p.hash == undefined){
+        this.propagandas = this.ps.disponiveis();
+      }else{
+        this.propagandas = this.ps.withHash(p.hash);
+        this.propagandas.subscribe( (p)=>{
+          this.visualizar(p[0]);
+        });
+      }
+    });
   }
+
   ngOnInit(): void {}
 
   visualizar(propaganda:any){

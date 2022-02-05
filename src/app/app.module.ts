@@ -93,6 +93,7 @@ import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { ChartModule } from 'node_modules/primeng/chart/';
 import { LogoutComponent } from './logout/logout.component';
 import { LogonPageComponent } from './logon-page/logon-page.component';
+import { UserInfoComponent } from './dashboard/user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -158,7 +159,8 @@ import { LogonPageComponent } from './logon-page/logon-page.component';
     DialogDataViewPropaganda,
     LogoutComponent,
     LogonPageComponent,
-    DialogSemCredito
+    DialogSemCredito,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,

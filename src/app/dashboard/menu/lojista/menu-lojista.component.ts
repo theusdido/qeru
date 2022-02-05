@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faBoxOpen,faSitemap,faUserTie,faHome,faCreditCard,faBullhorn,faClipboardList,faStore } from '@fortawesome/free-solid-svg-icons';
+import { ChatService  } from '../../chat/chat.service';
 
 @Component({
   selector: 'app-menu-lojista',
@@ -15,11 +16,23 @@ export class MenuLojistaComponent implements OnInit {
   public faBullhorn      = faBullhorn;
   public faClipboardList = faClipboardList;
   public faStore         = faStore;
+  public new_message     = 'none';
 
   @Output() clicked_menu = new EventEmitter();
-  constructor() { }
+  constructor(
+    public cs:ChatService
+  ) { }
 
   ngOnInit(): void {
+    this.cs.qtdadeMsgNaoLida().subscribe( (qtdade:any) => {
+      console.log(qtdade[0]);
+
+      if (qtdade[0] > 0){
+        this.new_message = '';
+      }else{
+        this.new_message = 'none';
+      }
+    });
   }
   
   ir(){

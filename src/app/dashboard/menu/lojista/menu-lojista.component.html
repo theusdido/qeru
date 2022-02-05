@@ -4,7 +4,10 @@
 </li>
 <li class="list-group-item list-group-item-action">
     <fa-icon [icon]="faUserTie"></fa-icon>
-    <a routerLink="/dashboard/proposta" (click)="ir()">Propostas</a>
+    <a 
+        routerLink="/dashboard/proposta" 
+        (click)="ir()"        
+    >Propostas <i class="fas fa-exclamation-circle" [style.display]="new_message"></i> </a>
 </li>
 <li class="list-group-item list-group-item-action">
     <fa-icon [icon]="faBoxOpen"></fa-icon>

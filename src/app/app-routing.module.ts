@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes,UrlSegment } from '@angular/router';
 import { ClienteComponent } from './cadastro/cliente/cliente.component';
 import { LojistaComponent } from './cadastro/lojista/lojista.component';
 import { BannerComponent } from './dashboard/banner/banner/banner.component';
@@ -7,12 +7,10 @@ import { CategoriaComponent } from './dashboard/categoria/categoria.component';
 import { ChatComponent } from './dashboard/chat/chat.component';
 import { ComprarComponent } from './dashboard/comprar/comprar.component';
 import { ContatoComponent } from './dashboard/contato/contato.component';
-
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardHomeComponent } from './dashboard/home/dashboard-home.component';
 import { MenuComponent } from './dashboard/menu/menu.component';
 import { NegociacoesComponent } from './dashboard/negociacoes/negociacoes.component';
-import { ProdutoComponent } from './dashboard/produto/produto.component';
 import { PropostaComponent } from './dashboard/proposta/proposta.component';
 import { RetornoPedidoComponent } from './dashboard/retorno-pedido/retorno-pedido.component';
 import { HomeComponent } from './home/home/home.component';
@@ -22,7 +20,6 @@ import { PropagandaComponent } from './dashboard/propaganda/propaganda.component
 import { PrenegociacaoComponent } from './dashboard/prenegociacao/prenegociacao.component';
 import { FinanceiroComponent } from './dashboard/financeiro/financeiro.component';
 import { EstabelecimentoComponent } from './dashboard/estabelecimento/estabelecimento.component';
-import { ProdutoListarComponent } from './dashboard/produto-listar/produto-listar.component';
 import { CategoriaListarComponent } from './dashboard/categoria-listar/categoria-listar.component';
 import { LojasoficiaisComponent } from './dashboard/lojasoficiais/lojasoficiais.component';
 import { MeuspontosComponent } from './dashboard/meuspontos/meuspontos.component';
@@ -33,11 +30,12 @@ import { IndicadoresComponent } from './dashboard/indicadores/indicadores.compon
 import { AdicionarCreditoComponent } from './dashboard/carteriadigital/adicionar-credito/adicionar-credito.component';
 import { ProdutocadastroComponent } from './dashboard/produtocadastro/produtocadastro.component';
 import { ProdutolojaComponent } from './dashboard/produtoloja/produtoloja.component';
-import { Sessao } from './service/sessao.service';
 import { LogoutComponent } from './logout/logout.component';
 import { LogonPageComponent } from './logon-page/logon-page.component';
 
 export const routes: Routes = [
+
+  // * PUBLICO * //
   { path: ''            , component:HomeComponent },
   { path: 'home'            , component:HomeComponent },
   { path: 'logon'       , component: AutenticacaoComponent },
@@ -46,6 +44,28 @@ export const routes: Routes = [
   { path: 'cadastro'    , component:PrecadastroComponent },
   { path: 'logout'      , component:LogoutComponent },
   { path: 'entrar'      , component: LogonPageComponent },
+  { path: 'view' , children:[
+    {
+      matcher: (url) => {
+          let m:any = url[0].path.match(/[a-z0-9]+/gm);
+          if (url.length === 1 && m) {
+            let hash:any = m[0];
+          return {
+            consumed: url,
+            posParams: {
+              hash: new UrlSegment(url[0].path.substr(1), {
+                hash:'asdasdsd'
+              })
+            }
+          };
+        }
+    
+        return null;
+      },
+      component:PropagandaVisualizarComponent
+    },
+  ] },
+  // * DASHBOARD * //
   { path: 'dashboard'   , component:DashboardComponent , children:[
     { path: ''              , component:DashboardHomeComponent}, 
     { path: 'proposta'      , component:PropostaComponent },

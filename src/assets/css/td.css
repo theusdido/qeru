@@ -254,10 +254,6 @@ small.textos{
     margin:0px;
 }
 
-#user-img-dashboard {
-    width:50%;
-}
-
 .div-autenticacao
 {
     background-color:#ec4737;
@@ -498,4 +494,48 @@ small.textos{
 .mat-dialog-confirm {
     background-color: #103a00 !important;
     color:#FFF;
+}
+
+.comparilhar-link-propaganda .mat-form-field{
+    display: block;
+}
+
+.comparilhar-link-propaganda .mat-form-field button {
+    background-color: transparent !important;
+    border: none !important;
+    cursor:pointer;
+}
+
+.comparilhar-link-propaganda .icone-copiar {
+    color:#666;
+}
+
+.comparilhar-link-propaganda .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+}
+
+#div-brand-dashboard {
+    height: 120px;
+    align-items: center;
+    align-content: center;
+    display: flex;
+}
+
+#div-brand-dashboard #icone-upload-logo-dashboard
+{
+    width: 100%;
+    position: absolute;
+    transform: translate(-15px,0);
+    cursor: pointer;
+    opacity: .7;
+    visibility: hidden;
+}
+
+#div-brand-dashboard #icone-upload-logo-dashboard:hover{
+    opacity: 1;
+}
+
+#user-img-dashboard {
+    width:50%;
+    margin: 0 auto;
 }

@@ -14,5 +14,13 @@ export class PropagandaService {
     return this.rs.get("propaganda",{
       op:"disponiveis"
     });
-  }  
+  }
+
+  withHash(hash:string){
+    return this.rs.get("propaganda",{
+      op:"hash",
+      hash:hash
+    });    
+  }
+
 }

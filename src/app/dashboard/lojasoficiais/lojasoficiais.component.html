@@ -9,8 +9,8 @@
     </div>    
     <div class="row lista-negociacoes-home">
         <div class="col-md-3">
-            <div class="card text-center" *ngFor="let n of negociacoes | async">
-                <div class="card-header">{{n.loja}}</div>
+            <div class="card text-center" *ngFor="let l of lojas | async">
+                <div class="card-header">{{l.loja}}</div>
                 <div class="card-body">
                     <img src="assets/img/teia-logo.png" class="img-logo-negociacao-home" />
                     <div>
@@ -20,7 +20,7 @@
                         <fa-icon [icon]="faStar"></fa-icon>
                         <fa-icon [icon]="faStar"></fa-icon>
                     </div>
-                    <p class="card-text">{{n.produto}}</p>
+                    <p class="card-text">{{l.produto}}</p>
                     
                 </div>
                 <div class="card-footer text-muted">

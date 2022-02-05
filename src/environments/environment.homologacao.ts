@@ -23,7 +23,8 @@ export const environment = {
     measurementId: "G-NL8C6QZEX1"
   },
   miles:{
-    host:"https://teia.tec.br/milesh/sistema/"
+    host:"https://teia.tec.br/miles/sistema/",
+    arquivos:"https://teia.tec.br/miles/sistema/projects/31/arquivos/"
   }
 };
 
@@ -37,6 +38,12 @@ export var ambiente = "homologacao";
 
 // Funções genéricas
 export const funcoes = new Funcoes();
+
+// Usuário Cliente
+export var td_user:any = {
+  email:'',
+  senha:''
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

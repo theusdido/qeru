@@ -10,11 +10,10 @@ declare var $:any;
   styleUrls: ['./atributo.component.scss']
 })
 export class AtributoComponent implements OnInit {  
-  public atributos:Array<any> = [];
-
-  lista:Array<any> = [];
-  dropdownSettings: any = {};
-  atributosmanuais:Array<any> = [];
+  public atributos:Array<any>     = [];
+  lista:Array<any>                = [];
+  dropdownSettings: any           = {};
+  atributosmanuais:Array<any>     = [];
 
   @ViewChildren('#atributomanual') attr: any;
   constructor(
@@ -32,7 +31,7 @@ export class AtributoComponent implements OnInit {
       enableCheckAll:false,
       noDataAvailablePlaceholderText:"Nenhum Registro Encontrado",
       searchPlaceholderText:"Pesquisar ..."
-    };    
+    };
   }
 
   load(subcategoria:number){
@@ -56,6 +55,7 @@ export class AtributoComponent implements OnInit {
 
   onItemSelect(itens:any){
     this.pedido.atributos.push(itens);
+    this.lista.push(itens);
   }
 
   addAtributoManual(e:any){

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faBoxOpen,faSitemap,faUserTie,faHome,faCreditCard,faBullhorn,faClipboardList,faStore } from '@fortawesome/free-solid-svg-icons';
+import { ChatService } from '../../chat/chat.service';
 
 
 @Component({
@@ -16,9 +17,21 @@ export class MenuClienteComponent implements OnInit {
   public faBullhorn      = faBullhorn;
   public faClipboardList = faClipboardList;
   public faStore         = faStore;
-  constructor() { }
+  public new_message     = 'none';
+
+  constructor(
+    public cs:ChatService
+  ) { }
 
   ngOnInit(): void {
+    this.cs.qtdadeMsgNaoLida().subscribe( (qtdade:any) => {
+
+      if (qtdade[0] > 0){
+        this.new_message = '';
+      }else{
+        this.new_message = 'none';
+      }
+    });    
   }
 
 }
