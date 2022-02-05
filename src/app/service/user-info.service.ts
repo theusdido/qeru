@@ -22,7 +22,7 @@ export class UserInfoService {
     this.rs.get('userinfo',{
       perfil:ls.get('perfil'),
       loja:ls.get('loja'),
-      cliente:ls.get('cliente')
+      cliente:ls.get('userid')
     }).subscribe(
       (retorno => {
         if (retorno == ''){

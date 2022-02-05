@@ -42,7 +42,6 @@ export class DashboardComponent implements OnInit {
         this.titulo   = "Lojista";
       break;
     }
-    //this.ljs.setImagemMenu();
   }
 
   topScroll(){

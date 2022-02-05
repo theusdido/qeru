@@ -1,24 +1,24 @@
-<form class="form">
-    <fieldset>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 form-group">
-                    <label class="control-label">Nome</label>
-                    <input type="text" class="form-control " id="nome_estabelecimento" name="nome_estabelecimento" />
+<div class="row">
+    <div class="col-md-6">
+        <form>
+            <fieldset>
+                <div class="form-group">
+                    <label for="nome_estabelecimento">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo" [(ngModel)]="dados.nome" #required>
+                </div> 
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control {{ validarCampos.cpf }}" id="cpf" name="cpf" placeholder="CPF" [(ngModel)]="dados.cpf" mask="000.000.000-00" (blur)="validarCampo('cpf')" #required>
+                </div>   
+                <div class="form-group">
+                    <label for="celular">Celular</label>
+                    <input type="text" class="form-control {{ validarCampos.celular }}" id="cel" name="celular" placeholder="Celular" [(ngModel)]="dados.celular" mask="(00) 0.0000-0000" (blur)="validarCampo('celular')" #required>
                 </div>
-                <div class="col-md-6 form-group">
-                    <label class="control-label">CPF</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf"/> 
-                </div>  
-                <div class="col-md-6 form-group ">
-                    <label class="control-label">CNPJ</label>
-                    <input type="text" class="form-control" id="celular" name="celular" />
-                </div>                                          
-                <div class="col-md-6 form-group ">
-                    <label class="control-label">Telefone</label>
-                    <input type="text" class="form-control" id="datanascimento" name="datanascimento" />
+                <div class="form-group">
+                    <label for="datanascimento">Data Nascimento</label>
+                    <input type="text" class="form-control {{ validarCampos.datanascimento }}" id="dt" name="dat" placeholder="Data de Nascimento" [(ngModel)]="dados.datanascimento"  mask="00/00/0000" (blur)="validarCampo('datanascimento')" #required>
                 </div>
-            </div>
-        </div>    
-    </fieldset>
-</form>
+            </fieldset>
+        </form>
+    </div>
+</div>

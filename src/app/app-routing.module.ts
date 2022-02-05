@@ -37,7 +37,7 @@ export const routes: Routes = [
 
   // * PUBLICO * //
   { path: ''            , component:HomeComponent },
-  { path: 'home'            , component:HomeComponent },
+  { path: 'home'        , component:HomeComponent },
   { path: 'logon'       , component: AutenticacaoComponent },
   { path: 'cliente'     , component:ClienteComponent },
   { path: 'lojista'     , component:LojistaComponent },

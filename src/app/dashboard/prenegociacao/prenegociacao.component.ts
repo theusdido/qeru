@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PedidoService } from 'src/app/service/pedido.service';
 import { ChatService } from '../chat/chat.service';
 import { PropostaService } from '../proposta/proposta.service';
 
@@ -25,7 +26,8 @@ export class PrenegociacaoComponent implements OnInit,AfterViewInit {
   constructor(
     public rota:ActivatedRoute,
     public ps:PropostaService,
-    public cs:ChatService
+    public cs:ChatService,
+    public pds:PedidoService
   ) { 
     this.rota.queryParams.subscribe(
       (params) => {
@@ -35,7 +37,7 @@ export class PrenegociacaoComponent implements OnInit,AfterViewInit {
   }
 
   loadPedido(){
-    this.ps.getPedido(this.pedido).subscribe(
+    this.pds.getPedido(this.pedido).subscribe(
       (response:any) => {
         console.log(response[0]);
         this.produto    = response[0].produto;

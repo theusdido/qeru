@@ -10,6 +10,7 @@ import { Cliente } from '../../classe/cliente';
 import { CarteiraDigitalService } from 'src/app/realtime-database/carteira-digital.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { PedidoService } from 'src/app/service/pedido.service';
 
 declare var $:any;
 
@@ -50,13 +51,14 @@ export class ChatComponent implements OnInit,AfterViewInit {
     public cliente:Cliente,
     public cd:CarteiraDigitalService,
     public dialog:MatDialog,
-    public router:Router
+    public router:Router,
+    public pds:PedidoService
   ) {
     this.rota.queryParams.subscribe(
       (params) => {
         switch(this.perfil){
           case 'L':
-            this.ps.getPedido(params.pedido).subscribe(
+            this.pds.getPedido(params.pedido).subscribe(
               (response:any) => {
                 this.pedido         = response[0];
                 this.emissor        = ls.get('loja');

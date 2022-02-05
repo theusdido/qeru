@@ -21,13 +21,6 @@ export class PropostaService {
     });
   }
 
-  getPedido(pedido:any){
-    return this.rs.get("proposta",{
-      op:'listar',
-      pedido:pedido
-    });
-  }
-
   iniciarProposta(pedido:any){
     this.rs.get('proposta',{
       op:'criar',

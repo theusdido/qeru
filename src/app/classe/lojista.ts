@@ -33,7 +33,7 @@ export class Lojista  {
         public rs:RequisicaoService,
         public proposta:PropostaService
     ){}
-
+    
     getCategoriasVirgula():Array<any> {
         let categorias = [];
         for (let c of this.categorias){

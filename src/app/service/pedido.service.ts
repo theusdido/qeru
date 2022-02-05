@@ -1,4 +1,5 @@
 import {  Injectable } from '@angular/core';
+import { RequisicaoService } from './requisicao.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,21 @@ export class PedidoService {
   public observacao:string = "";
   public retorno:any;
 
-  constructor() { }
+  constructor(
+    public rs:RequisicaoService
+  ) { }
+
+  getPedido(pedido:any){
+    return this.rs.get("pedido",{
+      op:'listar',
+      pedido:pedido
+    });
+  }
+
+  all(){
+    return this.rs.get("pedido",{
+      op:'listar'
+    });
+  } 
 
 }

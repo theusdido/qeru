@@ -27,6 +27,10 @@ export class UserInfoComponent implements OnInit {
       this.params      = new HttpParams()
       .append('param','{"op":"loja-logo"}')
       .append('param','{"loja":'+ls.get('loja')+'}');
+    }else{
+      this.params      = new HttpParams()
+      .append('param','{"op":"foto-perfil"}')
+      .append('param','{"cliente":'+ls.get('userid')+'}');
     }
   }
 
