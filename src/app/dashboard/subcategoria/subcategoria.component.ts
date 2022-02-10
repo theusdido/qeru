@@ -2,6 +2,8 @@ import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChil
 import { PedidoService } from 'src/app/service/pedido.service';
 import { RequisicaoService } from 'src/app/service/requisicao.service';
 
+declare var $:any;
+
 @Component({
   selector: 'app-subcategoria',
   templateUrl: './subcategoria.component.html',
@@ -10,8 +12,10 @@ import { RequisicaoService } from 'src/app/service/requisicao.service';
 export class SubcategoriaComponent implements OnInit,AfterViewInit {  
   public subcategoria:any = 0;
   public subcategorias:Array<any> = [];
+  public atributo_component:any;
 
   @Input() categoria:number = 0;
+
   constructor(
     public rs:RequisicaoService,
     public pedido:PedidoService
@@ -22,34 +26,38 @@ export class SubcategoriaComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit(){
-    this.setAtributo();
+    //this.setAtributo();
   }
 
   load(categoria:number){
-    this.rs.get('subcategoria',{
+    return this.rs.get('subcategoria',{
       op:'load',
       categoria:categoria
-    }).subscribe(
-      (response:any) => {
-        this.subcategorias.splice(0,this.subcategorias.length);
-        this.set(response);        
-      }
-    );
+    });
   }
 
   set(lista:any){
+
+    // Limpa as subcategorias para cada categoria selecionada
+    this.subcategorias.splice(0,this.subcategorias.length);
     if (lista.length > 0 ){      
-      this.subcategorias = lista;
-      this.subcategoria = lista[0].id;
+      this.subcategorias  = lista;
+      this.subcategoria   = lista[0].id;
+      //this.setAtributo(lista[0].id);
     }else{
       this.subcategorias.push({
         id:0,descricao:"-- Selecione --"
       });
       this.subcategoria = 0;
     }
-    
   }
-  setAtributo(){
-    this.pedido.subcategoria = this.subcategoria;    
+
+  setAtributo(subcategoria:number){
+      this.atributo_component.load(subcategoria);
+
+      $('.card-container .card').removeClass('selected');
+      $("#subcategoria-" + subcategoria).addClass('selected');
+      this.pedido.subcategoria = subcategoria;
+    
   }
 }

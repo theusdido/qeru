@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { PedidoService } from 'src/app/service/pedido.service';
 import { RequisicaoService } from '../../service/requisicao.service';
 import { Sessao } from '../../service/sessao.service';
 import { Router } from '@angular/router';
@@ -23,20 +22,12 @@ export class ComprarComponent implements OnInit {
   @ViewChild("itemcomponent") item:any;
 
   constructor(
-    public pedido:PedidoService,
     public rs:RequisicaoService,
     public sessao:Sessao,
     public rota:Router
   ) { }
 
-  ngOnInit(): void {
-    /*
-    $("#btn-qeru-comprar").click(function(){
-      if ($("#comprar-fieldset").css("display") == "none"){
-        window.location.href = location.href;
-      }
-    });
-    */
+  ngOnInit(): void {   
   }
 
   comprar():boolean {
@@ -46,29 +37,43 @@ export class ComprarComponent implements OnInit {
       setTimeout( () => $("#categoriacomponent").focus(), 1000   );
       return false;
     }
-    this.pedido.categoria                 = this.categoria;
-    this.pedido.cliente                   = ls.get("cliente");
-    this.pedido.isretirarestabelecimento  = this.isretirarestabelecimento.nativeElement.checked;
-    this.pedido.observacao                = this.observacao;
 
     this.rs.get("pedido",{
       op:"salvar",
-      pedido:JSON.stringify(this.pedido),
+      pedido:{
+        categoria:this.categoria,
+        subcategoria:this.subcategoriasel,
+        atributos:this.atributo.selecionados(),
+        cliente:ls.get("cliente"),
+        isretirarestabelecimento:this.isretirarestabelecimento.nativeElement.checked,
+        observacao:this.observacao
+      },
       anexos:this.item.itens,
       token:ls.get("token")
     }).subscribe(
       (r:any) => {
-        this.pedido.retorno = r;
-        this.rota.navigate(["/dashboard/retorno"]);
+        //this.rota.navigate(["retorno"]);
+        if (r.status == 0){
+          $("#comprar-retorno .msg-envio").addClass("alert-success");
+        }else{
+          $("#comprar-retorno .msg-envio").addClass("alert-danger");
+        }
+        $("#comprar-retorno .msg-envio").html(r.msg);
+        $('#comprar-fieldset').hide();
+        $('#comprar-retorno').show();
       }
     );
+
     return true;
   }
+
   setCategoria(categoria:number){
-    this.categoria = categoria;
-    this.sbc.load(categoria);
-    setTimeout(() => {
-      this.atributo.load(this.sbc.subcategoria);
-    },1000);
+    this.categoria              = categoria;
+    this.sbc.atributo_component = this.atributo;
+
+    this.sbc.load(categoria).subscribe( (response:any) => {
+      this.sbc.set(response); 
+    });
   }
+
 }

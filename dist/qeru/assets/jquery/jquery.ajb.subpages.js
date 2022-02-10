@@ -1,1 +1,0 @@
-	$('.modal-footer').remove();

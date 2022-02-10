@@ -1,0 +1,34 @@
+<div class="card-topo">
+    <div class="card-topo-item" id="item-credito">
+        <app-financeiro-card
+            caption="R$ 800,00"
+            item="Meu Crédito"
+            color="green"
+        ></app-financeiro-card>
+    </div>            
+    <div class="card-topo-item" id="item-conquista">
+        <div class="card-topo-item-content">
+            <i id="icone-card-topo-conquista" class="fas fa-trophy" value="2"  pBadge severity="success"  severity="success"></i>
+        </div>
+    </div>
+    <div class="card-topo-item" id="item-pontos">
+        <div class="card-topo-item-content">
+            <p-knob 
+                [(ngModel)]="value" 
+                [size]="70"
+                [readonly]="true"
+            ></p-knob>
+            <h2>PTS</h2>
+        </div>
+    </div>            
+    <div class="card-topo-item" id="item-classificacao">
+        <div class="card-topo-item-content">
+            <h5>No Cancel</h5>
+            <p-rating 
+                [(ngModel)]="classificacao" 
+                [cancel]="false"
+                [readonly]="true"
+            ></p-rating>
+        </div>
+    </div>
+</div>

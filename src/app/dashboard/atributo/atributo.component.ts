@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChildren } from '@angular/core';
-import { PedidoService } from 'src/app/service/pedido.service';
+import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { RequisicaoService } from '../../service/requisicao.service';
 
 
@@ -11,14 +10,15 @@ declare var $:any;
 })
 export class AtributoComponent implements OnInit {  
   public atributos:Array<any>     = [];
-  lista:Array<any>                = [];
+  public selectedItems:Array<any> = [];
   dropdownSettings: any           = {};
   atributosmanuais:Array<any>     = [];
 
   @ViewChildren('#atributomanual') attr: any;
+  @ViewChildren('multiselectdown') multiselect: any;
+
   constructor(
-    public rs:RequisicaoService,
-    public pedido:PedidoService
+    public rs:RequisicaoService
   ) { }
 
   ngOnInit(): void {    
@@ -35,7 +35,6 @@ export class AtributoComponent implements OnInit {
   }
 
   load(subcategoria:number){
-    this.pedido.subcategoria = subcategoria;
     this.rs.get("atributo",{
       op:"load",
       subcategoria:subcategoria
@@ -43,25 +42,24 @@ export class AtributoComponent implements OnInit {
       (response:any) => {
         this.atributos.splice(0,this.atributos.length);
         for(let a of response){
+          a.itens.forEach( (e:any) => {
+            e.id = {atributo: a.id , opcao:e.id};
+          });
           this.atributos.push({
             id:a.id,
             descricao:a.descricao,
             itens:a.itens
           });
-        }        
+        }
       }
     );
   }
 
-  onItemSelect(itens:any){
-    this.pedido.atributos.push(itens);
-    this.lista.push(itens);
-  }
-
-  addAtributoManual(e:any){
-    this.pedido.atributos.push({
-      id:e.target.id,
-      descricao:e.target.value
+  selecionados(){
+    let selecionados:Array<any> = [];
+    this.multiselect.forEach( (e:any) => {
+      selecionados.push(e.selectedItems);
     });
+    return selecionados;
   }
 }

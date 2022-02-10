@@ -31,5 +31,4 @@ export class PedidoService {
       op:'listar'
     });
   } 
-
 }

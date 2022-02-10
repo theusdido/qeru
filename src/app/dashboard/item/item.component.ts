@@ -2,7 +2,6 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { PedidoService } from 'src/app/service/pedido.service';
 import { RequisicaoService } from 'src/app/service/requisicao.service';
 import { ls } from 'src/environments/environment';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import {MatDialog} from '@angular/material/dialog';
 
 declare var $:any;
@@ -16,7 +15,7 @@ export class ItemComponent implements OnInit,AfterViewInit {
 
   public pahtupload:string    = this.rs.upload;
   public fileinput:string     = "";
-  public src_sem_foto = "assets/img/semimagem.jpg";
+  public src_sem_foto = "assets/img/upload-image.jpg";
   public indice:number = 0;
   public itens:Array<string> = [];
   constructor(
@@ -75,6 +74,7 @@ export class ItemComponent implements OnInit,AfterViewInit {
             let src_img = this.rs.file + "temp/" + indice + "." + extensao + "?u=" + indice;
             $(".card-img-top").prop("src", src_img);
             $("#src_temp").val(src_img);
+            this.adicionarFoto();
           },500
         );
     });
@@ -82,9 +82,9 @@ export class ItemComponent implements OnInit,AfterViewInit {
 
   addMiniatura(src:string){
 
-    var divItem = $('<div  class="item" data-indice="'+this.indice+'">');
-    var excluirItem =  $('<i class="fas fa-trash excluir-imagem-lista-item" ></i>');
-    var imgItem = $('<img src="'+src+'" />');
+    var divItem       = $('<div  class="item" data-indice="'+this.indice+'">');
+    var excluirItem   = $('<i class="fas fa-trash excluir-imagem-lista-item" ></i>');
+    var imgItem       = $('<img src="'+src+'" />');
     
     excluirItem.click( (iconExcluir:any) => {
       $(".owl-carousel").trigger('remove.owl.carousel', [this.indice]).trigger('refresh.owl.carousel');

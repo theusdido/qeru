@@ -1,23 +1,13 @@
-<div class="row" *ngIf="atributos.length > 0">
-    <div class="col">
-        <h5>Selecione as principais caracteristicas do seu produto</h5>
-        <div *ngFor="let a of atributos;let index;">
-            <ng-multiselect-dropdown
-            *ngIf="a.itens.length"
-            [settings]="dropdownSettings"
-            [data]="a.itens"
-            [placeholder]="a.descricao"
-            (onSelect)="onItemSelect($event)"
-            ></ng-multiselect-dropdown>
-
-            <input 
-                type="text" 
-                [placeholder]="a.descricao" 
-                class="form-control" 
-                *ngIf="a.itens.length==0" 
-                id="{{ a.id }}"
-                (blur) = "addAtributoManual( $event )"
-            />
-        </div>
+<h5 *ngIf="atributos.length > 0">Selecione as principais caracteristicas do seu produto</h5>
+<div *ngIf="atributos.length > 0" id="div-lista-atributos">    
+    <div *ngFor="let a of atributos;let index;" class="atributo-item-lista">
+        <label>{{ a.descricao }}</label>
+        <ng-multiselect-dropdown
+        #multiselectdown
+        *ngIf="a.itens.length"
+        [settings]="dropdownSettings"
+        [data]="a.itens"
+        placeholder="Selecionar {{ a.descricao }} "
+        ></ng-multiselect-dropdown>
     </div>
 </div>

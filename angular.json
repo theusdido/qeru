@@ -1,191 +1,191 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "analytics": "1ada3011-80f2-415b-8d66-057c7ff25b79"
-  },
-  "version": 1,
-  "newProjectRoot": "projects",
-  "projects": {
-    "qeru": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        },
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/qeru",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/assets"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/assets/css/bootstrap.min.css",
-              "src/assets/css/owl.carousel.min.css",
-              "src/assets/css/flaticon.css",
-              "src/assets/css/slicknav.css",
-              "src/assets/css/animate.min.css",
-              "src/assets/css/magnific-popup.css",
-              "src/assets/css/fontawesome-all.min.css",
-              "src/assets/css/themify-icons.css",
-              "src/assets/css/slick.css",              
-              "src/assets/css/style.css",
-              "src/assets/owl-carousel/2.3.4/dist/assets/owl.carousel.min.css",
-              "src/styles.scss",
-              "src/assets/css/td.css",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/themes/lara-light-indigo/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/chart.js/dist/chart.js"
-            ],
-            "scripts": [
-              "src/assets/js/vendor/modernizr-3.5.0.min.js",
-              "src/assets/js/vendor/jquery-1.12.4.min.js",
-              "src/assets/js/popper.min.js",
-              "src/assets/js/bootstrap.min.js",
-              "src/assets/js/jquery.slicknav.min.js",
-              "src/assets/js/owl.carousel.min.js",
-              "src/assets/js/slick.min.js",
-              "src/assets/js/wow.min.js",
-              "src/assets/js/animated.headline.js",
-              "src/assets/js/jquery.magnific-popup.js",
-              "src/assets/js/jquery.scrollUp.min.js",
-              "src/assets/js/jquery.sticky.js",
-              "src/assets/js/contact.js",
-              "src/assets/js/jquery.form.js",
-              "src/assets/js/jquery.validate.min.js",
-              "src/assets/js/mail-script.js",
-              "src/assets/js/jquery.ajaxchimp.min.js",
-              "src/assets/js/plugins.js",
-              "src/assets/owl-carousel/2.3.4/dist/owl.carousel.min.js",
-              "src/assets/js/main.js",
-              "src/assets/jquery/jquery.mask.js",
-              "src/assets/jquery/jquery.payment-master/lib/jquery.payment.js"
-            ],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "cli": {
+      "analytics": "1ada3011-80f2-415b-8d66-057c7ff25b79"
+    },
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+      "qeru": {
+        "projectType": "application",
+        "schematics": {
+          "@schematics/angular:component": {
+            "style": "scss"
           },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
+          "@schematics/angular:application": {
+            "strict": true
+          }
+        },
+        "root": "",
+        "sourceRoot": "src",
+        "prefix": "app",
+        "architect": {
+          "build": {
+            "builder": "@angular-devkit/build-angular:browser",
+            "options": {
+              "outputPath": "dist/qeru",
+              "index": "src/index.html",
+              "main": "src/main.ts",
+              "polyfills": "src/polyfills.ts",
+              "tsConfig": "tsconfig.app.json",
+              "assets": [
+                "src/assets"
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "5000kb",
-                  "maximumError": "2mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ]
+              "styles": [
+                "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+                "src/assets/css/bootstrap.min.css",
+                "src/assets/css/owl.carousel.min.css",
+                "src/assets/css/flaticon.css",
+                "src/assets/css/slicknav.css",
+                "src/assets/css/animate.min.css",
+                "src/assets/css/magnific-popup.css",
+                "src/assets/css/fontawesome-all.min.css",
+                "src/assets/css/themify-icons.css",
+                "src/assets/css/slick.css",              
+                "src/assets/css/style.css",
+                "src/assets/owl-carousel/2.3.4/dist/assets/owl.carousel.min.css",
+                "src/styles.scss",
+                "src/assets/css/td.css",
+                "node_modules/primeicons/primeicons.css",
+                "node_modules/primeng/resources/themes/lara-light-indigo/theme.css",
+                "node_modules/primeng/resources/primeng.min.css",
+                "node_modules/chart.js/dist/chart.js"
+              ],
+              "scripts": [
+                "src/assets/js/vendor/modernizr-3.5.0.min.js",
+                "src/assets/js/vendor/jquery-1.12.4.min.js",
+                "src/assets/js/popper.min.js",
+                "src/assets/js/bootstrap.min.js",
+                "src/assets/js/jquery.slicknav.min.js",
+                "src/assets/js/owl.carousel.min.js",
+                "src/assets/js/slick.min.js",
+                "src/assets/js/wow.min.js",
+                "src/assets/js/animated.headline.js",
+                "src/assets/js/jquery.magnific-popup.js",
+                "src/assets/js/jquery.scrollUp.min.js",
+                "src/assets/js/jquery.sticky.js",
+                "src/assets/js/contact.js",
+                "src/assets/js/jquery.form.js",
+                "src/assets/js/jquery.validate.min.js",
+                "src/assets/js/mail-script.js",
+                "src/assets/js/jquery.ajaxchimp.min.js",
+                "src/assets/js/plugins.js",
+                "src/assets/owl-carousel/2.3.4/dist/owl.carousel.min.js",
+                "src/assets/js/main.js",
+                "src/assets/jquery/jquery.mask.js",
+                "src/assets/jquery/jquery.payment-master/lib/jquery.payment.js"
+              ],
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": false,
+              "sourceMap": true,
+              "optimization": false,
+              "namedChunks": true
             },
-            "homologacao" :{
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.homologacao.ts"
-                }
-              ]              
+            "configurations": {
+              "production": {
+                "fileReplacements": [
+                  {
+                    "replace": "src/environments/environment.ts",
+                    "with": "src/environments/environment.prod.ts"
+                  }
+                ],
+                "optimization": true,
+                "outputHashing": "all",
+                "sourceMap": false,
+                "namedChunks": false,
+                "extractLicenses": true,
+                "vendorChunk": false,
+                "buildOptimizer": true,
+                "budgets": [
+                  {
+                    "type": "initial",
+                    "maximumWarning": "5000kb",
+                    "maximumError": "2mb"
+                  },
+                  {
+                    "type": "anyComponentStyle",
+                    "maximumWarning": "2kb",
+                    "maximumError": "4kb"
+                  }
+                ]
+              },
+              "homologacao" :{
+                "fileReplacements": [
+                  {
+                    "replace": "src/environments/environment.ts",
+                    "with": "src/environments/environment.homologacao.ts"
+                  }
+                ]              
+              }
+            },
+            "defaultConfiguration": ""
+          },
+          "serve": {
+            "builder": "@angular-devkit/build-angular:dev-server",
+            "options": {
+              "browserTarget": "qeru:build"
+            },
+            "configurations": {
+              "production": {
+                "browserTarget": "qeru:build:production"
+              }
+              ,
+              "homologacao": {
+                "browserTarget": "qeru:build:homologacao"
+              }            
             }
           },
-          "defaultConfiguration": ""
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "qeru:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "qeru:build:production"
+          "extract-i18n": {
+            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+              "browserTarget": "qeru:build"
             }
-            ,
-            "homologacao": {
-              "browserTarget": "qeru:build:homologacao"
-            }            
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "qeru:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/assets"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"              
-            ],
-            "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "qeru:serve"
           },
-          "configurations": {
-            "production": {
-              "devServerTarget": "qeru:serve:production"
+          "test": {
+            "builder": "@angular-devkit/build-angular:karma",
+            "options": {
+              "main": "src/test.ts",
+              "polyfills": "src/polyfills.ts",
+              "tsConfig": "tsconfig.spec.json",
+              "karmaConfig": "karma.conf.js",
+              "assets": [
+                "src/assets"
+              ],
+              "styles": [
+                "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+                "src/styles.scss"              
+              ],
+              "scripts": []
+            }
+          },
+          "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+              "tsConfig": [
+                "tsconfig.app.json",
+                "tsconfig.spec.json",
+                "e2e/tsconfig.json"
+              ],
+              "exclude": [
+                "**/node_modules/**"
+              ]
+            }
+          },
+          "e2e": {
+            "builder": "@angular-devkit/build-angular:protractor",
+            "options": {
+              "protractorConfig": "e2e/protractor.conf.js",
+              "devServerTarget": "qeru:serve"
+            },
+            "configurations": {
+              "production": {
+                "devServerTarget": "qeru:serve:production"
+              }
             }
           }
         }
       }
-    }
-  },
-  "defaultProject": "qeru"
-}
+    },
+    "defaultProject": "qeru"
+  }

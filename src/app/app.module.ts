@@ -94,6 +94,11 @@ import { ChartModule } from 'node_modules/primeng/chart/';
 import { LogoutComponent } from './logout/logout.component';
 import { LogonPageComponent } from './logon-page/logon-page.component';
 import { UserInfoComponent } from './dashboard/user-info/user-info.component';
+import {KnobModule} from 'primeng/knob';
+import { HeaderComponent } from './dashboard/header/header.component';
+import { RatingModule } from 'primeng/rating';
+import {RippleModule} from 'primeng/ripple';
+import { BadgeModule } from 'primeng/badge';
 
 @NgModule({
   declarations: [
@@ -160,7 +165,8 @@ import { UserInfoComponent } from './dashboard/user-info/user-info.component';
     LogoutComponent,
     LogonPageComponent,
     DialogSemCredito,
-    UserInfoComponent
+    UserInfoComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -185,7 +191,11 @@ import { UserInfoComponent } from './dashboard/user-info/user-info.component';
     MatTabsModule  ,  
     MatSliderModule,
     MatProgressBarModule,
-    ChartModule
+    ChartModule,
+    KnobModule,
+    RatingModule,
+    RippleModule,
+    BadgeModule
   ],
   providers: [
     ConfigService,
