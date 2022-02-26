@@ -14,13 +14,15 @@ export class AdicionarCreditoComponent implements OnInit,AfterContentInit {
 
   public nome             = '';
   public numero_cartao    = '';
-  public valor_total      = 50;
   public validade         = '';
   public cvc              = '';
   public cpf              = '';
   public data_nascimento  = '';
   public telefone         = '';
 
+  // Inicializa o valor do crédito
+  public valor_total      = 50;
+    
   @ViewChildren('required')  obrigatorios: any;
   
   public saldo:number = 0;
@@ -33,8 +35,6 @@ export class AdicionarCreditoComponent implements OnInit,AfterContentInit {
 
   ngOnInit(): void {    
     this.setCartoes();
-    //this.cd.create();
-    //;
   }
 
   ngAfterContentInit(): void {    
@@ -133,6 +133,7 @@ export class AdicionarCreditoComponent implements OnInit,AfterContentInit {
         $("#msg-erro-politicaprivacidade").html("Você precisa aceitar os termos da <b>Política de Privacidade</b>.");
       }else{
         this.pagseguro.tokenCartao();
+        this.cd.incSaldo( this.valor_total );
         $('#retorno-pagamento-cartao').html('Crédito adicionado com sucesso !!');
         $('#retorno-pagamento-cartao').show();
         $('.pagamento-cartaocredito').hide();

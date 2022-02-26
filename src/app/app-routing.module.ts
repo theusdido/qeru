@@ -32,6 +32,7 @@ import { ProdutocadastroComponent } from './dashboard/produtocadastro/produtocad
 import { ProdutolojaComponent } from './dashboard/produtoloja/produtoloja.component';
 import { LogoutComponent } from './logout/logout.component';
 import { LogonPageComponent } from './logon-page/logon-page.component';
+import { FinanceiroExtratoComponent } from './dashboard/financeiro-extrato/financeiro-extrato.component';
 
 export const routes: Routes = [
 
@@ -97,7 +98,9 @@ export const routes: Routes = [
       path: 'financeiro'    ,
       component:FinanceiroComponent,
       children:[
-        { path: 'adicionarcredito' , component: AdicionarCreditoComponent}
+        { path: '', redirectTo: 'extrato', pathMatch: 'full'},
+        { path: 'adicionarcredito' , component: AdicionarCreditoComponent},
+        { path: 'extrato' , component: FinanceiroExtratoComponent }
       ]
     },
     { path: 'estabelecimento' , component:EstabelecimentoComponent},

@@ -1,0 +1,40 @@
+<section id="extrato">
+    <table 
+        mat-table 
+        [dataSource]="linhas" 
+        class="mat-elevation-z8"
+    >
+
+        <!-- Cost Column -->
+        <ng-container matColumnDef="transacao">
+            <th mat-header-cell *matHeaderCellDef> Movimentação </th>
+            <td mat-cell *matCellDef="let linha"> {{linha.transacao}} </td>
+            <td mat-footer-cell *matFooterCellDef> Total </td>
+        </ng-container>
+   
+        <!-- Cost Column -->
+        <ng-container matColumnDef="operacao">
+            <th mat-header-cell *matHeaderCellDef> Operação </th>
+            <td mat-cell *matCellDef="let linha"> {{linha.operacao}} </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+
+        <!-- Item Column -->
+        <ng-container matColumnDef="data">
+            <th mat-header-cell *matHeaderCellDef> Data </th>
+            <td mat-cell *matCellDef="let linha"> {{linha.data}} </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+        
+        <!-- Cost Column -->
+        <ng-container matColumnDef="valor">
+            <th mat-header-cell *matHeaderCellDef> Valor </th>
+            <td mat-cell *matCellDef="let linha"> {{ linha.valor | currency }} </td>
+            <td mat-footer-cell *matFooterCellDef > {{ total() | currency }} </td>
+        </ng-container>            
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="{{ getOperacao(row) }}"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    </table>
+</section>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequisicaoMiles } from 'src/app/miles/src/requisicao';
 import { Sessao } from 'src/app/service/sessao.service';
-import { ls } from 'src/environments/environment';
 import { ClienteService } from '../../dashboard/cliente/cliente.service';
 
 declare var $:any;

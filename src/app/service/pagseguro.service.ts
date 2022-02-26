@@ -1,4 +1,8 @@
-import { Injectable } from '@angular/core';
+import { 
+  Injectable,
+  Renderer2,
+  RendererFactory2
+} from '@angular/core';
 import { RequisicaoMiles } from '../miles/src/requisicao';
 import { environment, ls } from '../../environments/environment';
 
@@ -9,12 +13,19 @@ declare var $:any;
 })
 
 export class PagseguroService {
+  public r: Renderer2;
   public valor_total    = 0;
   constructor(
-    public rm:RequisicaoMiles
+    public rm:RequisicaoMiles,
+    public renderer:RendererFactory2    
   ) {
-    let directpaymentJS = $('<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>');
-    //$('head').append(directpaymentJS);
+    this.r = renderer.createRenderer(null, null);
+    let directpaymentJS = this.r.createElement('script');
+    this.r.setAttribute(directpaymentJS,'src','https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js');
+
+    // Adiciona o script do API do Pagseguro
+    this.r.selectRootElement('#pagseguro-directpaymethod').appendChild(directpaymentJS);
+
   }
 
   getSessionID(){
@@ -276,6 +287,9 @@ export class PagseguroService {
     let token_cartao          = $("#tokencartao").val();
     let is_titular            = $("input[type=radio]:checked").val();
     let email                 = ls.get('useremail');
+    let valor_total           = parcelamento.split("^")[1];
+    let perfil                = ls.get('perfil');
+    let loja                  = ls.get('loja');
 
 		$.ajax({
 			type:"POST",
@@ -288,50 +302,28 @@ export class PagseguroService {
 				hash:identificador,
 				token:token_cartao,
 				qtde:parcelamento.split("^")[0],
-				valor:parcelamento.split("^")[1],
+				valor:valor_total,
 				nome:nome,
 				soutitular:is_titular,
 				telefone:telefone,
 				datanascimento:datanascimento,
         email:email,
-        usuario:ls.get('userid')
+        usuario:ls.get('userid'),
+        perfil:perfil,
+        loja:loja
 			},
 			error:function(){
-        /*
-				$("#div-pagamento-cartaocredito .pagamento-cartaocredito").hide(200);
-				$("#valortotalcompra-pagamento").hide(100);
-				$("#valortotalcompra-pagamento").val("0,00");
-				$("#retorno-pagamento-cartao").html("<div class=\'alert alert-danger\' role=\'alert\'><b>Erro ao Finalizar Pedido </b> Pedimos desculpas pelo incoveniente, favor entrar em contato conosco ou tentar comprar mais tarde.</div>");
-        */
+        // Erro na requisição
 			},
 			complete:function(retorno:any){
-        /*
-				try{
-					let retFin = JSON.parse(retorno.responseText);
-					let status = parseInt(retFin[0].status);
-					if (status == 1 || status == 2 || status == 3){
-						$("#valortotalcompra-pagamento").val("0,00");
-						$("#etapas-checkout,#valorsubtotal-pagamento,#valorfrete-pagamento,.pagamento-aviso").hide();
-						$("#btns-metodo-pagamento").hide();
-						$(".btn-etapa").hide();
-						$(".td-totais-checkout").hide();
-					}else{
-						$("#btn-checkout-pagamento").addClass("btn-danger");
-            $("#lista-erro-pagseguro li").each( 
-              (index:number,element:any) => {
-                let codigoerro = parseInt($(element).find(".codigo-erro-pagseguro").html());
-                $(element).find(".msg-erro-pagseguro").html(this.pagseguro.getDescricaoErro(codigoerro));
-            });
-					}
-					$("#retorno-pagamento-cartao").html(retFin[0].msg);
-				}catch(e){
-					$("#valortotalcompra-pagamento").val("0,00");
-					$("#retorno-pagamento-cartao").html("<div class=\'alert alert-danger\' role=\'alert\'><b>Erro ao Finalizar Pedido </b> Pedimos desculpas pelo incoveniente, favor entrar em contato conosco ou tentar comprar mais tarde.</div>");
-				}finally{
-					$("#valortotalcompra-pagamento").hide(100);
-					$("#div-pagamento-cartaocredito .pagamento-cartaocredito").hide(200);
-				}
-        */
+        let retFin = JSON.parse(retorno.responseText);
+        let status = parseInt(retFin[0].status);
+        if (status == 1 || status == 2 || status == 3){          
+          console.log('Transação efetuada com sucesso !');
+        }else{
+          console.error('Erro na transação com Pagseguro.');
+          console.log(retFin[0].msg);
+        }
 			}
 		});
   }

@@ -10,21 +10,21 @@
     <div class="row">
         <div class="col-md-4">
             <app-financeiro-card
-                caption="R$ 650,00"
-                item="Saldo"
-                color="red"
-            ></app-financeiro-card>
-        </div>
-        <div class="col-md-4">
-            <app-financeiro-card
-                caption="R$ 800,00"
-                item="Sacado"
+                caption="{{ cds.getSaldo(true) }} "
+                item="Crédito"
                 color="green"
             ></app-financeiro-card>
         </div>
         <div class="col-md-4">
             <app-financeiro-card
-                caption="R$ 100,00"
+                caption="{{ cds.getSacado(true) }}"
+                item="Sacado"
+                color="red"
+            ></app-financeiro-card>
+        </div>
+        <div class="col-md-4">
+            <app-financeiro-card
+                caption=" {{ cds.getTransferido(true) }}"
                 item="Transferido"
                 color="blue"
             ></app-financeiro-card>            

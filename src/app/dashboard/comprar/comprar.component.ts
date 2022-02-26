@@ -11,9 +11,8 @@ declare var $:any;
   styleUrls: ['./comprar.component.scss']
 })
 export class ComprarComponent implements OnInit {
-  public categoria:number = 0;
-  public subcategoriasel:number = 0;
-  public observacao:string = "";
+  public categoria:number   = 0;
+  public observacao:string  = "";
 
   @ViewChild("isretirarestabelecimento") isretirarestabelecimento:any;
   @ViewChild("subcategoriacomponent") sbc:any;
@@ -42,7 +41,7 @@ export class ComprarComponent implements OnInit {
       op:"salvar",
       pedido:{
         categoria:this.categoria,
-        subcategoria:this.subcategoriasel,
+        subcategoria:this.sbc.selected,
         atributos:this.atributo.selecionados(),
         cliente:ls.get("cliente"),
         isretirarestabelecimento:this.isretirarestabelecimento.nativeElement.checked,

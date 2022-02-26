@@ -11,17 +11,25 @@ import { PropostaService } from '../proposta/proposta.service';
 })
 
 export class PrenegociacaoComponent implements OnInit,AfterViewInit {
-  public pedido:number        = 0;
-  public produto              = "";
-  public foto:Array<any>      = [];
-  public atributo:Array<any>  = [];
+  public pedido:any = {};
+  public pedido_id:number             = 0;
+  public foto:Array<any>              = [];
+  public atributo:Array<any>          = [];  
 
   //utilizar um nome para o viewchild diferente dos atributos.
-  @ViewChild ("categoria") categoriaselecao:any;
+  @ViewChild ("atributos") atributos_component:any;
 
-  // Associa o componente produtodetalhe
-  @ViewChild ("produtodetalhe") pd:any;
-  @ViewChild("titulopagina") titulo:any;
+  // Produto
+  public produto                      = "";
+  public produto_nome                 = '';
+  public produto_descricao            = '';
+  public produto_imagemprincipal_src  = '';
+
+  // Categoria
+  public categoria:any             = {
+    id:0,
+    descricao:''
+  };
 
   constructor(
     public rota:ActivatedRoute,
@@ -31,25 +39,23 @@ export class PrenegociacaoComponent implements OnInit,AfterViewInit {
   ) { 
     this.rota.queryParams.subscribe(
       (params) => {
-        this.pedido = params.pedido;
+        this.pedido_id = params.pedido;        
       }
     );
   }
 
-  loadPedido(){
-    this.pds.getPedido(this.pedido).subscribe(
+  loadPedido(pedido_id:number){
+    this.pds.getPedido(this.pedido_id).subscribe(
       (response:any) => {
-        console.log(response[0]);
-        this.produto    = response[0].produto;
-        this.foto       = response[0].anexos;
-        this.atributo   = response[0].atributos;
-        this.titulo.load(response[0].td_subcategoria,'Produto',);
-        this.categoriaselecao.load(response[0].td_categoria); 
-        /*
-          By @theusdido 08/09/2021 13:49
-          Carrega os atributos no componente produtodetalhe
-        */
-       this.pd.setEspecificacoes(response[0].atributos);
+        this.pedido                       = response[0];
+        this.produto_nome                 = response[0].produto.nome;
+        this.produto_descricao            = response[0].produto.descricao;
+        this.produto_imagemprincipal_src  = response[0].produto_imagemprincipal_src
+        this.foto                         = response[0].anexos;
+        this.atributo                     = response[0].atributos;
+        this.categoria                    = this.pedido.categoria;
+
+        this.atributos_component.set(this.pedido.atributos);
       }
     );
   }
@@ -58,9 +64,9 @@ export class PrenegociacaoComponent implements OnInit,AfterViewInit {
     this.cs.isFirstInteraction();
   }
   ngAfterViewInit(){
-    this.loadPedido();
+    this.loadPedido(this.pedido_id);
   }
   iniciarNegociacao(){
-    this.ps.iniciarProposta(this.pedido);
+    this.ps.iniciarProposta(this.pedido_id);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PontuacaoService } from 'src/app/service/pontuacao.service';
 
 @Component({
   selector: 'app-meuspontos',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MeuspontosComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public ps:PontuacaoService
+  ) { }
 
   ngOnInit(): void {
   }

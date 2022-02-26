@@ -24,11 +24,12 @@ export class PropostaComponent implements OnInit {
 
   ngOnInit(): void {
     this.ps.getPropostas().subscribe(
-      (response:any) => {
-        this.propostas = response;
+      (negociacoes:any) => {
+        this.propostas = negociacoes;
       }
     );
   }
+
   iniciarProposta(pedido:any){
     this.ps.abrirNegociacao(pedido.id);
   }

@@ -8,11 +8,28 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3" *ngFor="let p of propagandas | async">
-            <div class="card text-center">
-                <div class="card-header">{{ p.loja_nome }}</div>
-                <div class="card-body">
-                    <img src="assets/img/teia-logo.png" class="img-logo-negociacao-home" />
+        
+    </div>
+</div>
+<p-carousel 
+    [value]="itens" 
+    styleClass="custom-carousel" 
+    [numVisible]="4" 
+    [numScroll]="1" 
+    [circular]="true" 
+    [autoplayInterval]="0" 
+    [responsiveOptions]="responsiveOptions"
+    [showIndicators]="itens.length>4?true:false"
+    [showNavigators]="itens.length>4?true:false"
+>
+    <ng-template let-item pTemplate="item">
+        <div class="product-item">
+            <div class="product-item-content">
+                <div class="mb-3">
+                    <img src="{{ url_arquivo }}logo-94-{{ item.loja_id }}.jpg" [alt]="item.loja_nome" class="product-image" />
+                </div>
+                <div>
+                    <h4 class="mb-1">{{item.loja_nome}}</h4>
                     <div>
                         <fa-icon [icon]="faStar"></fa-icon>
                         <fa-icon [icon]="faStar"></fa-icon>
@@ -20,17 +37,13 @@
                         <fa-icon [icon]="faStar"></fa-icon>
                         <fa-icon [icon]="faStar"></fa-icon>
                     </div>
-                    <p class="card-text">Pontos 5pts </p>
-                </div>
-                <div class="card-footer text-muted">
-                    <button 
-                        href="#" 
-                        class="btn btn-primary"
-                        (click)="visualizar(p)"
-                    >Visualizar</button>
+                    <span [class]="'product-badge status-'+item.loja_nome.toLowerCase()"> Nome do Produto </span>
+                    <div class="car-buttons mt-5">
+                        <button href="#" class="btn btn-primary" (click)="visualizar(item)">Visualizar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </ng-template>
+</p-carousel>
 <app-propaganda-view #propandaview></app-propaganda-view>

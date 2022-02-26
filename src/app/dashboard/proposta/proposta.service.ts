@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { RequisicaoService } from 'src/app/service/requisicao.service';
 import { Router } from '@angular/router';
 import { ls } from 'src/environments/environment';
+import { NegociacaoService } from '../../dashboard/negociacoes/negociacao.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class PropostaService {
 
   constructor(
     public rs:RequisicaoService,
-    public rota:Router
+    public rota:Router,
+    public ns:NegociacaoService
   ) { }
 
   getCategoria(categorias:any){
@@ -33,11 +35,14 @@ export class PropostaService {
 
   getPropostas()
   {
+    return this.ns.abertas();
+    /*
     return this.rs.get("proposta",{
       op:'listar',
       action:'abertas',
       loja:ls.get('loja')
     });
+    */
   }
 
   abrirNegociacao(pedido:number)

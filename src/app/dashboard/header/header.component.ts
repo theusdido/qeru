@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { CarteiraDigitalService } from 'src/app/realtime-database/carteira-digital.service';
+import { PontuacaoService } from 'src/app/service/pontuacao.service';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +10,14 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class HeaderComponent implements OnInit {
 
-  public value = 10;
-  public classificacao = 2;
+  public pontos         = 0;
+  public classificacao  = 2;
 
-  constructor(private primengConfig: PrimeNGConfig) {}
+  constructor(
+    private primengConfig: PrimeNGConfig,
+    public cd:CarteiraDigitalService,
+    public pd:PontuacaoService
+  ) {}
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;

@@ -1,4 +1,8 @@
-import { NgModule } from '@angular/core';
+import { 
+  NgModule, 
+  LOCALE_ID,
+  DEFAULT_CURRENCY_CODE
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,11 +36,6 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ProdutoComponent } from './dashboard/produto/produto.component';
 import { AtributoOpcaoComponent } from './dashboard/atributo-opcao/atributo-opcao.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatMenuModule } from '@angular/material/menu';
-import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { DashboardLojistaComponent } from './dashboard/lojista/dashboard-lojista.component';
 import { DashboardClienteComponent } from './dashboard/cliente/dashboard-cliente.component';
 import { RetornoPedidoComponent } from './dashboard/retorno-pedido/retorno-pedido.component';
@@ -47,9 +46,6 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environment';
 import { AvatarComponent } from './widgets/avatar/avatar/avatar.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatBadgeModule } from '@angular/material/badge';
-import { MatCardModule } from '@angular/material/card';
 import { DashboardHomeComponent } from './dashboard/home/dashboard-home.component';
 import { MenuLojistaComponent } from './dashboard/menu/lojista/menu-lojista.component';
 import { MenuClienteComponent } from './dashboard/menu/cliente/menu-cliente.component';
@@ -62,12 +58,10 @@ import { ProdutodetalheComponent } from './dashboard/produtodetalhe/produtodetal
 import { TitulopaginaComponent } from './dashboard/titulopagina/titulopagina.component';
 import { TopicopaginaComponent } from './dashboard/topicopagina/topicopagina.component';
 import { ProdutofotoComponent } from './dashboard/produtofoto/produtofoto.component';
-import {MatDialogModule} from '@angular/material/dialog';
 import { UploadImageComponent } from './upload/image/upload-image.component';
 import { FinanceiroComponent } from './dashboard/financeiro/financeiro.component';
 import { FinanceiroCardComponent } from './dashboard/financeiro-card/financeiro-card.component';
 import { EstabelecimentoComponent } from './dashboard/estabelecimento/estabelecimento.component';
-import {MatTabsModule} from '@angular/material/tabs';
 import { EstabelecimentoLojaComponent } from './dashboard/estabelecimento-loja/estabelecimento-loja.component';
 import { EstabelecimentoLojistaComponent } from './dashboard/estabelecimento-lojista/estabelecimento-lojista.component';
 import { EstabelecimentoImagensComponent } from './dashboard/estabelecimento-imagens/estabelecimento-imagens.component';
@@ -86,19 +80,47 @@ import { PrecadastroFormComponent } from './precadastro-form/precadastro-form.co
 import { AdicionarCreditoComponent } from './dashboard/carteriadigital/adicionar-credito/adicionar-credito.component';
 import { ProdutocadastroComponent } from './dashboard/produtocadastro/produtocadastro.component';
 import { ProdutolojaComponent } from './dashboard/produtoloja/produtoloja.component';
-import { MatSliderModule} from '@angular/material/slider';
 import { VendedorCadastroComponent } from './dashboard/vendedor-cadastro/vendedor-cadastro.component';
 import { DialogDataViewPropaganda, PropagandaViewComponent } from './propaganda-view/propaganda-view.component';
-import { MatProgressBarModule} from '@angular/material/progress-bar';
-import { ChartModule } from 'node_modules/primeng/chart/';
 import { LogoutComponent } from './logout/logout.component';
 import { LogonPageComponent } from './logon-page/logon-page.component';
 import { UserInfoComponent } from './dashboard/user-info/user-info.component';
-import {KnobModule} from 'primeng/knob';
 import { HeaderComponent } from './dashboard/header/header.component';
+import { PrenegociacaoAtributosComponent } from './dashboard/prenegociacao-atributos/prenegociacao-atributos.component';
+import { MovimentacaoService } from './service/movimentacao.service';
+import { FinanceiroExtratoComponent } from './dashboard/financeiro-extrato/financeiro-extrato.component';
+
+// Material
+import {MatTableModule} from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatCardModule } from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
+import { MatSliderModule} from '@angular/material/slider';
+import { MatProgressBarModule} from '@angular/material/progress-bar';
+
+// PrimeNG
+import { ChartModule } from 'node_modules/primeng/chart/';
+import {KnobModule} from 'primeng/knob';
 import { RatingModule } from 'primeng/rating';
 import {RippleModule} from 'primeng/ripple';
 import { BadgeModule } from 'primeng/badge';
+import {CarouselModule} from 'primeng/carousel';
+import {ButtonModule} from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
+
+
+// Formatando Data
+import ptBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -166,7 +188,9 @@ import { BadgeModule } from 'primeng/badge';
     LogonPageComponent,
     DialogSemCredito,
     UserInfoComponent,
-    HeaderComponent
+    HeaderComponent,
+    PrenegociacaoAtributosComponent,
+    FinanceiroExtratoComponent    
   ],
   imports: [
     BrowserModule,
@@ -195,7 +219,12 @@ import { BadgeModule } from 'primeng/badge';
     KnobModule,
     RatingModule,
     RippleModule,
-    BadgeModule
+    BadgeModule,
+    CarouselModule,
+    ButtonModule,
+    CardModule,
+    TableModule,
+    MatTableModule
   ],
   providers: [
     ConfigService,
@@ -205,7 +234,10 @@ import { BadgeModule } from 'primeng/badge';
     UF,
     Lojista,
     RequisicaoService,
-    Sessao 
+    Sessao ,
+    { provide: LOCALE_ID, useValue: 'pt' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+    MovimentacaoService
   ],
   bootstrap: [MainComponent]  
 })

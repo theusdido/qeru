@@ -1,21 +1,54 @@
-<div class="proposta-component">
-    <h2>Propostas</h2>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col" width="20%">Data</th>
-                <th scope="col" width="35%">Cliente</th>
-                <th scope="col" width="35%">Produto</th>
-                <th scope="col" width="10%">Chat</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let n of propostas">
-                <th scope="row">{{n.data}}</th>
-                <td>{{n.cliente}} <br/> {{n.localizacao}} </td>
-                <td>{{n.produto}}</td>
-                <td><fa-icon class="ichat-proposta" [icon]="faRocketchat" (click)="iniciarProposta(n)"></fa-icon></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<p-table 
+    [value]="propostas" 
+    dataKey="name" 
+    responsiveLayout="scroll"
+>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:10%" pSortableColumn="codigo" class="text-center">Cód.</th>            
+            <th style="width:35%" pSortableColumn="cliente">Cliente</th>
+            <th style="width:35%" pSortableColumn="produto">Produto</th>
+            <th style="width:10%" pSortableColumn="data" class="text-center">Data</th>
+            <th style="width:10%" pSortableColumn="chat" class="text-center">Chat</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-proposta>
+        <tr>
+            <td class="text-center"><small>{{ proposta.id }}</small></td>
+            <td>
+                <div style="display: flex;">
+                    <img 
+                        [src]="proposta.cliente.fotoperfil" 
+                        [alt]="proposta.cliente.nome" 
+                        class="shadow-4 proposta-lista-foto" 
+                    />
+                    <div class="proposta-lista-td-content">
+                        <h4>{{ proposta.cliente.nome.substr(0,25) }}</h4>
+                        <small>{{ proposta.cliente.localizacao.substr(0,25) }} ...</small>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div style="display: flex;">
+                    <img 
+                        [src]="proposta.produto.imagemprincipal" 
+                        [alt]="proposta.produto.nome" 
+                        class="shadow-4 proposta-lista-foto" 
+                    />
+                    <div class="proposta-lista-td-content">
+                        <h4>{{ proposta.produto.nome }}</h4>
+                        <small>{{ proposta.produto.descricao.substr(0,25) }} ...</small>
+                    </div>
+                </div>
+            </td>
+            <td class="text-center"><small>{{ proposta.data }}</small></td>
+            <td class="text-center">
+                <fa-icon 
+                    class="ichat-proposta" 
+                    [icon]="faRocketchat" 
+                    (click)="iniciarProposta(proposta.td_pedido)"
+                ></fa-icon>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

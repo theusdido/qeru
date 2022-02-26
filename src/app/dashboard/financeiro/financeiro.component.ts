@@ -7,28 +7,30 @@ import { CarteiraDigitalService } from 'src/app/realtime-database/carteira-digit
   styleUrls: ['./financeiro.component.scss']
 })
 export class FinanceiroComponent implements OnInit {
-  public saldo:number = 0;
-  public saldo_formatado:string = 'R$ 0,00';
+
+  public btns_selected = {
+    addcredito:'border-bottom-selected',
+    meuextrato:''
+  }
 
   constructor(
-    public cd:CarteiraDigitalService
-  ) {
+    public cds:CarteiraDigitalService
+  ) {}
 
-    // Monitora a mudança no valor do saldo
-    this.cd.getSaldo().subscribe((saldo:any) => {
-      if (saldo.length > 0){
-        this.saldo            = saldo[0];
-        this.saldo_formatado  = 'R$ ' + saldo[0].toLocaleString("pt-BR",{minimumFractionDigits: 2});
-      }else{
-        // Cria a carteira digital
-        this.cd.create();
+  ngOnInit(): void {}
+
+  bordaBottom(event:any){
+    console.log(event.target.id);
+    if (event.target.id == 'addcredito'){
+      this.btns_selected = {
+        addcredito:'border-bottom-selected',
+        meuextrato:''
       }
-
-    });
-
+    }else{
+      this.btns_selected = {
+        addcredito:'',
+        meuextrato:'border-bottom-selected'
+      }
+    }
   }
-
-  ngOnInit(): void {
-  }
-
 }

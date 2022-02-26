@@ -1,5 +1,46 @@
+<section id="prenegociacao">
+    <app-titulopagina 
+        #titulopagina 
+        titulo="Pedido"
+        subtitulo="Detalhamento do Pedido"
+    ></app-titulopagina>
+    <div class="pedido-card">
+        <div class="left-side">
+
+            <p-card 
+                [header]="produto_nome"
+                [subheader]="categoria.descricao"
+            >
+                <p>{{ pedido.descricao }}</p>                        
+            </p-card>
+        </div>
+        <div class="middle-side">
+            <img
+                class="produto-imagemprincipal"
+                [alt]="produto_nome"
+                src="{{ produto_imagemprincipal_src }}"
+            />
+        </div>
+        <div class="right-side">    
+            <app-prenegociacao-atributos #atributos></app-prenegociacao-atributos>
+        </div>
+    </div>
+    <hr/>
+    <button class="btn" (click)="iniciarNegociacao()">Iniciar Negociação</button>
+</section>
+
+<!--
+
+-->
+
+
+<!--
 <div class="prenegociacao-component">    
-    <app-titulopagina #titulopagina ></app-titulopagina>
+    <app-titulopagina 
+        #titulopagina 
+        [titulo]="produto_nome"
+        [subtitulo]="produto_descricao"
+    ></app-titulopagina>
     <app-categoria 
         #categoria 
         contexto        = "dashboard-lojista"
@@ -15,3 +56,4 @@
     <hr/>
     <button class="btn" (click)="iniciarNegociacao()">Iniciar Negociação</button>
 </div>
+-->

@@ -8,28 +8,36 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
-            <app-financeiro-card
-                [caption]="saldo_formatado"
-                item="Crédito"
-                color="red"
-            ></app-financeiro-card>
-        </div>
-    </div>
-    <hr />
-    <div class="row">
         <div class="col-md-4">
-            <button class="btn-menu-financeiro">
+            <button 
+                id="addcredito"
+                class="btn-menu-financeiro {{ btns_selected.addcredito }}" 
+                routerLink="adicionarcredito"
+                (click)="bordaBottom($event)"
+            >
+                <i class="fas fa-dollar-sign"></i>
+                Comprar Crédito
+            </button>
+        </div>
+        <div class="col-md-4">
+            <button 
+                id="meuextrato"
+                class="btn-menu-financeiro {{ btns_selected.meuextrato }}"
+                routerLink="extrato"
+                (click)="bordaBottom($event)"
+            >
                 <i class="fas fa-file-alt"></i>
                 Meu Extrato
             </button>
         </div>
         <div class="col-md-4">
-            <button class="btn-menu-financeiro" routerLink="adicionarcredito">
-                <i class="fas fa-dollar-sign"></i>
-                Comprar Crédito
-            </button>
-        </div>         
+            <app-financeiro-card
+                caption="{{ this.cds.getSaldo(true) }}"
+                item="Saldo"
+                color="green"
+            ></app-financeiro-card>
+        </div>
     </div>
+    <hr />
     <router-outlet></router-outlet>
 </div>    

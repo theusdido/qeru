@@ -120,22 +120,16 @@ export class ChatComponent implements OnInit,AfterViewInit {
   }
 
   verificaSaldo(){
-
-    this.cd.getSaldo().subscribe(
-      (saldo:any) => {
-        if (saldo[0] > 0){
-          this.enviar();
-        }else{
-          const dialogRef = this.dialog.open(DialogSemCredito);
-          dialogRef.afterClosed().subscribe(result => {
-            if (result){
-              this.router.navigate(['/dashboard/financeiro/adicionarcredito']);
-            }
-          });          
-
+    if (this.cd.getSaldo() > 0){
+      this.enviar();
+    }else{
+      const dialogRef = this.dialog.open(DialogSemCredito);
+      dialogRef.afterClosed().subscribe(result => {
+        if (result){
+          this.router.navigate(['/dashboard/financeiro/adicionarcredito']);
         }
-      }
-    );
+      });
+    }
   }
 
   async enviar(){

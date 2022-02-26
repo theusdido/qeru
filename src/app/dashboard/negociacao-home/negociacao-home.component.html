@@ -1,3 +1,46 @@
+<p-carousel 
+    [value]="itens" 
+    styleClass="custom-carousel" 
+    [numVisible]="4" 
+    [numScroll]="1" 
+    [circular]="true" 
+    [autoplayInterval]="0" 
+    [responsiveOptions]="responsiveOptions"
+    [showIndicators]="itens.length>4?true:false"
+    [showNavigators]="itens.length>4?true:false"    
+>
+    <ng-template let-item pTemplate="item">
+        <div class="loja-item">
+            <div class="loja-item-content">
+                <div class="mb-3">
+                    <img src="{{ item.loja.url_logo }}" [alt]="item.loja.nomefantasia" class="product-image" />
+                </div>
+                <div>
+                    <h4 class="mb-1">{{item.loja.nomefantasia}}</h4>
+                    <div>
+                        <fa-icon [icon]="faStar"></fa-icon>
+                        <fa-icon [icon]="faStar"></fa-icon>
+                        <fa-icon [icon]="faStar"></fa-icon>
+                        <fa-icon [icon]="faStar"></fa-icon>
+                        <fa-icon [icon]="faStar"></fa-icon>
+                    </div>
+                    <span 
+                        [class]="'loja-badge status-'+item.loja.nomefantasia.toLowerCase()"
+                    >
+                        <div class="proposta-lista-td-content">
+                            <h4>{{item.produto.nome}}</h4>
+                            <small>{{ item.produto.descricao.substr(0,25) }} ...</small>
+                        </div>
+                    </span>
+                    <div class="car-buttons mt-5">
+                        <button href="#" class="btn btn-primary" (click)="abrirChat(item.negociacao.id)">Responder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+<!--
 <div class="row lista-negociacoes-home">
     <div class="col-md-3">
         <div class="card text-center" *ngFor="let n of negociacoes | async">
@@ -20,3 +63,4 @@
         </div>
     </div>
 </div>
+-->

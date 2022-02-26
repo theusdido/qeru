@@ -3,8 +3,9 @@ import { Lojista } from 'src/app/classe/lojista';
 import { ChatService } from '../chat/chat.service';
 import { faCommentDollar } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
-import { ls } from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { PedidoService } from 'src/app/service/pedido.service';
+import { UserInfoService } from 'src/app/service/user-info.service';
 
 @Component({
   selector: 'app-contato',
@@ -12,13 +13,16 @@ import { PedidoService } from 'src/app/service/pedido.service';
   styleUrls: ['./contato.component.scss']
 })
 export class ContatoComponent implements OnInit {
-  public contatos:Array<any> = [];
-  public faCommentDollar = faCommentDollar;
+  public contatos:Array<any>  = [];
+  public faCommentDollar      = faCommentDollar;
+  public URL_FILES            = environment.miles.arquivos;
+
   constructor(
     public chat:ChatService,
     public lojista:Lojista,
     public rota:Router,
-    public ps:PedidoService
+    public ps:PedidoService,
+    public us:UserInfoService
   ) { }
 
   ngOnInit(): void {

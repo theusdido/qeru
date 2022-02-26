@@ -1,6 +1,8 @@
 <div class="card" *ngFor="let c of contatos">
-  <span class="notify-badge rounded-pill"><fa-icon [icon]="faCommentDollar"></fa-icon></span>
-  <img src="assets/img/usuario.png" class="rounded-circle" />
+  <span class="notify-badge rounded-pill">
+    <fa-icon [icon]="faCommentDollar"></fa-icon>
+  </span>
+  <img src="{{ c.cliente_fotoperfil }}" class="rounded-circle" />
   <div class="card-body">
     <span class="card-title">{{c.cliente}}</span>
     <br>

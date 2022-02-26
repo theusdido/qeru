@@ -1,17 +1,20 @@
+<button mat-button mat-dialog-close class="propaganda-close-view">
+  <fa-icon class="icone-close" [icon]="faClose"></fa-icon>
+</button>
 <mat-progress-bar #progressbar mode="determinate" [value]="percentual"></mat-progress-bar>
-<div class="moldura" style.background="url({{ data.image.src }})">
+<div class="moldura" style.background="url({{ data.image.src }})">  
     <div class="pontos-ganhhos">
         <fa-icon [icon]="faCheck"></fa-icon>
-        <p>5pts</p>
+        <p>{{pontos}}pts</p>
     </div>
     <div class="cortina {{ percentual >= 100 ? 'complete' : '' }}"></div>
 </div>
 <div class="comparilhar-link-propaganda">
-    <mat-form-field appearance="fill">
-      <mat-label>Compartilhe esse link</mat-label>
-      <input matInput type="text" value="https://qeru.com.br/view/{{ data.hash }}">
-      <button matSuffix (click)="hide = !hide" [attr.aria-label]="'Copiado!'" [attr.aria-pressed]="hide">
-        <fa-icon class="icone-copiar" [icon]="faCopy"></fa-icon>
-      </button>
-    </mat-form-field>
-  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Compartilhe esse link</mat-label>
+    <input matInput type="text" value="https://qeru.com.br/view/{{ data.hash }}">
+    <button matSuffix (click)="hide = !hide" [attr.aria-label]="'Copiado!'" [attr.aria-pressed]="hide">
+      <fa-icon class="icone-copiar" [icon]="faCopy"></fa-icon>
+    </button>
+  </mat-form-field>
+</div>

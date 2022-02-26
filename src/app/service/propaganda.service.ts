@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ls } from 'src/environments/environment';
 import { RequisicaoService } from './requisicao.service';
 
 @Injectable({
@@ -20,7 +21,15 @@ export class PropagandaService {
     return this.rs.get("propaganda",{
       op:"hash",
       hash:hash
-    });    
+    });
   }
 
+  visto(propaganda_id:number)
+  {
+    return this.rs.get('propaganda',{
+      op:'visto',
+      usuario:ls.get('userid'),
+      propaganda:propaganda_id
+    });
+  }
 }

@@ -25,8 +25,6 @@ export class MenuLojistaComponent implements OnInit {
 
   ngOnInit(): void {
     this.cs.qtdadeMsgNaoLida().subscribe( (qtdade:any) => {
-      console.log(qtdade[0]);
-
       if (qtdade[0] > 0){
         this.new_message = '';
       }else{

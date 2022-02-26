@@ -26,7 +26,7 @@
             thumbLabel
             tickInterval="1000"
             step="50"
-            min="0"
+            min="10"
             max="500"
             aria-label="units"
             [(ngModel)]="valor_total"
@@ -154,7 +154,7 @@
         <label for="parcelamento">Parcelamento</label>
         <select class="form-control" id="parcelamento" name="parcelamento" readonly required>
         </select>
-        <img src="loading2.gif" id="loading-parcelamento" style="display:none;" />
+        <img src="assets/img/loading2.gif" id="loading-parcelamento" style="display:none;" />
         <div id="msg-erro-parcelamento"  class="alert alert-danger msg-error-formgroup"></div>
     </div>
     <div class="col-md-12">
@@ -173,7 +173,7 @@
             id="finalizar-cartaocredito"
             (click)="finalizarCartao()"
         >Pagar e Finalizar Pedido</button>
-        <img src="loading2.gif" class="loading-finalizar" style="display:none" />		
+        <img src="assets/img/loading2.gif" class="loading-finalizar" style="display:none" />		
         <div id="msg-erro-pedido"  class="alert alert-danger msg-error-formgroup"></div>
     </div>
 </div>
@@ -191,6 +191,6 @@
             <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone do Titular" required>
         </div>			
         <button type="button" class="btn btn-success" id="finalizar-boleto">Gerar Boleto e Finalizar Pedido</button>
-        <img src="loading2.gif" class="loading-finalizar" style="display:none" />
+        <img src="assets/img/loading2.gif" class="loading-finalizar" style="display:none" />
     </form>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequisicaoService } from '../../service/requisicao.service';
-import { ls,td_user } from '../../../environments/environment';
+import { ls } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { Lojista } from '../../classe/lojista';
 import { Cliente } from '../../classe/cliente';
@@ -15,8 +15,8 @@ declare var $:any;
   styleUrls: ['./autenticacao.component.scss']
 })
 export class AutenticacaoComponent implements OnInit {
-  public email:string = td_user.email;
-  public senha:string = td_user.senha;
+  public email:string = '';
+  public senha:string = '';
   constructor(
     public rs:RequisicaoService,
     public rota:Router,

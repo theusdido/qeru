@@ -12,14 +12,19 @@ import { Router } from '@angular/router';
 })
 export class NegociacoesComponent implements OnInit {
   faRocketchat = faRocketchat;
-  public negociacoes!:Observable<any>;
+  public negociacoes:Array<any> = [];
+
   constructor(
     public ns:NegociacaoService,
     public rota:Router
   ) {}
 
   ngOnInit(): void {
-    this.negociacoes = this.ns.abertas();
+    this.ns.abertas().subscribe(
+      (negociacoes:any) => {
+        this.negociacoes = negociacoes;
+      }
+    );
   }
 
   iniciarChat(pedido:any){

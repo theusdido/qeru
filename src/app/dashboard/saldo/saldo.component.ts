@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CarteiraDigitalService } from 'src/app/realtime-database/carteira-digital.service';
+import { PontuacaoService } from 'src/app/service/pontuacao.service';
+
 
 @Component({
   selector: 'app-saldo',
@@ -7,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaldoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public cds:CarteiraDigitalService,
+    public pd:PontuacaoService
+  ) { }
 
   ngOnInit(): void {
   }

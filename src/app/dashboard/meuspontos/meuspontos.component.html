@@ -10,21 +10,21 @@
     <div class="row">
         <div class="col-md-4">
             <app-financeiro-card
-                caption="150.000 pts"
+                caption="{{ ps.getPontos() }} pts"
                 item="Atual"
                 color="red"
             ></app-financeiro-card>
         </div>
         <div class="col-md-4">
             <app-financeiro-card
-                caption="70.000 pts"
+                caption="{{ ps.getTrocados() }} pts"
                 item="Trocado"
                 color="green"
             ></app-financeiro-card>
         </div>
         <div class="col-md-4">
             <app-financeiro-card
-                caption="1.000 pts"
+                caption="{{ ps.getTransferidos() }} pts"
                 item="Transferido"
                 color="blue"
             ></app-financeiro-card>            

@@ -1,0 +1,21 @@
+<div class="cotainer">
+    <div class="row">
+        
+        <ng-template ngFor [ngForOf]="dataSource" let-data>
+            <div class="col-md-6">
+                <mat-table 
+                    [dataSource]="data.valores" 
+                >
+                    <ng-container matColumnDef="atributo">
+                        <mat-header-cell mat-header-cell *matHeaderCellDef> {{ data.nome }} </mat-header-cell>
+                        <mat-cell mat-cell *matCellDef="let element"> {{element}} </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </div>
+        </ng-template>        
+
+    </div>
+</div>

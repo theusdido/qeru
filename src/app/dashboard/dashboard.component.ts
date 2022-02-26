@@ -6,6 +6,8 @@ import { Sessao } from '../service/sessao.service';
 import { ls } from 'src/environments/environment';
 import { Cliente } from '../classe/cliente';
 import { LojistaService } from './lojista/lojista.service';
+import { CarteiraDigitalService } from '../realtime-database/carteira-digital.service';
+import { PontuacaoService } from '../service/pontuacao.service';
 
 declare var $:any;
 
@@ -25,11 +27,17 @@ export class DashboardComponent implements OnInit {
     public rm:RequisicaoMiles,
     public session:Sessao,
     public cliente:Cliente,
-    public ljs:LojistaService
+    public ljs:LojistaService,
+    public cd:CarteiraDigitalService,
+    public pd:PontuacaoService
   ) {
     if (!this.session.isLogado()){
       this.rota.navigate(['/']);
     }
+
+    this.inicializaCateiraDigital();
+    this.inicializaPontuacao();
+
   }
 
   ngOnInit(): void {
@@ -49,5 +57,29 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
       $('#logo-topo').focus();
     },500);
+  }
+
+  inicializaCateiraDigital(){
+    // Monitora a mudança no valor do saldo
+    this.cd.getValores().subscribe((carteiradigital:any) => {      
+      if (carteiradigital.length > 0){
+        this.cd.setValores(carteiradigital);
+      }else{
+        // Cria a carteira digital
+        this.cd.create();
+      }
+    });
+  }
+
+  inicializaPontuacao(){
+    // Monitora a mudança na pontuação
+    this.pd.getPontuacao().subscribe((pontuacao:any) => {
+      if (pontuacao.length > 0){
+        this.pd.setPontuacao(pontuacao);
+      }else{
+        // Cria a pontuação
+        this.pd.create();
+      }
+    });
   }
 }

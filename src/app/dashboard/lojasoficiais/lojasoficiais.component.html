@@ -6,13 +6,27 @@
                 subtitulo="Conheça todos os nossos parceiros."
             ></app-titulopagina>
         </div>
-    </div>    
-    <div class="row lista-negociacoes-home">
-        <div class="col-md-3">
-            <div class="card text-center" *ngFor="let l of lojas | async">
-                <div class="card-header">{{l.loja}}</div>
-                <div class="card-body">
-                    <img src="assets/img/teia-logo.png" class="img-logo-negociacao-home" />
+    </div>
+</div>
+<p-carousel 
+    [value]="itens" 
+    styleClass="custom-carousel" 
+    [numVisible]="4" 
+    [numScroll]="1" 
+    [circular]="true" 
+    [autoplayInterval]="0" 
+    [responsiveOptions]="responsiveOptions"
+    [showIndicators]="itens.length>4?true:false"
+    [showNavigators]="itens.length>4?true:false"    
+>
+    <ng-template let-item pTemplate="item">
+        <div class="product-item">
+            <div class="product-item-content">
+                <div class="mb-3">
+                    <img src="{{ url_arquivo }}logo-94-{{ item.id }}.jpg" [alt]="item.nomefantasia" class="product-image" />
+                </div>
+                <div>
+                    <h4 class="mb-1">{{item.nomefantasia}}</h4>
                     <div>
                         <fa-icon [icon]="faStar"></fa-icon>
                         <fa-icon [icon]="faStar"></fa-icon>
@@ -20,13 +34,12 @@
                         <fa-icon [icon]="faStar"></fa-icon>
                         <fa-icon [icon]="faStar"></fa-icon>
                     </div>
-                    <p class="card-text">{{l.produto}}</p>
-                    
-                </div>
-                <div class="card-footer text-muted">
-                    <button href="#" class="btn btn-primary">Visitar</button>
+                    <span [class]="'product-badge status-'+item.nomefantasia.toLowerCase()">{{item.produto}}</span>
+                    <div class="car-buttons mt-5">
+                        <button href="#" class="btn btn-primary">+ Detalhes</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </ng-template>
+</p-carousel>

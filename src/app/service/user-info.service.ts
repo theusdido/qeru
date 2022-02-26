@@ -37,4 +37,14 @@ export class UserInfoService {
   setBrandImagemLocalStorage(src:string){
     ls.set('brand-user-src',src);
   }
+
+  getBrandImagem(user_id:number){
+    return '';
+    /*
+    return this.rs.get('userinfo',{
+      op:'brand_image',
+      usuario:user_id
+    });
+    */
+  }
 }

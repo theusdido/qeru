@@ -311,15 +311,23 @@ small.textos{
 /* **************************************************
     DASHBOARD - GERAL
 ************************************************** */
+.div-titulo-pagina
+{
+    margin:15px 0px;
+    border-bottom:2px solid #444;
+}
 .div-titulo-pagina .titulo-pagina {
-    color:#000 !important;
+    color:#404040 !important;
     margin-top:-5px !important;
+    text-align: left !important;
 }
 
 .subtitulo-pagina {
     color:#404040;
     margin-top:-20px !important;
     float:left;
+    text-align:left !important;
+    width:100%;
 }
 .suptitulo-pagina{
     margin-bottom:-15px !important;
@@ -348,17 +356,6 @@ small.textos{
 .box-especificacao p {
     color:#1F1F1F !important;
 }
-
-.prenegociacao-component .item-lista-imagens .item{
-    width:150px;
-    height: 150px;
-    margin:15px;
-}
-.prenegociacao-component .item-lista-imagens img{
-    width:120px;
-    height: 120px;
-}
-
 
 .dialog-mat-close {
     float:right;
@@ -397,7 +394,49 @@ small.textos{
 .titulo-home-dashboard .div-titulo-pagina {
     margin:15px auto 30px auto;
 }
+/* **************************************************
+    PRE-NEGOCIAÇÃO
+************************************************** */
+section#prenegociacao .pedido-card
+{
+    display: flex;
+}
+section#prenegociacao .pedido-card .left-side
+{
+    width:30%;
+}
+section#prenegociacao .pedido-card .middle-side
 
+{
+    width:20%;
+}
+section#prenegociacao .pedido-card .right-side
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:50%;
+}
+section#prenegociacao .pedido-card .middle-side .produto-imagemprincipal
+{
+    width:100%;
+    max-height: 250px;
+    max-width: 100%;
+    object-fit: fill; 
+}
+
+section#prenegociacao .pedido-card .left-side .p-card 
+{
+    box-shadow: none;
+}
+
+section#prenegociacao app-prenegociacao-atributos
+{
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 250px;
+}
 /* **************************************************
     FORMULÁRIO GERAL
 ************************************************** */
@@ -429,6 +468,27 @@ small.textos{
 ************************************************** */
 .ichat-proposta {
     cursor:pointer;
+    font-size:20px;
+}
+
+.shadow-4 {
+    box-shadow: 0 1px 10px #0000001f,0 4px 5px #00000024,0 2px 4px -1px #0003!important;
+}
+
+.proposta-lista-foto
+{
+    width:85px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.proposta-lista-td-content
+{
+    padding-left:10px;
+}
+.proposta-lista-td-content h4 {
+    margin:0px;
+    font-weight: bold;
 }
 
 /* **************************************************
@@ -593,3 +653,107 @@ small.textos{
     font-size:38px;
 }
 
+
+#comprar-retorno {
+    display: none;
+}
+
+
+
+/* **************************************************
+    HEADER - DASHBOARD
+************************************************** */
+#icone-card-topo-conquista
+{
+    color:#666;
+}
+
+/* **************************************************
+    PROPAGANDA - VIEW
+************************************************** */
+.propaganda-close-view
+{
+    position: absolute;    
+    margin-left: 700px;
+    margin-top: -20px;
+    z-Index:1000;
+
+    background-color: transparent !important;
+    border: none !important;
+    cursor: pointer;        
+}
+
+.propaganda-close-view .icone-close {
+    color:#666;
+
+}
+
+/* **************************************************
+    FINANCEIRO COMPONENTE
+************************************************** */
+.border-bottom-selected {
+    border-bottom:2px solid #ff2020 !important;
+}
+
+/* **************************************************
+    EXTRATO - FINANCEIRO COMPONENTE
+************************************************** */
+#extrato table
+{
+    width:100%;
+}
+
+#extrato table tr.mat-footer-row
+{
+    font-weight: bold;
+}
+
+#extrato table .mat-column-operacao
+{
+    text-align:center;
+    width:10%;
+}
+
+#extrato table .mat-column-data
+{
+    width:15%;
+    text-align:center;
+}
+
+#extrato table .mat-column-valor
+{
+    width:15%;
+    text-align:right;
+}
+
+#extrato table .mat-column-transacao
+{
+    text-align: left;
+    width:50%;
+}
+
+#extrato table .tr-operacao-credito td
+{
+    color:#103a00 !important;
+}
+
+#extrato table .tr-operacao-debito td
+{
+    color:#ff2020 !important;
+}
+
+/* **************************************************
+    LOJA SLIDER - COMPONENTE
+************************************************** */
+.loja-item    .loja-item-content {
+    border: 1px solid var(--surface-d);
+    border-radius: 3px;
+    margin: .3rem;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.loja-item .product-image {
+    width: 25%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+}
