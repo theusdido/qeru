@@ -757,3 +757,21 @@ section#prenegociacao app-prenegociacao-atributos
     width: 25%;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
 }
+
+/* **************************************************
+    ESTABELECIMENTO
+************************************************** */
+#estabelecimento-loja,
+#estabelecimento-lojista,
+#estabelecimento-imagens,
+#estabelecimento-entrega
+{
+    margin:15px 0px !important;
+    height: 320px;
+}
+
+.estabelecimento-row-button
+{
+    margin-bottom:20px;
+    margin-left:0px;
+}

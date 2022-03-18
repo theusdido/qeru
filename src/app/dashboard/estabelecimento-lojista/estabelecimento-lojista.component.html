@@ -1,24 +1,28 @@
-<div class="row">
-    <div class="col-md-6">
-        <form>
-            <fieldset>
-                <div class="form-group">
-                    <label for="nome_estabelecimento">Nome</label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo" [(ngModel)]="dados.nome" #required>
-                </div> 
-                <div class="form-group">
-                    <label for="cpf">CPF</label>
-                    <input type="text" class="form-control {{ validarCampos.cpf }}" id="cpf" name="cpf" placeholder="CPF" [(ngModel)]="dados.cpf" mask="000.000.000-00" (blur)="validarCampo('cpf')" #required>
-                </div>   
-                <div class="form-group">
-                    <label for="celular">Celular</label>
-                    <input type="text" class="form-control {{ validarCampos.celular }}" id="cel" name="celular" placeholder="Celular" [(ngModel)]="dados.celular" mask="(00) 0.0000-0000" (blur)="validarCampo('celular')" #required>
-                </div>
-                <div class="form-group">
-                    <label for="datanascimento">Data Nascimento</label>
-                    <input type="text" class="form-control {{ validarCampos.datanascimento }}" id="dt" name="dat" placeholder="Data de Nascimento" [(ngModel)]="dados.datanascimento"  mask="00/00/0000" (blur)="validarCampo('datanascimento')" #required>
-                </div>
-            </fieldset>
-        </form>
+<section id="estabelecimento-loja">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form>
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="nome_estabelecimento">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo" [(ngModel)]="dados.lojista.nome" #required>
+                        </div> 
+                        <div class="form-group">
+                            <label for="cpf">CPF</label>
+                            <input type="text" class="form-control {{ validarCampos.cpf }}" id="cpf" name="cpf" placeholder="CPF" [(ngModel)]="dados.lojista.cpf" mask="000.000.000-00" (blur)="validarCampo('cpf')" #required>
+                        </div>   
+                        <div class="form-group">
+                            <label for="celular">Celular</label>
+                            <input type="text" class="form-control {{ validarCampos.telefone }}" id="cel" name="telefone" placeholder="Celular" [(ngModel)]="dados.lojista.telefone" mask="(00) 0.0000-0000" (blur)="validarCampo('telefone')" #required>
+                        </div>
+                        <div class="form-group">
+                            <label for="datanascimento">Data Nascimento</label>
+                            <input type="text" class="form-control {{ validarCampos.datanascimento }}" id="dt" name="dat" placeholder="Data de Nascimento" [(ngModel)]="dados.lojista.datanascimento"  mask="00/00/0000" (blur)="validarCampo('datanascimento')" #required>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
+</section>

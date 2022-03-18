@@ -15,12 +15,16 @@ export class LojistaService {
     public rs:RequisicaoService
   ) { }
 
-  async load(id:number){
+  load(){
+    let id = ls.get("lojista");
     return this.rs.get("lojista",{
         op:"load",
         id:id
-    }).subscribe(
+    });
+    /*
+    .subscribe(
         async (r:any) => {            
+            /*
             // Dados do Lojista
             this.lojista.id                 = id;
             this.lojista.nome               = r.nome;
@@ -42,6 +46,7 @@ export class LojistaService {
 
             // Endereço
             this.lojista.bairro_desc        = r.endereco[0].td_bairro_desc;
+            */
 
             /*
             let endereco            = dados[1].dados;
@@ -54,12 +59,15 @@ export class LojistaService {
             */
 
             // Categorias
+            /*
             for (let c of r.categorias){
               this.lojista.categorias.push({id:c.id,descricao:c.descricao});
             }
 
             this.lojista.propostas = await this.lojista.proposta.getCategoria(this.lojista.getCategoriasVirgula());
+            */
         }
-    );
-  }
+    //);
+
+  //}
 }

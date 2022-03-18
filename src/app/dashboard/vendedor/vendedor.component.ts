@@ -12,4 +12,8 @@ export class VendedorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  adicionar()
+  {
+    
+  }
 }

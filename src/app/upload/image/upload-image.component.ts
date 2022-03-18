@@ -15,10 +15,10 @@ declare var $:any;
 export class UploadImageComponent implements OnInit,AfterViewInit{
   @Input() displayButton = '+ Adicionar';
   @ViewChild('inputFile') input!:ElementRef;
-  @Input() srcImage!:string;
+  @Input() srcImage:string = 'assets/img/semimagem.jpg';
   @Input() params!:HttpParams;
   @Input('id') idImage:string = '';
-  @Input('height') heightImage:string = '';
+  @Input('height') heightImage:string = '150px';
   @Output() uploaded = new EventEmitter();
   @Output() no_image = new EventEmitter<any>();
   @Output() set_image = new EventEmitter<any>();
@@ -51,7 +51,8 @@ export class UploadImageComponent implements OnInit,AfterViewInit{
   noImagem(){
     console.log('imagem tem que sumir');
     this.no_image.emit();
-    this.srcImage = this.sem_imagem_src;
+    console.log(this.sem_imagem_src);
+    //this.srcImage = this.sem_imagem_src;
   }
 
   setImagem(src:string){

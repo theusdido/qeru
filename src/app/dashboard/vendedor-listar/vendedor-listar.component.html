@@ -1,0 +1,52 @@
+<p-table 
+    [value]="vendedores" 
+    dataKey="name" 
+    responsiveLayout="scroll"
+>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:10%" pSortableColumn="codigo" class="text-center">Cód.</th>            
+            <th style="width:70%" pSortableColumn="cliente">Vendedor</th>
+            <th style="width:10%" pSortableColumn="data" class="text-center">Editar</th>
+            <th style="width:10%" pSortableColumn="chat" class="text-center">Excluir</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-proposta>
+        <tr>
+            <td class="text-center"><small>{{ proposta.id }}</small></td>
+            <td>
+                <div style="display: flex;">
+                    <img 
+                        [src]="proposta.cliente.fotoperfil" 
+                        [alt]="proposta.cliente.nome" 
+                        class="shadow-4 proposta-lista-foto" 
+                    />
+                    <div class="proposta-lista-td-content">
+                        <h4>{{ proposta.cliente.nome.substr(0,25) }}</h4>
+                        <small>{{ proposta.cliente.localizacao.substr(0,25) }} ...</small>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div style="display: flex;">
+                    <img 
+                        [src]="proposta.produto.imagemprincipal" 
+                        [alt]="proposta.produto.nome" 
+                        class="shadow-4 proposta-lista-foto" 
+                    />
+                    <div class="proposta-lista-td-content">
+                        <h4>{{ proposta.produto.nome }}</h4>
+                        <small>{{ proposta.produto.descricao.substr(0,25) }} ...</small>
+                    </div>
+                </div>
+            </td>
+            <td class="text-center"><small>{{ proposta.data }}</small></td>
+            <td class="text-center">
+                <fa-icon 
+                    class="ichat-proposta" 
+
+                ></fa-icon>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

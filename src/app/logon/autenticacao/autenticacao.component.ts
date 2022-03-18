@@ -42,13 +42,13 @@ export class AutenticacaoComponent implements OnInit {
           ls.set("useremail",this.email);
           if (r.usergroup == 3){
             ls.set("perfil","L");
-            ls.set("lojista",JSON.stringify(r.perfil.lojista[0]));
+            ls.set("lojista",r.perfil.lojista[0].id);
             ls.set("loja",r.perfil.loja[0].id);
             ls.set("categorias",r.perfil.categorias);
             if (r.perfil.lojista.length <= 0){
               this.irDashBoard();
             }else{
-              this.ljs.load(r.perfil.lojista[0].id).then(
+              this.ljs.load().subscribe(
                 () => {
                   this.irDashBoard();
                 }

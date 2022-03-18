@@ -1,35 +1,33 @@
-<form class="form">
-    <fieldset>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <app-topicopagina label="Logo"></app-topicopagina>
-                    <fa-icon 
-                        id="icon-excluir-logo-loja"
-                        [icon]="faTrash" 
-                        class="excluir-imagem-upload-image" 
-                        (click)="excluirLogo()"
-                        [style.display]="exibir_excluir_logo"
-                    ></fa-icon>
-                    <app-upload-image
-                        #uploadLogo
-                        heightImg="150px"
-                        displayButton="Carregar"
-                        [params]="params"
-                        id="loja-logo"
-                        (uploaded)="processaUpload($event)"
-                    ></app-upload-image>
-                </div>
-                <div class="col-md-4">
-                    <app-topicopagina label="Topo"></app-topicopagina>
-                    <app-upload-image
-                        heightImg="150px"
-                        displayButton="Carregar"
-                        id="loja-topo"
-                        srcImage="assets/img/semimagem.jpg"
-                    ></app-upload-image>
-                </div>                
+<section id="estabelecimento-imagens">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <app-topicopagina label="Logo"></app-topicopagina>
+                <fa-icon 
+                    id="icon-excluir-logo-loja"
+                    [icon]="faTrash" 
+                    class="excluir-imagem-upload-image" 
+                    (click)="excluirLogo()"
+                    [style.display]="exibir_excluir_logo"
+                ></fa-icon>
+                <app-upload-image
+                    #uploadLogo
+                    heightImg="150px"
+                    displayButton="Carregar"
+                    [params]="params"
+                    id="loja-logo"
+                    (uploaded)="processaUpload($event)"
+                ></app-upload-image>
+            </div>
+            <div class="col-md-4">
+                <app-topicopagina label="Topo"></app-topicopagina>
+                <app-upload-image
+                    heightImg="150px"
+                    displayButton="Carregar"
+                    id="loja-topo"
+                    srcImage="assets/img/semimagem.jpg"
+                ></app-upload-image>
             </div>
         </div>
-    </fieldset>
-</form>
+    </div>
+</section>

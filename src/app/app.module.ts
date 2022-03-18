@@ -115,11 +115,13 @@ import {CarouselModule} from 'primeng/carousel';
 import {ButtonModule} from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
-
+import {InputNumberModule} from 'primeng/inputnumber';
+import {SelectButtonModule} from 'primeng/selectbutton';
 
 // Formatando Data
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { VendedorListarComponent } from './dashboard/vendedor-listar/vendedor-listar.component';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -190,7 +192,8 @@ registerLocaleData(ptBr);
     UserInfoComponent,
     HeaderComponent,
     PrenegociacaoAtributosComponent,
-    FinanceiroExtratoComponent    
+    FinanceiroExtratoComponent,
+    VendedorListarComponent    
   ],
   imports: [
     BrowserModule,
@@ -224,7 +227,9 @@ registerLocaleData(ptBr);
     ButtonModule,
     CardModule,
     TableModule,
-    MatTableModule
+    MatTableModule,
+    InputNumberModule,
+    SelectButtonModule
   ],
   providers: [
     ConfigService,

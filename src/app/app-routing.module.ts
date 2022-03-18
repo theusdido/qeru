@@ -33,6 +33,8 @@ import { ProdutolojaComponent } from './dashboard/produtoloja/produtoloja.compon
 import { LogoutComponent } from './logout/logout.component';
 import { LogonPageComponent } from './logon-page/logon-page.component';
 import { FinanceiroExtratoComponent } from './dashboard/financeiro-extrato/financeiro-extrato.component';
+import { VendedorCadastroComponent } from './dashboard/vendedor-cadastro/vendedor-cadastro.component';
+import { VendedorListarComponent } from './dashboard/vendedor-listar/vendedor-listar.component';
 
 export const routes: Routes = [
 
@@ -108,7 +110,16 @@ export const routes: Routes = [
     { path: 'lojasoficiais' , component:LojasoficiaisComponent},
     { path: 'meuspontos' , component:MeuspontosComponent},
     { path: 'saldo', component:SaldoComponent},
-    { path: 'vendedor' , component:VendedorComponent},
+    { 
+      path: 'vendedor' , 
+      component:VendedorComponent,
+      children:[
+        { path: '', redirectTo: 'extrato', pathMatch: 'full'},
+        { path: 'add' , component: VendedorCadastroComponent},
+        { path: 'list' , component: VendedorListarComponent }
+      ]
+
+    },
     { path: 'propagandas' , component:PropagandaVisualizarComponent},
     { path: 'indicadores' , component:IndicadoresComponent}
   ]}

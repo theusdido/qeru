@@ -9,6 +9,9 @@ import { LojistaService } from './lojista/lojista.service';
 import { CarteiraDigitalService } from '../realtime-database/carteira-digital.service';
 import { PontuacaoService } from '../service/pontuacao.service';
 
+//initialize instance
+declare var EnjoyHint:any;
+
 declare var $:any;
 
 @Component({
@@ -50,6 +53,8 @@ export class DashboardComponent implements OnInit {
         this.titulo   = "Lojista";
       break;
     }
+
+    //this.inicializarEnjoyHint();
   }
 
   topScroll(){
@@ -81,5 +86,28 @@ export class DashboardComponent implements OnInit {
         this.pd.create();
       }
     });
+  }
+
+  inicializarEnjoyHint()
+  {
+    let enjoyhint_instance = new EnjoyHint({});
+
+    //simple config. 
+    //Only one step - highlighting(with description) "New" button 
+    //hide EnjoyHint after a click on the button.
+    var enjoyhint_script_steps = [
+      {
+        'click .financeiro-valor' : 'Aqui você pode visualizar seus créditos.'        
+      },
+      {
+        'click #item-conquista' : 'Complete os desafios para ganhar bonus.'
+      }
+    ];
+
+    //set script config
+    enjoyhint_instance.set(enjoyhint_script_steps);
+
+    //run Enjoyhint script
+    enjoyhint_instance.run();
   }
 }

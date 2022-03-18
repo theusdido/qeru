@@ -51,4 +51,12 @@ export class PropostaService {
       {pedido:pedido}
     });
   }
+
+  getVendedores()
+  {
+    return this.rs.get('vendedor',{
+      op:'all',
+      loja:ls.get('loja')
+    })   
+  }
 }

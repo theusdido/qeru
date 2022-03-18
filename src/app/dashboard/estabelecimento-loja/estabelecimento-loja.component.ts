@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { ls,ambiente,funcoes } from 'src/environments/environment';
 import { RequisicaoService } from '../../service/requisicao.service';
@@ -21,13 +21,30 @@ export class EstabelecimentoLojaComponent implements OnInit {
   
   @ViewChildren('required')  obrigatorios: any;
   @ViewChildren('#estado') estado: any;
+
+  @Output() save = new EventEmitter();
+
   public validarCampos = {
     cnpj:"",
     telefone:"",
     cep:"",
   };
 
-  public dados:any = {};
+  public dados:any          = {
+    nome:'',
+    razaosocial:'',
+    cnpj:'',
+    telefone:'',
+    endereco:{
+      cep:'',
+      logradouro:'',
+      numero:'',
+      complemento:'',
+      td_bairro_desc:'',
+      td_cidade_desc:'',
+      td_uf:'24'
+    }
+  };
   public estados:Array<any> = new UF().estados;
 
   constructor(
@@ -40,20 +57,19 @@ export class EstabelecimentoLojaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dados.estado = "24";
     this.setDados();
   }
 
   setDados(){
     this.lj.load().subscribe(
       (dados:any) => {
-        console.log(dados);
         this.dados = dados;
       }
     );
   }
 
-  salvar(): any {
+  salvar(): Boolean {
+    this.save.emit();
     if (!this.validar.isRequired(this.obrigatorios)) return false;
     $("#preloader-active").show();
 
@@ -72,6 +88,8 @@ export class EstabelecimentoLojaComponent implements OnInit {
         $("#preloader-active").hide();
       }
     );
+
+    return true;
   }
 
   validarCampo(campo:string){
